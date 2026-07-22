@@ -8,12 +8,12 @@
     :root {
       --accent: #1a5c2e;
       --accent-light: #edf7f1;
-      --bg: #fdfaf5;
+      --bg: #f5f5f0;
       --surface: #ffffff;
       --border: #e0d8cc;
       --text: #1c1c1c;
-      --muted: #6b6560;
-      --radius: 8px;
+      --muted: #888078;
+      --radius: 10px;
       --font: system-ui, -apple-system, sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,100 +21,115 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--font);
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
-      padding: 2.5rem 1.5rem 5rem;
+      padding: 2.5rem 1.25rem 5rem;
     }
-    .page { max-width: 700px; margin: 0 auto; }
+    .page { max-width: 640px; margin: 0 auto; }
 
-    header { border-bottom: 2px solid var(--accent); padding-bottom: 1.25rem; margin-bottom: 2rem; }
-    header h1 { font-size: 1.9rem; color: var(--accent); margin-bottom: 0.25rem; }
-    header p { color: var(--muted); font-size: 0.9rem; }
+    header { padding-bottom: 1.5rem; margin-bottom: 1.75rem; }
+    header h1 { font-size: 1.6rem; font-weight: 800; color: var(--accent); margin-bottom: 0.2rem; letter-spacing: -0.02em; }
+    header p { color: var(--muted); font-size: 0.85rem; }
 
-    /* ── Subject accordion ── */
-    .subject { margin-bottom: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    /* ── Subject card ── */
+    .subject {
+      background: var(--surface);
+      border-radius: var(--radius);
+      margin-bottom: 0.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
 
     .subject-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.2rem;
-      background: var(--surface);
+      gap: 0.9rem;
+      padding: 1rem 1.15rem;
       cursor: pointer;
       user-select: none;
-      gap: 1rem;
     }
-    .subject-header:hover { background: var(--accent-light); }
+    .subject-header:hover .subject-name { color: var(--accent); }
 
-    .subject-meta { flex: 1; }
-    .subject-tag {
+    .subject-icon {
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .subject-meta { flex: 1; min-width: 0; }
+    .subject-name { font-weight: 700; font-size: 0.97rem; color: var(--text); transition: color 0.12s; }
+    .subject-tag { font-size: 0.72rem; color: var(--muted); margin-top: 0.05rem; }
+
+    .subject-right { display: flex; align-items: center; gap: 0.6rem; }
+    .subject-count {
       font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 0.15rem 0.55rem;
+    }
+    .chevron {
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: transform 0.2s;
+    }
+    .subject.open .chevron { transform: rotate(90deg); }
+
+    /* ── Chapter label inside dropdown ── */
+    .chapter-label {
+      padding: 0.55rem 1.15rem 0.3rem;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.09em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 0.2rem;
-    }
-    .subject-name {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .subject-count {
-      font-size: 0.78rem;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .chevron {
-      font-size: 1rem;
-      color: var(--accent);
-      transition: transform 0.2s;
-      flex-shrink: 0;
-    }
-    .subject.open .chevron { transform: rotate(90deg); }
-
-    /* ── Lesson list inside accordion ── */
-    .lesson-list {
-      display: none;
-      flex-direction: column;
+      background: var(--bg);
       border-top: 1px solid var(--border);
     }
-    .subject.open .lesson-list { display: flex; }
+
+    /* ── Lesson list ── */
+    .lesson-list { display: none; border-top: 1px solid var(--border); }
+    .subject.open .lesson-list { display: block; }
 
     .lesson-card {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 0.75rem 1.2rem;
+      gap: 0.85rem;
+      padding: 0.7rem 1.15rem;
       text-decoration: none;
       color: var(--text);
-      transition: background 0.12s;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
     }
     .lesson-card:last-child { border-bottom: none; }
     .lesson-card:hover { background: var(--accent-light); }
 
     .lesson-num {
-      min-width: 2.2rem;
-      font-size: 0.75rem;
+      min-width: 2.1rem;
+      font-size: 0.72rem;
       font-weight: 700;
       color: var(--accent);
       background: var(--accent-light);
-      border-radius: 4px;
+      border-radius: 5px;
       text-align: center;
-      padding: 0.2rem 0.4rem;
+      padding: 0.18rem 0.35rem;
       flex-shrink: 0;
     }
-    .lesson-title { font-weight: 600; font-size: 0.92rem; }
-    .lesson-sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.05rem; }
-    .arrow { margin-left: auto; color: var(--accent); font-size: 1rem; flex-shrink: 0; }
+    .lesson-title { font-weight: 600; font-size: 0.88rem; }
+    .lesson-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.05rem; }
+    .arrow { margin-left: auto; color: var(--border); font-size: 0.9rem; flex-shrink: 0; }
+    .lesson-card:hover .arrow { color: var(--accent); }
 
     footer {
-      margin-top: 2.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.8rem;
+      margin-top: 2rem;
+      font-size: 0.75rem;
       color: var(--muted);
       text-align: center;
     }
@@ -128,24 +143,29 @@
     <p>บทเรียนออนไลน์ · Mahidol Wittayanusorn School · AY 2569</p>
   </header>
 
-  <!-- ── MATH: Sequences & Series ── -->
+  <!-- ── MATH ── -->
   <div class="subject">
     <div class="subject-header" onclick="toggle(this)">
+      <div class="subject-icon">∑</div>
       <div class="subject-meta">
-        <div class="subject-tag">คณิตศาสตร์ · ค30107</div>
-        <div class="subject-name">Sequences &amp; Series</div>
+        <div class="subject-name">Mathematics</div>
+        <div class="subject-tag">ค30107 · Calculus &amp; Applications</div>
       </div>
-      <span class="subject-count">4 lessons</span>
-      <span class="chevron">›</span>
+      <div class="subject-right">
+        <span class="subject-count">7 lessons</span>
+        <span class="chevron">›</span>
+      </div>
     </div>
     <div class="lesson-list">
+
+      <div class="chapter-label">Sequences &amp; Series</div>
       <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0000-finite-sequences-and-partial-sums.html">
         <span class="lesson-num">S1</span>
         <div>
           <div class="lesson-title">Finite Sequences, Sigma Notation &amp; Partial Sums</div>
           <div class="lesson-sub">ลำดับจำกัด สัญลักษณ์ซิกมา และผลรวมย่อย</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0001-infinite-sequences.html">
         <span class="lesson-num">S2</span>
@@ -153,7 +173,7 @@
           <div class="lesson-title">Infinite Sequences — Limits &amp; Convergence</div>
           <div class="lesson-sub">ลำดับอนันต์ — ลิมิตและการลู่เข้า</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0002-infinite-series.html">
         <span class="lesson-num">S3</span>
@@ -161,7 +181,7 @@
           <div class="lesson-title">Infinite Series — Geometric, Telescoping &amp; Harmonic</div>
           <div class="lesson-sub">อนุกรมอนันต์ — เรขาคณิต เทเลสโคป และฮาร์โมนิก</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0004-convergence-tests.html">
         <span class="lesson-num">S6</span>
@@ -169,29 +189,17 @@
           <div class="lesson-title">Convergence Tests</div>
           <div class="lesson-sub">การทดสอบการลู่เข้า</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
-    </div>
-  </div>
 
-  <!-- ── MATH: The Derivative Function ── -->
-  <div class="subject">
-    <div class="subject-header" onclick="toggle(this)">
-      <div class="subject-meta">
-        <div class="subject-tag">คณิตศาสตร์ · ค30107</div>
-        <div class="subject-name">The Derivative Function</div>
-      </div>
-      <span class="subject-count">3 lessons</span>
-      <span class="chevron">›</span>
-    </div>
-    <div class="lesson-list">
+      <div class="chapter-label">The Derivative Function</div>
       <a class="lesson-card" href="Math/The%20Derivative%20Function/lessons/0003-related-rates.html">
         <span class="lesson-num">D1</span>
         <div>
           <div class="lesson-title">Related Rates</div>
           <div class="lesson-sub">อัตราที่สัมพันธ์กัน — การประยุกต์ใช้อนุพันธ์</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Math/The%20Derivative%20Function/lessons/0001-lhopitals-rule.html">
         <span class="lesson-num">D2</span>
@@ -199,7 +207,7 @@
           <div class="lesson-title">L'Hôpital's Rule</div>
           <div class="lesson-sub">กฎของโลปีตาล — รูปแบบอนิยามและการใช้อนุพันธ์</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Math/The%20Derivative%20Function/lessons/0002-function-analysis.html">
         <span class="lesson-num">D4</span>
@@ -207,20 +215,24 @@
           <div class="lesson-title">Function Analysis I — Monotonicity &amp; Concavity</div>
           <div class="lesson-sub">การวิเคราะห์ฟังก์ชัน — เพิ่ม/ลด และความเว้า</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
+
     </div>
   </div>
 
   <!-- ── PHYSICS ── -->
   <div class="subject">
     <div class="subject-header" onclick="toggle(this)">
+      <div class="subject-icon">⚛</div>
       <div class="subject-meta">
-        <div class="subject-tag">ฟิสิกส์ · Sci30105</div>
-        <div class="subject-name">Modern Physics</div>
+        <div class="subject-name">Physics</div>
+        <div class="subject-tag">Sci30105 · Modern Physics</div>
       </div>
-      <span class="subject-count">6 lessons</span>
-      <span class="chevron">›</span>
+      <div class="subject-right">
+        <span class="subject-count">6 lessons</span>
+        <span class="chevron">›</span>
+      </div>
     </div>
     <div class="lesson-list">
       <a class="lesson-card" href="Physics/lessons/0001-origin-of-special-relativity.html">
@@ -229,7 +241,7 @@
           <div class="lesson-title">Origin of Special Relativity</div>
           <div class="lesson-sub">ที่มาของทฤษฎีสัมพัทธภาพพิเศษ</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Physics/lessons/0002-time-dilation-length-contraction.html">
         <span class="lesson-num">P2</span>
@@ -237,7 +249,7 @@
           <div class="lesson-title">Time Dilation &amp; Length Contraction</div>
           <div class="lesson-sub">การขยายเวลาและการหดของความยาว</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Physics/lessons/0003-lorentz-transformation.html">
         <span class="lesson-num">P3</span>
@@ -245,7 +257,7 @@
           <div class="lesson-title">Lorentz Transformation</div>
           <div class="lesson-sub">การแปลงลอเรนซ์</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Physics/lessons/0004-relativistic-momentum-energy.html">
         <span class="lesson-num">P4</span>
@@ -253,7 +265,7 @@
           <div class="lesson-title">Relativistic Momentum &amp; Energy</div>
           <div class="lesson-sub">โมเมนตัมและพลังงานเชิงสัมพัทธภาพ</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Physics/lessons/0005-blackbody-radiation.html">
         <span class="lesson-num">P5</span>
@@ -261,7 +273,7 @@
           <div class="lesson-title">Blackbody Radiation</div>
           <div class="lesson-sub">การแผ่รังสีของวัตถุดำ</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="Physics/lessons/0006-exam-review.html">
         <span class="lesson-num">P6</span>
@@ -269,7 +281,7 @@
           <div class="lesson-title">Exam Review — Modern Physics</div>
           <div class="lesson-sub">ทบทวนการสอบ — ฟิสิกส์สมัยใหม่</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
     </div>
   </div>
@@ -277,12 +289,15 @@
   <!-- ── CIVIC DUTY ── -->
   <div class="subject">
     <div class="subject-header" onclick="toggle(this)">
+      <div class="subject-icon">⚖</div>
       <div class="subject-meta">
-        <div class="subject-tag">หน้าที่พลเมือง</div>
-        <div class="subject-name">Civic Duty &amp; Law</div>
+        <div class="subject-name">หน้าที่พลเมือง</div>
+        <div class="subject-tag">Civic Duty &amp; Law</div>
       </div>
-      <span class="subject-count">4 lessons</span>
-      <span class="chevron">›</span>
+      <div class="subject-right">
+        <span class="subject-count">4 lessons</span>
+        <span class="chevron">›</span>
+      </div>
     </div>
     <div class="lesson-list">
       <a class="lesson-card" href="%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87/lessons/0001-kwamru-phunthan-kotmai.html">
@@ -291,7 +306,7 @@
           <div class="lesson-title">ความรู้พื้นฐานของกฎหมาย</div>
           <div class="lesson-sub">Fundamentals of Law</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87/lessons/0002-rat-ratthathammanun-kotmai-pokkhrong.html">
         <span class="lesson-num">C2</span>
@@ -299,7 +314,7 @@
           <div class="lesson-title">รัฐ รัฐธรรมนูญ และกฎหมายปกครอง</div>
           <div class="lesson-sub">State, Constitution &amp; Administrative Law</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87/lessons/0003-kotmai-aya.html">
         <span class="lesson-num">C3</span>
@@ -307,7 +322,7 @@
           <div class="lesson-title">กฎหมายอาญา</div>
           <div class="lesson-sub">Criminal Law</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
       <a class="lesson-card" href="%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87/lessons/0004-kotmai-phaeng-bukhkhon.html">
         <span class="lesson-num">C4</span>
@@ -315,14 +330,12 @@
           <div class="lesson-title">กฎหมายแพ่งเกี่ยวกับบุคคล</div>
           <div class="lesson-sub">Civil Law — Persons</div>
         </div>
-        <span class="arrow">→</span>
+        <span class="arrow">›</span>
       </a>
     </div>
   </div>
 
-  <footer>
-    MWIT · Mahidol Wittayanusorn School · AY 2569 · Semester 1
-  </footer>
+  <footer>MWIT · Mahidol Wittayanusorn School · AY 2569 · Semester 1</footer>
 
 </div>
 <script>
