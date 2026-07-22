@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D1 · L'Hôpital's Rule</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">ค30107 · Calculus &amp; Applications · The Derivative Function</div>
+    <h1>
+      <span class="lang-en">L'Hôpital's Rule</span>
+      <span class="lang-th" hidden>กฎของโลปีตาล</span>
+    </h1>
+    <p class="objective">
+      <span class="lang-en">Evaluate limits of indeterminate forms using derivatives.</span>
+      <span class="lang-th" hidden>คำนวณลิมิตของรูปแบบอนิยาม โดยใช้อนุพันธ์</span>
+    </p>
+  </header>
+
+  <!-- ── SECTION 1: THE BIG IDEA ── -->
+  <div class="lang-en">
+    <h2>The Big Idea</h2>
+    <p>Sometimes a limit produces a fraction like <strong>0/0</strong> or <strong>∞/∞</strong>. These are called <em>indeterminate forms</em> — the fraction doesn't simplify on its own, but the answer is not undefined. L'Hôpital's Rule unlocks it:</p>
+
+    <div class="formula-box">
+      <span class="label">L'Hôpital's Rule</span>
+      If \(\lim_{x \to a} f(x) = 0\) and \(\lim_{x \to a} g(x) = 0\)&nbsp;&nbsp;(or both → ±∞), then
+      $$\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}$$
+      provided the right-hand limit exists (or is ±∞).
+    </div>
+
+    <div class="key-concept">
+      <strong>You differentiate top and bottom separately</strong> — not the whole fraction as a quotient. That's it.
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>แนวคิดหลัก</h2>
+    <p>บางครั้งลิมิตให้เศษส่วนในรูป <strong>0/0</strong> หรือ <strong>∞/∞</strong> ซึ่งเรียกว่า <em>รูปแบบอนิยาม</em> — เศษส่วนลดรูปไม่ได้เอง แต่คำตอบไม่ได้ไม่มีนิยาม กฎของโลปีตาลช่วยแก้ปัญหานี้ได้:</p>
+
+    <div class="formula-box">
+      <span class="label">กฎของโลปีตาล</span>
+      ถ้า \(\lim_{x \to a} f(x) = 0\) และ \(\lim_{x \to a} g(x) = 0\)&nbsp;&nbsp;(หรือทั้งคู่ → ±∞) แล้ว
+      $$\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}$$
+      โดยที่ลิมิตด้านขวามือต้องมีค่า (หรือเป็น ±∞)
+    </div>
+
+    <div class="key-concept">
+      <strong>หาอนุพันธ์ของเศษและส่วนแยกกัน</strong> — ไม่ใช่หาอนุพันธ์ทั้งเศษส่วนด้วยกฎผลหาร นั่นคือทั้งหมด
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: THE CHECKLIST ── -->
+  <div class="lang-en">
+    <h2>The Three-Step Checklist</h2>
+    <p>Before applying the rule, always do this:</p>
+    <ol style="font-family: var(--font-ui); font-size: 0.95rem; line-height: 2; padding-left: 1.4rem;">
+      <li><strong>Check the form.</strong> Substitute \(x = a\). You must get \(\frac{0}{0}\) or \(\frac{\pm\infty}{\pm\infty}\). If you get a normal number, just use it — L'Hôpital is not needed.</li>
+      <li><strong>Differentiate top and bottom separately.</strong> Do not use the quotient rule.</li>
+      <li><strong>Evaluate the new limit.</strong> If it's still indeterminate, repeat from step 1.</li>
+    </ol>
+
+    <div class="warning">
+      <strong>Common mistake:</strong> Applying L'Hôpital when the limit is NOT indeterminate. For example, \(\lim_{x \to 0} \frac{\sin x}{x + 1}\) → \(\frac{0}{1} = 0\). No rule needed — and applying it gives the wrong answer.
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>รายการตรวจสอบ 3 ขั้นตอน</h2>
+    <p>ก่อนใช้กฎ ทำสิ่งเหล่านี้เสมอ:</p>
+    <ol style="font-family: var(--font-ui); font-size: 0.95rem; line-height: 2; padding-left: 1.4rem;">
+      <li><strong>ตรวจสอบรูปแบบ</strong> แทนค่า \(x = a\) ต้องได้ \(\frac{0}{0}\) หรือ \(\frac{\pm\infty}{\pm\infty}\) ถ้าได้ตัวเลขปกติ ใช้ค่านั้นเลย — ไม่ต้องใช้กฎ</li>
+      <li><strong>หาอนุพันธ์ของเศษและส่วนแยกกัน</strong> อย่าใช้กฎผลหาร</li>
+      <li><strong>คำนวณลิมิตใหม่</strong> ถ้ายังเป็นรูปแบบอนิยาม ทำซ้ำตั้งแต่ขั้นที่ 1</li>
+    </ol>
+
+    <div class="warning">
+      <strong>ข้อผิดพลาดที่พบบ่อย:</strong> ใช้กฎโลปีตาลทั้งที่ลิมิตไม่ใช่รูปแบบอนิยาม เช่น \(\lim_{x \to 0} \frac{\sin x}{x + 1}\) → \(\frac{0}{1} = 0\) ไม่ต้องใช้กฎ และถ้าใช้จะได้คำตอบผิด
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: WORKED EXAMPLES ── -->
+  <div class="lang-en">
+    <h2>Worked Examples</h2>
+
+    <h3>Example 1 — Basic 0/0</h3>
+    <p>Find \(\displaystyle\lim_{x \to 0} \frac{\sin x}{x}\).</p>
+    <p><strong>Step 1:</strong> Substitute → \(\frac{\sin 0}{0} = \frac{0}{0}\) ✓ indeterminate.</p>
+    <p><strong>Step 2:</strong> Differentiate: \(\frac{d}{dx}[\sin x] = \cos x\), \(\frac{d}{dx}[x] = 1\).</p>
+    <p><strong>Step 3:</strong> New limit: \(\displaystyle\lim_{x \to 0} \frac{\cos x}{1} = \cos 0 = \boxed{1}\).</p>
+
+    <h3>Example 2 — Need to apply twice</h3>
+    <p>Find \(\displaystyle\lim_{x \to 0} \frac{1 - \cos x}{x^2}\).</p>
+    <p><strong>Step 1:</strong> Substitute → \(\frac{0}{0}\) ✓</p>
+    <p><strong>Step 2:</strong> Differentiate → \(\displaystyle\lim_{x \to 0} \frac{\sin x}{2x}\)</p>
+    <p><strong>Step 3:</strong> Still \(\frac{0}{0}\) — apply again: \(\displaystyle\lim_{x \to 0} \frac{\cos x}{2} = \frac{1}{2} = \boxed{\dfrac{1}{2}}\).</p>
+
+    <h3>Example 3 — ∞/∞ form</h3>
+    <p>Find \(\displaystyle\lim_{x \to \infty} \frac{x^2}{e^x}\).</p>
+    <p><strong>Step 1:</strong> \(\frac{\infty}{\infty}\) ✓</p>
+    <p><strong>Step 2:</strong> → \(\displaystyle\lim_{x \to \infty} \frac{2x}{e^x}\), still \(\frac{\infty}{\infty}\)</p>
+    <p><strong>Step 2 again:</strong> → \(\displaystyle\lim_{x \to \infty} \frac{2}{e^x} = \boxed{0}\).</p>
+
+    <h3>Example 4 — Other indeterminate forms (convert first)</h3>
+    <p>Forms like \(0 \cdot \infty\), \(\infty - \infty\), \(1^\infty\), \(0^0\), \(\infty^0\) are NOT directly L'Hôpital, but can be rewritten as \(\frac{0}{0}\) or \(\frac{\infty}{\infty}\).</p>
+    <p>E.g. \(0 \cdot \infty\): rewrite \(f \cdot g = \dfrac{f}{1/g}\) → now it's \(\frac{0}{0}\) or \(\frac{\infty}{\infty}\).</p>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>ตัวอย่างที่ผ่านการคำนวณแล้ว</h2>
+
+    <h3>ตัวอย่าง 1 — พื้นฐาน 0/0</h3>
+    <p>หา \(\displaystyle\lim_{x \to 0} \frac{\sin x}{x}\)</p>
+    <p><strong>ขั้น 1:</strong> แทนค่า → \(\frac{\sin 0}{0} = \frac{0}{0}\) ✓ เป็นรูปแบบอนิยาม</p>
+    <p><strong>ขั้น 2:</strong> หาอนุพันธ์: \(\frac{d}{dx}[\sin x] = \cos x\), \(\frac{d}{dx}[x] = 1\)</p>
+    <p><strong>ขั้น 3:</strong> ลิมิตใหม่: \(\displaystyle\lim_{x \to 0} \frac{\cos x}{1} = \cos 0 = \boxed{1}\)</p>
+
+    <h3>ตัวอย่าง 2 — ใช้กฎสองครั้ง</h3>
+    <p>หา \(\displaystyle\lim_{x \to 0} \frac{1 - \cos x}{x^2}\)</p>
+    <p><strong>ขั้น 1:</strong> แทนค่า → \(\frac{0}{0}\) ✓</p>
+    <p><strong>ขั้น 2:</strong> หาอนุพันธ์ → \(\displaystyle\lim_{x \to 0} \frac{\sin x}{2x}\)</p>
+    <p><strong>ขั้น 3:</strong> ยังเป็น \(\frac{0}{0}\) — ใช้กฎอีกครั้ง: \(\displaystyle\lim_{x \to 0} \frac{\cos x}{2} = \frac{1}{2} = \boxed{\dfrac{1}{2}}\)</p>
+
+    <h3>ตัวอย่าง 3 — รูปแบบ ∞/∞</h3>
+    <p>หา \(\displaystyle\lim_{x \to \infty} \frac{x^2}{e^x}\)</p>
+    <p><strong>ขั้น 1:</strong> \(\frac{\infty}{\infty}\) ✓</p>
+    <p><strong>ขั้น 2:</strong> → \(\displaystyle\lim_{x \to \infty} \frac{2x}{e^x}\) ยังเป็น \(\frac{\infty}{\infty}\)</p>
+    <p><strong>ใช้กฎอีกครั้ง:</strong> → \(\displaystyle\lim_{x \to \infty} \frac{2}{e^x} = \boxed{0}\)</p>
+
+    <h3>ตัวอย่าง 4 — รูปแบบอนิยามอื่นๆ (แปลงรูปก่อน)</h3>
+    <p>รูปแบบเช่น \(0 \cdot \infty\), \(\infty - \infty\), \(1^\infty\), \(0^0\), \(\infty^0\) ไม่ใช่รูปแบบที่ใช้กฎโลปีตาลตรงๆ ได้ แต่แปลงให้เป็น \(\frac{0}{0}\) หรือ \(\frac{\infty}{\infty}\) ก่อน</p>
+    <p>เช่น \(0 \cdot \infty\): เขียนใหม่เป็น \(f \cdot g = \dfrac{f}{1/g}\) → ได้รูปแบบ \(\frac{0}{0}\) หรือ \(\frac{\infty}{\infty}\)</p>
+  </div>
+
+  <!-- ── QUIZ ── -->
+  <h2>
+    <span class="lang-en">Practice</span>
+    <span class="lang-th" hidden>แบบฝึกหัด</span>
+  </h2>
+
+  <!-- Q1 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! You must confirm the indeterminate form before applying the rule."
+       data-feedback-wrong="✗ Not quite. Always substitute first to check the form."
+       data-feedback-correct-th="✓ ถูกต้อง! ต้องตรวจสอบรูปแบบอนิยามก่อนใช้กฎเสมอ"
+       data-feedback-wrong-th="✗ ไม่ถูก ต้องแทนค่าก่อนเสมอเพื่อตรวจสอบรูปแบบ">
+    <div class="quiz-q">
+      <span class="lang-en">Q1. What is the FIRST thing you must do before applying L'Hôpital's Rule?</span>
+      <span class="lang-th" hidden>ข้อ 1. สิ่งแรกที่ต้องทำก่อนใช้กฎโลปีตาลคืออะไร?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Differentiate the numerator and denominator</span>
+        <span class="lang-th" hidden>หาอนุพันธ์ของเศษและส่วน</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Substitute to confirm an indeterminate form (0/0 or ∞/∞)</span>
+        <span class="lang-th" hidden>แทนค่าเพื่อยืนยันว่าเป็นรูปแบบอนิยาม (0/0 หรือ ∞/∞)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Use the quotient rule on the entire fraction</span>
+        <span class="lang-th" hidden>ใช้กฎผลหารกับเศษส่วนทั้งหมด</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Factor the numerator and cancel common terms</span>
+        <span class="lang-th" hidden>แยกตัวประกอบเศษและตัดพจน์ร่วม</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Right! cos(0)/1 = 1."
+       data-feedback-wrong="✗ Differentiate top (→ cos x) and bottom (→ 1), then substitute x = 0."
+       data-feedback-correct-th="✓ ถูก! cos(0)/1 = 1"
+       data-feedback-wrong-th="✗ หาอนุพันธ์เศษ (→ cos x) และส่วน (→ 1) แล้วแทน x = 0">
+    <div class="quiz-q">
+      <span class="lang-en">Q2. Evaluate \(\displaystyle\lim_{x \to 0} \frac{\sin x}{x}\) using L'Hôpital's Rule.</span>
+      <span class="lang-th" hidden>ข้อ 2. หา \(\displaystyle\lim_{x \to 0} \frac{\sin x}{x}\) โดยใช้กฎโลปีตาล</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">0</button>
+      <button class="opt" data-correct="true">1</button>
+      <button class="opt" data-correct="false">∞</button>
+      <button class="opt" data-correct="false">Does not exist</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! It's 0/1 = 0 straight away — no rule needed."
+       data-feedback-wrong="✗ Substitute first: sin(0)/(0+1) = 0/1 = 0. Not indeterminate, so no L'Hôpital."
+       data-feedback-correct-th="✓ ถูก! ได้ 0/1 = 0 ทันที — ไม่ต้องใช้กฎ"
+       data-feedback-wrong-th="✗ แทนค่าก่อน: sin(0)/(0+1) = 0/1 = 0 ไม่ใช่รูปแบบอนิยาม จึงไม่ใช้โลปีตาล">
+    <div class="quiz-q">
+      <span class="lang-en">Q3. Should you apply L'Hôpital's Rule to \(\displaystyle\lim_{x \to 0} \frac{\sin x}{x+1}\)?</span>
+      <span class="lang-th" hidden>ข้อ 3. ควรใช้กฎโลปีตาลกับ \(\displaystyle\lim_{x \to 0} \frac{\sin x}{x+1}\) หรือไม่?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Yes — it has sin x so it must be L'Hôpital</span>
+        <span class="lang-th" hidden>ใช่ — มี sin x จึงต้องใช้โลปีตาล</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">No — substitution gives 0/1 = 0, which is not indeterminate</span>
+        <span class="lang-th" hidden>ไม่ — แทนค่าได้ 0/1 = 0 ซึ่งไม่ใช่รูปแบบอนิยาม</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Yes — x appears in the denominator so the form is 0/0</span>
+        <span class="lang-th" hidden>ใช่ — มี x ในส่วนจึงเป็นรูปแบบ 0/0</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">No — only use L'Hôpital when x → ∞</span>
+        <span class="lang-th" hidden>ไม่ — ใช้โลปีตาลเฉพาะเมื่อ x → ∞</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Yes — apply L'Hôpital twice: x²/eˣ → 2x/eˣ → 2/eˣ → 0."
+       data-feedback-wrong="✗ Apply L'Hôpital twice: x²/eˣ → 2x/eˣ (still ∞/∞) → 2/eˣ → 0."
+       data-feedback-correct-th="✓ ถูก! ใช้โลปีตาลสองครั้ง: x²/eˣ → 2x/eˣ → 2/eˣ → 0"
+       data-feedback-wrong-th="✗ ใช้โลปีตาลสองครั้ง: x²/eˣ → 2x/eˣ (ยังเป็น ∞/∞) → 2/eˣ → 0">
+    <div class="quiz-q">
+      <span class="lang-en">Q4. \(\displaystyle\lim_{x \to \infty} \frac{x^2}{e^x} = \mathord{?}\)</span>
+      <span class="lang-th" hidden>ข้อ 4. \(\displaystyle\lim_{x \to \infty} \frac{x^2}{e^x} = \mathord{?}\)</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">∞</button>
+      <button class="opt" data-correct="false">1</button>
+      <button class="opt" data-correct="true">0</button>
+      <button class="opt" data-correct="false">2</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q5 — exam-style -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! After one application: (2x − 2)/(2x − 4). At x = 1: 0/(−2) = 0."
+       data-feedback-wrong="✗ Apply L'Hôpital once: numerator d/dx[x²−2x+1] = 2x−2, denominator d/dx[x²−4x+4] = 2x−4. At x = 1: 0/−2 = 0."
+       data-feedback-correct-th="✓ ถูก! หลังจากใช้กฎหนึ่งครั้ง: (2x − 2)/(2x − 4) ที่ x = 1: 0/(−2) = 0"
+       data-feedback-wrong-th="✗ ใช้โลปีตาลครั้งเดียว: เศษ d/dx[x²−2x+1] = 2x−2, ส่วน d/dx[x²−4x+4] = 2x−4 ที่ x = 1: 0/−2 = 0">
+    <div class="quiz-q">
+      <span class="lang-en">Q5 (exam-style). \(\displaystyle\lim_{x \to 1} \frac{x^2 - 2x + 1}{x^2 - 4x + 4} = \mathord{?}\)</span>
+      <span class="lang-th" hidden>ข้อ 5 (ระดับข้อสอบ). \(\displaystyle\lim_{x \to 1} \frac{x^2 - 2x + 1}{x^2 - 4x + 4} = \mathord{?}\)</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">1</button>
+      <button class="opt" data-correct="true">0</button>
+      <button class="opt" data-correct="false">1/3</button>
+      <button class="opt" data-correct="false">Does not exist</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- ── PRIMARY SOURCE ── -->
+  <div class="lang-en">
+    <div class="key-concept" style="margin-top: 2rem;">
+      <strong>Primary source to read/watch:</strong><br>
+      Khan Academy — <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-diff-contextual-applications-new/ab-4-7/v/l-hopital-s-rule-introduction" style="color: var(--accent);">L'Hôpital's Rule introduction</a> (12 min). Watch after practicing here to solidify the why behind the rule.
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <div class="key-concept" style="margin-top: 2rem;">
+      <strong>แหล่งเรียนรู้หลักที่แนะนำ:</strong><br>
+      Khan Academy — <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-diff-contextual-applications-new/ab-4-7/v/l-hopital-s-rule-introduction" style="color: var(--accent);">L'Hôpital's Rule introduction</a> (12 นาที) ดูหลังฝึกทำที่นี่แล้วเพื่อเข้าใจเหตุผลเบื้องหลังกฎ
+    </div>
+  </div>
+
+  <!-- ── FOLLOW-UP PROMPT ── -->
+  <div style="background: var(--formula-bg); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 2rem 0; font-family: var(--font-ui); font-size: 0.92rem;">
+    <span class="lang-en">
+      <strong>Ask your teacher:</strong> Got a question about any of these problems? Not sure why a step works? Type it in the chat — I can walk through any specific problem with you.
+    </span>
+    <span class="lang-th" hidden>
+      <strong>ถามครู:</strong> มีคำถามเกี่ยวกับโจทย์เหล่านี้ไหม? ไม่แน่ใจว่าทำไมขั้นตอนนั้นถึงใช้ได้? พิมพ์ในแชทได้เลย — ช่วยอธิบายทีละโจทย์ได้
+    </span>
+  </div>
+
+  <nav class="nav-links">
+    <span></span>
+    <a href="0002-function-analysis.html">
+      <span class="lang-en">Next: Function Analysis I →</span>
+      <span class="lang-th" hidden>ถัดไป: การวิเคราะห์ฟังก์ชัน I →</span>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    ค30107 · MWIT · AY 2569 · The Derivative Function · Lesson D1
+  </footer>
+
+</div>
+<script src="../assets/quiz.js" defer></script>
+<script src="../assets/lang.js" defer></script>
+</body>
+</html>
