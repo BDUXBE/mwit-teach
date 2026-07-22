@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D3 · Related Rates</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">ค30107 · Calculus &amp; Applications · The Derivative Function</div>
+    <h1>
+      <span class="lang-en">Related Rates</span>
+      <span class="lang-th" hidden>อัตราที่สัมพันธ์กัน</span>
+    </h1>
+    <p class="objective">
+      <span class="lang-en">Set up and solve problems where two quantities both change with time.</span>
+      <span class="lang-th" hidden>ตั้งและแก้โจทย์ที่ปริมาณสองอย่างเปลี่ยนแปลงตามเวลาพร้อมกัน</span>
+    </p>
+  </header>
+
+  <!-- ── THE IDEA ── -->
+  <div class="lang-en">
+    <h2>The Big Idea</h2>
+    <p>When two quantities are related by an equation <em>and</em> both change over time, you can differentiate both sides with respect to <em>t</em> to relate their <strong>rates of change</strong>.</p>
+
+    <div class="formula-box">
+      <span class="label">The method</span>
+      1. Draw a diagram. Label all quantities as functions of t.<br>
+      2. Write an equation relating the quantities (geometry, physics, etc.).<br>
+      3. Differentiate <strong>both sides with respect to t</strong> (implicit differentiation).<br>
+      4. Substitute the known values and known rates.<br>
+      5. Solve for the unknown rate.
+    </div>
+
+    <div class="key-concept">
+      <strong>Never substitute numbers before differentiating</strong> — constants disappear when you differentiate, so you'd lose information. Substitute only after step 3.
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>แนวคิดหลัก</h2>
+    <p>เมื่อปริมาณสองอย่างสัมพันธ์กันด้วยสมการ <em>และ</em>ทั้งคู่เปลี่ยนแปลงตามเวลา คุณสามารถหาอนุพันธ์ทั้งสองข้างเทียบกับ <em>t</em> เพื่อเชื่อมโยง<strong>อัตราการเปลี่ยนแปลง</strong>ของทั้งคู่</p>
+
+    <div class="formula-box">
+      <span class="label">วิธีการ</span>
+      1. วาดแผนภาพ กำหนดชื่อปริมาณทั้งหมดเป็นฟังก์ชันของ t<br>
+      2. เขียนสมการที่เชื่อมโยงปริมาณเหล่านั้น (เรขาคณิต, ฟิสิกส์ ฯลฯ)<br>
+      3. หาอนุพันธ์<strong>ทั้งสองข้างเทียบกับ t</strong> (implicit differentiation)<br>
+      4. แทนค่าที่ทราบและอัตราที่ทราบ<br>
+      5. แก้หาอัตราที่ไม่ทราบ
+    </div>
+
+    <div class="key-concept">
+      <strong>อย่าแทนตัวเลขก่อนหาอนุพันธ์</strong> — ค่าคงที่จะหายไปเมื่อหาอนุพันธ์ ทำให้สูญเสียข้อมูล แทนค่าหลังขั้นที่ 3 เท่านั้น
+    </div>
+  </div>
+
+  <!-- ── DERIVATIVES TO KNOW ── -->
+  <div class="lang-en">
+    <h2>Rates You'll Encounter</h2>
+    <table>
+      <thead><tr><th>Shape / Formula</th><th>After differentiating w.r.t. t</th></tr></thead>
+      <tbody>
+        <tr><td>Circle area: \(A = \pi r^2\)</td><td>\(\dfrac{dA}{dt} = 2\pi r\,\dfrac{dr}{dt}\)</td></tr>
+        <tr><td>Sphere volume: \(V = \dfrac{4}{3}\pi r^3\)</td><td>\(\dfrac{dV}{dt} = 4\pi r^2\,\dfrac{dr}{dt}\)</td></tr>
+        <tr><td>Cylinder vol: \(V = \pi r^2 h\)</td><td>\(\dfrac{dV}{dt} = \pi r^2\dfrac{dh}{dt} + 2\pi rh\dfrac{dr}{dt}\)</td></tr>
+        <tr><td>Pythagorean: \(x^2 + y^2 = z^2\)</td><td>\(2x\dfrac{dx}{dt} + 2y\dfrac{dy}{dt} = 2z\dfrac{dz}{dt}\)</td></tr>
+        <tr><td>Triangle area: \(A = \dfrac{1}{2}bh\)</td><td>\(\dfrac{dA}{dt} = \dfrac{1}{2}\!\left(b\dfrac{dh}{dt} + h\dfrac{db}{dt}\right)\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>อัตราที่มักพบในโจทย์</h2>
+    <table>
+      <thead><tr><th>รูปร่าง / สูตร</th><th>หลังจากหาอนุพันธ์เทียบกับ t</th></tr></thead>
+      <tbody>
+        <tr><td>พื้นที่วงกลม: \(A = \pi r^2\)</td><td>\(\dfrac{dA}{dt} = 2\pi r\,\dfrac{dr}{dt}\)</td></tr>
+        <tr><td>ปริมาตรทรงกลม: \(V = \dfrac{4}{3}\pi r^3\)</td><td>\(\dfrac{dV}{dt} = 4\pi r^2\,\dfrac{dr}{dt}\)</td></tr>
+        <tr><td>ปริมาตรทรงกระบอก: \(V = \pi r^2 h\)</td><td>\(\dfrac{dV}{dt} = \pi r^2\dfrac{dh}{dt} + 2\pi rh\dfrac{dr}{dt}\)</td></tr>
+        <tr><td>ทฤษฎีพีทาโกรัส: \(x^2 + y^2 = z^2\)</td><td>\(2x\dfrac{dx}{dt} + 2y\dfrac{dy}{dt} = 2z\dfrac{dz}{dt}\)</td></tr>
+        <tr><td>พื้นที่สามเหลี่ยม: \(A = \dfrac{1}{2}bh\)</td><td>\(\dfrac{dA}{dt} = \dfrac{1}{2}\!\left(b\dfrac{dh}{dt} + h\dfrac{db}{dt}\right)\)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── WORKED EXAMPLES ── -->
+  <div class="lang-en">
+    <h2>Worked Examples</h2>
+
+    <h3>Example 1 — Expanding circle</h3>
+    <p>A stone is dropped in a pond. The radius of the ripple grows at 3 cm/s. How fast is the area growing when r = 10 cm?</p>
+    <p><strong>Step 1:</strong> Equation: \(A = \pi r^2\).</p>
+    <p><strong>Step 2:</strong> Differentiate w.r.t. t: \(\dfrac{dA}{dt} = 2\pi r \dfrac{dr}{dt}\).</p>
+    <p><strong>Step 3:</strong> Substitute \(r = 10\), \(\dfrac{dr}{dt} = 3\):</p>
+    <p style="padding-left:1.5rem;">\(\dfrac{dA}{dt} = 2\pi(10)(3) = 60\pi \approx 188.5 \text{ cm}^2/\text{s}\).</p>
+
+    <h3>Example 2 — Ladder sliding down a wall</h3>
+    <p>A 5 m ladder leans against a wall. The base slides away at 1 m/s. How fast does the top slide down when the base is 3 m from the wall?</p>
+    <p><strong>Step 1:</strong> Let x = distance of base from wall, y = height of top.</p>
+    <p><strong>Step 2:</strong> \(x^2 + y^2 = 25\).</p>
+    <p><strong>Step 3:</strong> \(2x\dfrac{dx}{dt} + 2y\dfrac{dy}{dt} = 0\).</p>
+    <p><strong>Step 4:</strong> At \(x=3\): \(y = \sqrt{25-9} = 4\). Given \(\dfrac{dx}{dt} = 1\).</p>
+    <p><strong>Step 5:</strong> \(2(3)(1) + 2(4)\dfrac{dy}{dt} = 0 \;\Rightarrow\; \dfrac{dy}{dt} = -\dfrac{3}{4}\) m/s.</p>
+    <p>Negative means the top is <em>sliding down</em>.</p>
+
+    <h3>Example 3 — Inflating balloon (sphere)</h3>
+    <p>Air is pumped into a spherical balloon at 100 cm³/s. How fast is the radius increasing when r = 5 cm?</p>
+    <p>\(V = \tfrac{4}{3}\pi r^3 \;\Rightarrow\; \dfrac{dV}{dt} = 4\pi r^2 \dfrac{dr}{dt}\)</p>
+    <p>\(100 = 4\pi(25)\dfrac{dr}{dt} \;\Rightarrow\; \dfrac{dr}{dt} = \dfrac{100}{100\pi} = \dfrac{1}{\pi} \approx 0.318\) cm/s.</p>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>ตัวอย่างที่ผ่านการคำนวณ</h2>
+
+    <h3>ตัวอย่าง 1 — วงกลมที่ขยายออก</h3>
+    <p>หินถูกทิ้งลงในบ่อน้ำ รัศมีของคลื่นขยายออก 3 ซม./วินาที พื้นที่เพิ่มขึ้นเร็วแค่ไหนเมื่อ r = 10 ซม.?</p>
+    <p><strong>ขั้น 1:</strong> สมการ: \(A = \pi r^2\)</p>
+    <p><strong>ขั้น 2:</strong> หาอนุพันธ์เทียบกับ t: \(\dfrac{dA}{dt} = 2\pi r \dfrac{dr}{dt}\)</p>
+    <p><strong>ขั้น 3:</strong> แทน \(r = 10\), \(\dfrac{dr}{dt} = 3\):</p>
+    <p style="padding-left:1.5rem;">\(\dfrac{dA}{dt} = 2\pi(10)(3) = 60\pi \approx 188.5 \text{ ซม.}^2/\text{วินาที}\)</p>
+
+    <h3>ตัวอย่าง 2 — บันไดไถลลงจากกำแพง</h3>
+    <p>บันไดยาว 5 เมตรพิงกำแพง ฐานไถลออก 1 ม./วินาที ปลายบนไถลลงเร็วแค่ไหนเมื่อฐานห่างจากกำแพง 3 เมตร?</p>
+    <p><strong>ขั้น 1:</strong> ให้ x = ระยะฐานจากกำแพง, y = ความสูงปลายบน</p>
+    <p><strong>ขั้น 2:</strong> \(x^2 + y^2 = 25\)</p>
+    <p><strong>ขั้น 3:</strong> \(2x\dfrac{dx}{dt} + 2y\dfrac{dy}{dt} = 0\)</p>
+    <p><strong>ขั้น 4:</strong> ที่ \(x=3\): \(y = \sqrt{25-9} = 4\) และ \(\dfrac{dx}{dt} = 1\)</p>
+    <p><strong>ขั้น 5:</strong> \(2(3)(1) + 2(4)\dfrac{dy}{dt} = 0 \;\Rightarrow\; \dfrac{dy}{dt} = -\dfrac{3}{4}\) ม./วินาที</p>
+    <p>ค่าลบหมายความว่าปลายบน<em>กำลังไถลลง</em></p>
+
+    <h3>ตัวอย่าง 3 — ลูกบอลลูนกำลังพอง (ทรงกลม)</h3>
+    <p>สูบอากาศเข้าในลูกบอลลูนทรงกลม 100 ซม.³/วินาที รัศมีเพิ่มเร็วแค่ไหนเมื่อ r = 5 ซม.?</p>
+    <p>\(V = \tfrac{4}{3}\pi r^3 \;\Rightarrow\; \dfrac{dV}{dt} = 4\pi r^2 \dfrac{dr}{dt}\)</p>
+    <p>\(100 = 4\pi(25)\dfrac{dr}{dt} \;\Rightarrow\; \dfrac{dr}{dt} = \dfrac{100}{100\pi} = \dfrac{1}{\pi} \approx 0.318\) ซม./วินาที</p>
+  </div>
+
+  <!-- ── QUIZ ── -->
+  <h2>
+    <span class="lang-en">Practice</span>
+    <span class="lang-th" hidden>แบบฝึกหัด</span>
+  </h2>
+
+  <!-- Q1 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! You need a geometric/physical equation first, then differentiate w.r.t. t."
+       data-feedback-wrong="✗ Step 2 is to write the equation relating the quantities — differentiation comes after."
+       data-feedback-correct-th="✓ ถูก! ต้องเขียนสมการเรขาคณิต/ฟิสิกส์ก่อน แล้วค่อยหาอนุพันธ์เทียบ t"
+       data-feedback-wrong-th="✗ ขั้น 2 คือเขียนสมการที่เชื่อมปริมาณ — หาอนุพันธ์มาทีหลัง">
+    <div class="quiz-q">
+      <span class="lang-en">Q1. In a related rates problem, what do you write BEFORE differentiating w.r.t. t?</span>
+      <span class="lang-th" hidden>ข้อ 1. ในโจทย์อัตราที่สัมพันธ์กัน ต้องเขียนอะไรก่อนหาอนุพันธ์เทียบ t?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">The answer you're looking for</span>
+        <span class="lang-th" hidden>คำตอบที่ต้องการหา</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">The derivative of each variable</span>
+        <span class="lang-th" hidden>อนุพันธ์ของแต่ละตัวแปร</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">An equation relating all the relevant quantities</span>
+        <span class="lang-th" hidden>สมการที่เชื่อมโยงปริมาณที่เกี่ยวข้องทั้งหมด</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">The numerical values for all unknowns</span>
+        <span class="lang-th" hidden>ค่าตัวเลขของตัวไม่ทราบค่าทั้งหมด</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Right! A = πr² → dA/dt = 2πr (dr/dt) = 2π(4)(2) = 16π."
+       data-feedback-wrong="✗ A = πr². Differentiate: dA/dt = 2πr(dr/dt). At r = 4, dr/dt = 2: dA/dt = 2π(4)(2) = 16π."
+       data-feedback-correct-th="✓ ถูก! A = πr² → dA/dt = 2πr (dr/dt) = 2π(4)(2) = 16π"
+       data-feedback-wrong-th="✗ A = πr² หาอนุพันธ์: dA/dt = 2πr(dr/dt) ที่ r = 4, dr/dt = 2: dA/dt = 2π(4)(2) = 16π">
+    <div class="quiz-q">
+      <span class="lang-en">Q2. The radius of a circle grows at 2 cm/s. When r = 4 cm, how fast is the area growing?</span>
+      <span class="lang-th" hidden>ข้อ 2. รัศมีวงกลมเพิ่มขึ้น 2 ซม./วินาที เมื่อ r = 4 ซม. พื้นที่เพิ่มเร็วเท่าไหร่?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">8π cm²/s</button>
+      <button class="opt" data-correct="false">4π cm²/s</button>
+      <button class="opt" data-correct="true">16π cm²/s</button>
+      <button class="opt" data-correct="false">32π cm²/s</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! Differentiate first, substitute second — always."
+       data-feedback-wrong="✗ Substituting before differentiating turns variables into constants. Differentiate first!"
+       data-feedback-correct-th="✓ ถูก! หาอนุพันธ์ก่อน แทนค่าทีหลัง — เสมอ"
+       data-feedback-wrong-th="✗ การแทนค่าก่อนหาอนุพันธ์ทำให้ตัวแปรกลายเป็นค่าคงที่ หาอนุพันธ์ก่อน!">
+    <div class="quiz-q">
+      <span class="lang-en">Q3. When should you substitute the given numerical values in a related rates problem?</span>
+      <span class="lang-th" hidden>ข้อ 3. ควรแทนค่าตัวเลขที่กำหนดให้เมื่อใดในโจทย์อัตราที่สัมพันธ์กัน?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Before differentiating, to simplify the equation</span>
+        <span class="lang-th" hidden>ก่อนหาอนุพันธ์ เพื่อทำให้สมการง่ายขึ้น</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">After differentiating both sides with respect to t</span>
+        <span class="lang-th" hidden>หลังจากหาอนุพันธ์ทั้งสองข้างเทียบกับ t แล้ว</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Only for the rate you're looking for</span>
+        <span class="lang-th" hidden>เฉพาะอัตราที่ต้องการหาเท่านั้น</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">At the very beginning, before writing any equation</span>
+        <span class="lang-th" hidden>ตั้งแต่ต้น ก่อนเขียนสมการใดๆ</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q4 — ladder -->
+  <div class="quiz"
+       data-feedback-correct="✓ Right! x²+y²=25 → 2x(dx/dt)+2y(dy/dt)=0. At x=4: y=3. 2(4)(dx/dt)+2(3)(−2)=0 → dx/dt = 3/4."
+       data-feedback-wrong="✗ x²+y²=25 → 2x(dx/dt)+2y(dy/dt)=0. At x=4, y=3, dy/dt=−2: 8(dx/dt)−12=0 → dx/dt = 3/2."
+       data-feedback-correct-th="✓ ถูก! x²+y²=25 → 2x(dx/dt)+2y(dy/dt)=0 ที่ x=4: y=3. 2(4)(dx/dt)+2(3)(−2)=0 → dx/dt = 3/2"
+       data-feedback-wrong-th="✗ x²+y²=25 → 2x(dx/dt)+2y(dy/dt)=0 ที่ x=4, y=3, dy/dt=−2: 8(dx/dt)−12=0 → dx/dt = 3/2">
+    <div class="quiz-q">
+      <span class="lang-en">Q4 (exam-style). A 5 m ladder: the top slides down at 2 m/s. When the base is 4 m from the wall, how fast is the base sliding away?</span>
+      <span class="lang-th" hidden>ข้อ 4 (ระดับข้อสอบ). บันได 5 ม.: ปลายบนไถลลง 2 ม./วินาที เมื่อฐานห่างจากกำแพง 4 ม. ฐานไถลออกเร็วแค่ไหน?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">1 m/s</button>
+      <button class="opt" data-correct="false">2 m/s</button>
+      <button class="opt" data-correct="true">3/2 m/s</button>
+      <button class="opt" data-correct="false">4/3 m/s</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q5 — balloon -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! V = (4/3)πr³ → dV/dt = 4πr²(dr/dt). At r=5: 50 = 4π(25)(dr/dt) → dr/dt = 1/(2π)."
+       data-feedback-wrong="✗ V=(4/3)πr³, so dV/dt = 4πr²(dr/dt). At r=5: 50 = 100π(dr/dt) → dr/dt = 50/(100π) = 1/(2π)."
+       data-feedback-correct-th="✓ ถูก! V=(4/3)πr³ → dV/dt = 4πr²(dr/dt) ที่ r=5: 50=4π(25)(dr/dt) → dr/dt = 1/(2π)"
+       data-feedback-wrong-th="✗ V=(4/3)πr³, ดังนั้น dV/dt = 4πr²(dr/dt) ที่ r=5: 50=100π(dr/dt) → dr/dt = 1/(2π)">
+    <div class="quiz-q">
+      <span class="lang-en">Q5 (exam-style). Air enters a spherical balloon at 50 cm³/s. When r = 5 cm, how fast is the radius growing?</span>
+      <span class="lang-th" hidden>ข้อ 5 (ระดับข้อสอบ). อากาศเข้าบอลลูนทรงกลม 50 ซม.³/วินาที เมื่อ r = 5 ซม. รัศมีเพิ่มเร็วแค่ไหน?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">\(\dfrac{1}{\pi}\) cm/s</button>
+      <button class="opt" data-correct="true">\(\dfrac{1}{2\pi}\) cm/s</button>
+      <button class="opt" data-correct="false">\(\dfrac{2}{\pi}\) cm/s</button>
+      <button class="opt" data-correct="false">\(\dfrac{1}{4\pi}\) cm/s</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- primary source -->
+  <div class="lang-en">
+    <div class="key-concept" style="margin-top: 2rem;">
+      <strong>Primary source:</strong> Khan Academy — <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-diff-contextual-applications-new/ab-4-4/v/related-rates-intro" style="color: var(--accent);">Related Rates — Introduction</a>. Watch this after practicing here to see the ladder and balloon problems explained step-by-step.
+    </div>
+  </div>
+  <div class="lang-th" hidden>
+    <div class="key-concept" style="margin-top: 2rem;">
+      <strong>แหล่งเรียนรู้หลัก:</strong> Khan Academy — <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-diff-contextual-applications-new/ab-4-4/v/related-rates-intro" style="color: var(--accent);">อัตราที่สัมพันธ์กัน — บทนำ</a> ดูหลังฝึกทำที่นี่แล้ว เพื่อดูการอธิบายโจทย์บันไดและบอลลูนทีละขั้นตอน
+    </div>
+  </div>
+
+  <div style="background: var(--formula-bg); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 2rem 0; font-family: var(--font-ui); font-size: 0.92rem;">
+    <span class="lang-en"><strong>Ask your teacher:</strong> Struggling to figure out which equation to write, or how to differentiate a formula you've never seen? Just ask in the chat — we can work through any setup together.</span>
+    <span class="lang-th" hidden><strong>ถามครู:</strong> ไม่รู้ว่าจะเขียนสมการอะไร หรือหาอนุพันธ์ของสูตรที่ไม่เคยเห็นยังไง? ถามในแชทได้เลย ช่วยคิดด้วยกันได้</span>
+  </div>
+
+  <nav class="nav-links">
+    <a href="0002-function-analysis.html">
+      <span class="lang-en">← D2: Function Analysis I</span>
+      <span class="lang-th" hidden>← D2: การวิเคราะห์ฟังก์ชัน I</span>
+    </a>
+    <span></span>
+  </nav>
+
+  <footer class="lesson-footer">
+    ค30107 · MWIT · AY 2569 · The Derivative Function · Lesson D3
+  </footer>
+
+</div>
+<script src="../assets/quiz.js" defer></script>
+<script src="../assets/lang.js" defer></script>
+</body>
+</html>

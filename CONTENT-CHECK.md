@@ -21,9 +21,9 @@ Update this file whenever a lesson is created or completed via /teach.
 - [x] Applications — Compound Interest & Annuities
 - [x] Convergence Tests
 - [x] Quiz Review — Sequences & Series
-- [ ] Related Rates
+- [x] Related Rates
 - [x] L'Hôpital's Rule
-- [ ] Function Analysis I — Increasing/Decreasing, Concavity
+- [x] Function Analysis I — Increasing/Decreasing, Concavity
 
 ## หน้าที่พลเมือง — MWIT
 

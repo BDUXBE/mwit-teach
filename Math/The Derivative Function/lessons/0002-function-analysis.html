@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D2 · Function Analysis I</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">ค30107 · Calculus &amp; Applications · The Derivative Function</div>
+    <h1>
+      <span class="lang-en">Function Analysis I</span>
+      <span class="lang-th" hidden>การวิเคราะห์ฟังก์ชัน I</span>
+    </h1>
+    <p class="objective">
+      <span class="lang-en">Use f ′ and f ″ to find intervals of increase/decrease, local extrema, and concavity.</span>
+      <span class="lang-th" hidden>ใช้ f ′ และ f ″ เพื่อหาช่วงที่เพิ่ม/ลด, จุดสุดขีดเฉพาะที่ และความเว้า</span>
+    </p>
+  </header>
+
+  <!-- ── PART 1: FIRST DERIVATIVE ── -->
+  <div class="lang-en">
+    <h2>Part 1 — First Derivative: Increasing &amp; Decreasing</h2>
+
+    <div class="formula-box">
+      <span class="label">Key facts</span>
+      f ′(x) &gt; 0 on an interval &nbsp;→&nbsp; f is <strong>increasing</strong> there<br>
+      f ′(x) &lt; 0 on an interval &nbsp;→&nbsp; f is <strong>decreasing</strong> there<br>
+      f ′(c) = 0 or f ′(c) undefined &nbsp;→&nbsp; <strong>critical point</strong> at x = c
+    </div>
+
+    <h3>First Derivative Test for Local Extrema</h3>
+    <p>At a critical point <em>c</em>, look at the <strong>sign change</strong> of f ′ as x passes through c:</p>
+    <table>
+      <thead><tr><th>Sign of f ′ left of c</th><th>Sign of f ′ right of c</th><th>Conclusion</th></tr></thead>
+      <tbody>
+        <tr><td>+</td><td>−</td><td>Local <strong>maximum</strong> at c</td></tr>
+        <tr><td>−</td><td>+</td><td>Local <strong>minimum</strong> at c</td></tr>
+        <tr><td>+ or − (no change)</td><td>same</td><td>Neither (saddle/inflection)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="key-concept">
+      <strong>The sign chart method:</strong> Find all critical points. Pick test values in each interval between them. Evaluate the sign of f ′ (positive or negative). Read off where f rises or falls.
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>ส่วนที่ 1 — อนุพันธ์อันดับหนึ่ง: เพิ่มและลด</h2>
+
+    <div class="formula-box">
+      <span class="label">ข้อเท็จจริงหลัก</span>
+      f ′(x) &gt; 0 บนช่วง &nbsp;→&nbsp; f <strong>เพิ่ม</strong>ในช่วงนั้น<br>
+      f ′(x) &lt; 0 บนช่วง &nbsp;→&nbsp; f <strong>ลด</strong>ในช่วงนั้น<br>
+      f ′(c) = 0 หรือ f ′(c) ไม่มีนิยาม &nbsp;→&nbsp; <strong>จุดวิกฤต</strong> ที่ x = c
+    </div>
+
+    <h3>การทดสอบด้วยอนุพันธ์อันดับหนึ่งสำหรับค่าสุดขีดเฉพาะที่</h3>
+    <p>ที่จุดวิกฤต <em>c</em> ดูการ<strong>เปลี่ยนเครื่องหมาย</strong>ของ f ′ เมื่อ x ผ่าน c:</p>
+    <table>
+      <thead><tr><th>เครื่องหมาย f ′ ซ้าย c</th><th>เครื่องหมาย f ′ ขวา c</th><th>สรุป</th></tr></thead>
+      <tbody>
+        <tr><td>+</td><td>−</td><td><strong>ค่าสูงสุดเฉพาะที่</strong>ที่ c</td></tr>
+        <tr><td>−</td><td>+</td><td><strong>ค่าต่ำสุดเฉพาะที่</strong>ที่ c</td></tr>
+        <tr><td>+ หรือ − (ไม่เปลี่ยน)</td><td>เดิม</td><td>ไม่ใช่ค่าสุดขีด</td></tr>
+      </tbody>
+    </table>
+
+    <div class="key-concept">
+      <strong>วิธีตาราง/แผนภาพเครื่องหมาย:</strong> หาจุดวิกฤตทั้งหมด เลือกค่าทดสอบในแต่ละช่วงระหว่างจุดวิกฤต หาเครื่องหมายของ f ′ (บวกหรือลบ) แล้วอ่านว่า f เพิ่มหรือลดที่ไหน
+    </div>
+  </div>
+
+  <!-- ── PART 2: SECOND DERIVATIVE ── -->
+  <div class="lang-en">
+    <h2>Part 2 — Second Derivative: Concavity</h2>
+
+    <div class="formula-box">
+      <span class="label">Key facts</span>
+      f ″(x) &gt; 0 on an interval &nbsp;→&nbsp; f is <strong>concave up</strong> (∪ shaped)<br>
+      f ″(x) &lt; 0 on an interval &nbsp;→&nbsp; f is <strong>concave down</strong> (∩ shaped)<br>
+      f ″ changes sign at x = c &nbsp;→&nbsp; <strong>inflection point</strong> at c
+    </div>
+
+    <h3>Second Derivative Test for Local Extrema</h3>
+    <p>If f ′(c) = 0:</p>
+    <table>
+      <thead><tr><th>f ″(c)</th><th>Conclusion</th></tr></thead>
+      <tbody>
+        <tr><td>f ″(c) &gt; 0</td><td>Local <strong>minimum</strong> (bowl opens up)</td></tr>
+        <tr><td>f ″(c) &lt; 0</td><td>Local <strong>maximum</strong> (bowl opens down)</td></tr>
+        <tr><td>f ″(c) = 0</td><td>Inconclusive — use first derivative test</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>ส่วนที่ 2 — อนุพันธ์อันดับสอง: ความเว้า</h2>
+
+    <div class="formula-box">
+      <span class="label">ข้อเท็จจริงหลัก</span>
+      f ″(x) &gt; 0 บนช่วง &nbsp;→&nbsp; f <strong>เว้าขึ้น</strong> (รูปทรง ∪)<br>
+      f ″(x) &lt; 0 บนช่วง &nbsp;→&nbsp; f <strong>เว้าลง</strong> (รูปทรง ∩)<br>
+      f ″ เปลี่ยนเครื่องหมายที่ x = c &nbsp;→&nbsp; <strong>จุดเปลี่ยนความเว้า</strong>ที่ c
+    </div>
+
+    <h3>การทดสอบด้วยอนุพันธ์อันดับสองสำหรับค่าสุดขีดเฉพาะที่</h3>
+    <p>ถ้า f ′(c) = 0:</p>
+    <table>
+      <thead><tr><th>f ″(c)</th><th>สรุป</th></tr></thead>
+      <tbody>
+        <tr><td>f ″(c) &gt; 0</td><td><strong>ค่าต่ำสุดเฉพาะที่</strong> (ชามหงาย)</td></tr>
+        <tr><td>f ″(c) &lt; 0</td><td><strong>ค่าสูงสุดเฉพาะที่</strong> (ชามควํ่า)</td></tr>
+        <tr><td>f ″(c) = 0</td><td>สรุปไม่ได้ — ใช้การทดสอบด้วยอนุพันธ์อันดับหนึ่ง</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── WORKED EXAMPLE ── -->
+  <div class="lang-en">
+    <h2>Worked Example</h2>
+    <p>Fully analyse \(f(x) = x^3 - 3x^2 - 9x + 5\).</p>
+
+    <h3>Step 1 — Find critical points</h3>
+    <p>\(f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x-3)(x+1)\)</p>
+    <p>Critical points: \(x = 3\) and \(x = -1\).</p>
+
+    <h3>Step 2 — Sign chart for f ′</h3>
+    <table>
+      <thead><tr><th>Interval</th><th>Test value</th><th>f ′ sign</th><th>f behavior</th></tr></thead>
+      <tbody>
+        <tr><td>\((-\infty, -1)\)</td><td>\(x=-2\)</td><td>\(3(-5)(-1)=+\)</td><td>Increasing ↑</td></tr>
+        <tr><td>\((-1, 3)\)</td><td>\(x=0\)</td><td>\(3(-3)(1)=-\)</td><td>Decreasing ↓</td></tr>
+        <tr><td>\((3, \infty)\)</td><td>\(x=4\)</td><td>\(3(1)(5)=+\)</td><td>Increasing ↑</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Conclusion:</strong> Local max at \(x = -1\), local min at \(x = 3\).</p>
+
+    <h3>Step 3 — Concavity via f ″</h3>
+    <p>\(f''(x) = 6x - 6 = 6(x-1)\)</p>
+    <p>\(f''(x) = 0\) at \(x = 1\).</p>
+    <ul style="font-family: var(--font-ui); font-size: 0.95rem; line-height: 1.9; padding-left: 1.4rem;">
+      <li>\(x &lt; 1\): \(f'' &lt; 0\) → concave down</li>
+      <li>\(x &gt; 1\): \(f'' &gt; 0\) → concave up</li>
+    </ul>
+    <p><strong>Inflection point</strong> at \(x = 1\) (f″ changes sign).</p>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>ตัวอย่างที่ผ่านการคำนวณ</h2>
+    <p>วิเคราะห์ \(f(x) = x^3 - 3x^2 - 9x + 5\) อย่างสมบูรณ์</p>
+
+    <h3>ขั้น 1 — หาจุดวิกฤต</h3>
+    <p>\(f'(x) = 3x^2 - 6x - 9 = 3(x^2 - 2x - 3) = 3(x-3)(x+1)\)</p>
+    <p>จุดวิกฤต: \(x = 3\) และ \(x = -1\)</p>
+
+    <h3>ขั้น 2 — ตารางเครื่องหมายของ f ′</h3>
+    <table>
+      <thead><tr><th>ช่วง</th><th>ค่าทดสอบ</th><th>เครื่องหมาย f ′</th><th>พฤติกรรม f</th></tr></thead>
+      <tbody>
+        <tr><td>\((-\infty, -1)\)</td><td>\(x=-2\)</td><td>\(3(-5)(-1)=+\)</td><td>เพิ่ม ↑</td></tr>
+        <tr><td>\((-1, 3)\)</td><td>\(x=0\)</td><td>\(3(-3)(1)=-\)</td><td>ลด ↓</td></tr>
+        <tr><td>\((3, \infty)\)</td><td>\(x=4\)</td><td>\(3(1)(5)=+\)</td><td>เพิ่ม ↑</td></tr>
+      </tbody>
+    </table>
+    <p><strong>สรุป:</strong> ค่าสูงสุดเฉพาะที่ที่ \(x = -1\), ค่าต่ำสุดเฉพาะที่ที่ \(x = 3\)</p>
+
+    <h3>ขั้น 3 — ความเว้าผ่าน f ″</h3>
+    <p>\(f''(x) = 6x - 6 = 6(x-1)\)</p>
+    <p>\(f''(x) = 0\) ที่ \(x = 1\)</p>
+    <ul style="font-family: var(--font-ui); font-size: 0.95rem; line-height: 1.9; padding-left: 1.4rem;">
+      <li>\(x &lt; 1\): \(f'' &lt; 0\) → เว้าลง</li>
+      <li>\(x &gt; 1\): \(f'' &gt; 0\) → เว้าขึ้น</li>
+    </ul>
+    <p><strong>จุดเปลี่ยนความเว้า</strong>ที่ \(x = 1\) (f″ เปลี่ยนเครื่องหมาย)</p>
+  </div>
+
+  <!-- ── QUIZ ── -->
+  <h2>
+    <span class="lang-en">Practice</span>
+    <span class="lang-th" hidden>แบบฝึกหัด</span>
+  </h2>
+
+  <!-- Q1 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! f ′ > 0 means the function is going uphill."
+       data-feedback-wrong="✗ When f ′(x) > 0, the slope is positive, so f is increasing."
+       data-feedback-correct-th="✓ ถูก! f ′ > 0 หมายความว่าฟังก์ชันกำลังขึ้น"
+       data-feedback-wrong-th="✗ เมื่อ f ′(x) > 0 ความชันเป็นบวก f จึงเพิ่ม">
+    <div class="quiz-q">
+      <span class="lang-en">Q1. If f ′(x) &gt; 0 on an interval, then f is _____ on that interval.</span>
+      <span class="lang-th" hidden>ข้อ 1. ถ้า f ′(x) &gt; 0 บนช่วงหนึ่ง แล้ว f _____ บนช่วงนั้น</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Concave up</span>
+        <span class="lang-th" hidden>เว้าขึ้น</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Increasing</span>
+        <span class="lang-th" hidden>เพิ่ม</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Decreasing</span>
+        <span class="lang-th" hidden>ลด</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">At a local maximum</span>
+        <span class="lang-th" hidden>อยู่ที่ค่าสูงสุดเฉพาะที่</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Right! f ′ goes from + to − at x = 2, so it's a local max."
+       data-feedback-wrong="✗ f ′ changes from + (left of 2) to − (right of 2). Positive → negative = local max."
+       data-feedback-correct-th="✓ ถูก! f ′ เปลี่ยนจาก + เป็น − ที่ x = 2 จึงเป็นค่าสูงสุดเฉพาะที่"
+       data-feedback-wrong-th="✗ f ′ เปลี่ยนจาก + (ซ้าย 2) เป็น − (ขวา 2) บวก → ลบ = ค่าสูงสุดเฉพาะที่">
+    <div class="quiz-q">
+      <span class="lang-en">Q2. f ′(x) &gt; 0 for x &lt; 2, f ′(2) = 0, f ′(x) &lt; 0 for x &gt; 2. What is at x = 2?</span>
+      <span class="lang-th" hidden>ข้อ 2. f ′(x) &gt; 0 เมื่อ x &lt; 2, f ′(2) = 0, f ′(x) &lt; 0 เมื่อ x &gt; 2 ที่ x = 2 มีอะไร?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Local minimum</span>
+        <span class="lang-th" hidden>ค่าต่ำสุดเฉพาะที่</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Local maximum</span>
+        <span class="lang-th" hidden>ค่าสูงสุดเฉพาะที่</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Inflection point</span>
+        <span class="lang-th" hidden>จุดเปลี่ยนความเว้า</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Neither minimum nor maximum</span>
+        <span class="lang-th" hidden>ไม่ใช่ทั้งต่ำสุดและสูงสุด</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! f ″ > 0 means the slope is increasing — the curve bends upward like a bowl."
+       data-feedback-wrong="✗ f ″ > 0 means f ′ is increasing, so the curve is concave up (∪ shape)."
+       data-feedback-correct-th="✓ ถูก! f ″ > 0 หมายความว่าความชันกำลังเพิ่ม — โค้งงอขึ้นเหมือนชามหงาย"
+       data-feedback-wrong-th="✗ f ″ > 0 หมายความว่า f ′ กำลังเพิ่ม โค้งจึงเว้าขึ้น (รูปทรง ∪)">
+    <div class="quiz-q">
+      <span class="lang-en">Q3. If f ″(x) &gt; 0 on an interval, the graph of f is _____ there.</span>
+      <span class="lang-th" hidden>ข้อ 3. ถ้า f ″(x) &gt; 0 บนช่วงหนึ่ง กราฟของ f _____ ที่นั่น</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Concave down (∩ shape)</span>
+        <span class="lang-th" hidden>เว้าลง (รูปทรง ∩)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Decreasing</span>
+        <span class="lang-th" hidden>ลด</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Concave up (∪ shape)</span>
+        <span class="lang-th" hidden>เว้าขึ้น (รูปทรง ∪)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">At a local minimum</span>
+        <span class="lang-th" hidden>อยู่ที่ค่าต่ำสุดเฉพาะที่</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="quiz"
+       data-feedback-correct="✓ Right! f ′(c) = 0 and f ″(c) > 0 means the curve is concave up at the critical point — a local minimum."
+       data-feedback-wrong="✗ f ″(c) > 0 → concave up at c → local minimum (not maximum)."
+       data-feedback-correct-th="✓ ถูก! f ′(c) = 0 และ f ″(c) > 0 หมายความว่าโค้งเว้าขึ้นที่จุดวิกฤต — ค่าต่ำสุดเฉพาะที่"
+       data-feedback-wrong-th="✗ f ″(c) > 0 → เว้าขึ้นที่ c → ค่าต่ำสุดเฉพาะที่ (ไม่ใช่สูงสุด)">
+    <div class="quiz-q">
+      <span class="lang-en">Q4. f ′(c) = 0 and f ″(c) &gt; 0. By the second derivative test, x = c is a:</span>
+      <span class="lang-th" hidden>ข้อ 4. f ′(c) = 0 และ f ″(c) &gt; 0 โดยการทดสอบด้วยอนุพันธ์อันดับสอง x = c คือ:</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Local maximum</span>
+        <span class="lang-th" hidden>ค่าสูงสุดเฉพาะที่</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Local minimum</span>
+        <span class="lang-th" hidden>ค่าต่ำสุดเฉพาะที่</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Inflection point</span>
+        <span class="lang-th" hidden>จุดเปลี่ยนความเว้า</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Inconclusive</span>
+        <span class="lang-th" hidden>สรุปไม่ได้</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q5 — exam style -->
+  <div class="quiz"
+       data-feedback-correct="✓ Correct! f ′(x) = 3x² − 3 = 3(x−1)(x+1). Critical points at x = ±1. f ′ goes − to + at x = 1 → local min."
+       data-feedback-wrong="✗ f ′(x) = 3x²−3 = 3(x−1)(x+1). At x = 1: f ′ goes from − (x=0 gives −3) to + (x=2 gives +9) → local minimum."
+       data-feedback-correct-th="✓ ถูก! f ′(x) = 3x² − 3 = 3(x−1)(x+1) จุดวิกฤตที่ x = ±1 f ′ เปลี่ยนจาก − เป็น + ที่ x = 1 → ค่าต่ำสุดเฉพาะที่"
+       data-feedback-wrong-th="✗ f ′(x) = 3x²−3 = 3(x−1)(x+1) ที่ x = 1: f ′ เปลี่ยนจาก − (x=0 ให้ −3) เป็น + (x=2 ให้ +9) → ค่าต่ำสุดเฉพาะที่">
+    <div class="quiz-q">
+      <span class="lang-en">Q5 (exam-style). For \(f(x) = x^3 - 3x + 2\), which statement about x = 1 is correct?</span>
+      <span class="lang-th" hidden>ข้อ 5 (ระดับข้อสอบ). สำหรับ \(f(x) = x^3 - 3x + 2\) ข้อใดถูกต้องเกี่ยวกับ x = 1?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">x = 1 is a local maximum</span>
+        <span class="lang-th" hidden>x = 1 เป็นค่าสูงสุดเฉพาะที่</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">x = 1 is a local minimum</span>
+        <span class="lang-th" hidden>x = 1 เป็นค่าต่ำสุดเฉพาะที่</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">x = 1 is an inflection point</span>
+        <span class="lang-th" hidden>x = 1 เป็นจุดเปลี่ยนความเว้า</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">x = 1 is not a critical point</span>
+        <span class="lang-th" hidden>x = 1 ไม่ใช่จุดวิกฤต</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q6 — inflection point -->
+  <div class="quiz"
+       data-feedback-correct="✓ Yes! An inflection point is where f ″ changes sign — not just where f ″ = 0."
+       data-feedback-wrong="✗ f ″ = 0 is necessary but not sufficient. f ″ must also change sign at that point."
+       data-feedback-correct-th="✓ ถูก! จุดเปลี่ยนความเว้าคือที่ f ″ เปลี่ยนเครื่องหมาย — ไม่ใช่แค่ที่ f ″ = 0"
+       data-feedback-wrong-th="✗ f ″ = 0 จำเป็นแต่ไม่เพียงพอ f ″ ต้องเปลี่ยนเครื่องหมายที่จุดนั้นด้วย">
+    <div class="quiz-q">
+      <span class="lang-en">Q6. An inflection point occurs where:</span>
+      <span class="lang-th" hidden>ข้อ 6. จุดเปลี่ยนความเว้าเกิดขึ้นที่:</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">f ′(x) = 0</span>
+        <span class="lang-th" hidden>f ′(x) = 0</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">f ″(x) = 0 (always)</span>
+        <span class="lang-th" hidden>f ″(x) = 0 (เสมอ)</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">f ″ changes sign (from + to − or − to +)</span>
+        <span class="lang-th" hidden>f ″ เปลี่ยนเครื่องหมาย (จาก + เป็น − หรือ − เป็น +)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">f ′ changes sign</span>
+        <span class="lang-th" hidden>f ′ เปลี่ยนเครื่องหมาย</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- primary source -->
+  <div class="lang-en">
+    <div class="key-concept" style="margin-top: 2rem;">
+      <strong>Primary source:</strong> Khan Academy — <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-diff-analytical-applications-new/ab-5-3/v/increasing-decreasing-intervals" style="color: var(--accent);">Increasing &amp; Decreasing Intervals</a> and <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-diff-analytical-applications-new/ab-5-6/v/concavity-concave-upwards-and-concave-downwards-intervals" style="color: var(--accent);">Concavity</a>.
+    </div>
+  </div>
+  <div class="lang-th" hidden>
+    <div class="key-concept" style="margin-top: 2rem;">
+      <strong>แหล่งเรียนรู้หลัก:</strong> Khan Academy — <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-diff-analytical-applications-new/ab-5-3/v/increasing-decreasing-intervals" style="color: var(--accent);">ช่วงที่เพิ่มและลด</a> และ <a href="https://www.khanacademy.org/math/ap-calculus-ab/ab-diff-analytical-applications-new/ab-5-6/v/concavity-concave-upwards-and-concave-downwards-intervals" style="color: var(--accent);">ความเว้า</a>
+    </div>
+  </div>
+
+  <div style="background: var(--formula-bg); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 2rem 0; font-family: var(--font-ui); font-size: 0.92rem;">
+    <span class="lang-en"><strong>Ask your teacher:</strong> Not sure which test to use, or confused about when f ″ = 0 doesn't give an inflection point? Ask in the chat.</span>
+    <span class="lang-th" hidden><strong>ถามครู:</strong> ไม่แน่ใจว่าจะใช้การทดสอบแบบไหน หรือสงสัยว่าทำไม f ″ = 0 ไม่ได้เป็นจุดเปลี่ยนความเว้าเสมอ? ถามในแชทได้เลย</span>
+  </div>
+
+  <nav class="nav-links">
+    <a href="0001-lhopitals-rule.html">
+      <span class="lang-en">← D1: L'Hôpital's Rule</span>
+      <span class="lang-th" hidden>← D1: กฎของโลปีตาล</span>
+    </a>
+    <a href="0003-related-rates.html">
+      <span class="lang-en">Next: Related Rates →</span>
+      <span class="lang-th" hidden>ถัดไป: อัตราที่สัมพันธ์กัน →</span>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    ค30107 · MWIT · AY 2569 · The Derivative Function · Lesson D2
+  </footer>
+
+</div>
+<script src="../assets/quiz.js" defer></script>
+<script src="../assets/lang.js" defer></script>
+</body>
+</html>
