@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MWIT — Teach</title>
+  <style>
+    :root {
+      --accent: #1a5c2e;
+      --accent-light: #edf7f1;
+      --bg: #fdfaf5;
+      --surface: #ffffff;
+      --border: #e0d8cc;
+      --text: #1c1c1c;
+      --muted: #6b6560;
+      --warn: #7a2e0e;
+      --warn-light: #fef3ec;
+      --radius: 8px;
+      --font: system-ui, -apple-system, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+    .page { max-width: 700px; margin: 0 auto; }
+
+    header { border-bottom: 2px solid var(--accent); padding-bottom: 1.25rem; margin-bottom: 2.5rem; }
+    header h1 { font-size: 1.9rem; color: var(--accent); margin-bottom: 0.25rem; }
+    header p { color: var(--muted); font-size: 0.9rem; }
+
+    h2 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 2rem 0 0.75rem;
+    }
+
+    .lesson-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .lesson-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1.1rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .lesson-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+    .lesson-num {
+      min-width: 2rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-light);
+      border-radius: 4px;
+      text-align: center;
+      padding: 0.2rem 0.4rem;
+    }
+    .lesson-title { font-weight: 600; font-size: 0.95rem; }
+    .lesson-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
+    .arrow { margin-left: auto; color: var(--accent); font-size: 1.1rem; }
+
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>MWIT — Teach</h1>
+    <p>บทเรียนออนไลน์ · Mahidol Wittayanusorn School · AY 2569</p>
+  </header>
+
+  <!-- MATH -->
+  <h2>คณิตศาสตร์ · ค30107 — Calculus &amp; Applications</h2>
+  <div class="lesson-list">
+    <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0000-finite-sequences-and-partial-sums.html">
+      <span class="lesson-num">S0</span>
+      <div>
+        <div class="lesson-title">Finite Sequences, Sigma Notation &amp; Partial Sums</div>
+        <div class="lesson-sub">ลำดับจำกัด สัญลักษณ์ซิกมา และผลรวมย่อย</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0001-infinite-sequences.html">
+      <span class="lesson-num">S1</span>
+      <div>
+        <div class="lesson-title">Infinite Sequences — Limits &amp; Convergence</div>
+        <div class="lesson-sub">ลำดับอนันต์ — ลิมิตและการลู่เข้า</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0002-infinite-series.html">
+      <span class="lesson-num">S2</span>
+      <div>
+        <div class="lesson-title">Infinite Series — Geometric, Telescoping &amp; Harmonic</div>
+        <div class="lesson-sub">อนุกรมอนันต์ — เรขาคณิต เทเลสโคป และฮาร์โมนิก</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0003-applications-geometric-series.html">
+      <span class="lesson-num">S3</span>
+      <div>
+        <div class="lesson-title">Applications — Compound Interest &amp; Annuities</div>
+        <div class="lesson-sub">การประยุกต์ — ดอกเบี้ยทบต้นและเงินรายงวด</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0004-convergence-tests.html">
+      <span class="lesson-num">S4</span>
+      <div>
+        <div class="lesson-title">Convergence Tests</div>
+        <div class="lesson-sub">การทดสอบการลู่เข้า</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Math/Sequences%20and%20Series/lessons/0005-quiz-review.html">
+      <span class="lesson-num">S5</span>
+      <div>
+        <div class="lesson-title">Quiz Review — Sequences &amp; Series</div>
+        <div class="lesson-sub">ทบทวนแบบทดสอบ — ลำดับและอนุกรม</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <!-- PHYSICS -->
+  <h2>ฟิสิกส์ · Sci30105 — Modern Physics</h2>
+  <div class="lesson-list">
+    <a class="lesson-card" href="Physics/lessons/0001-origin-of-special-relativity.html">
+      <span class="lesson-num">P1</span>
+      <div>
+        <div class="lesson-title">Origin of Special Relativity</div>
+        <div class="lesson-sub">ที่มาของทฤษฎีสัมพัทธภาพพิเศษ</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Physics/lessons/0002-time-dilation-length-contraction.html">
+      <span class="lesson-num">P2</span>
+      <div>
+        <div class="lesson-title">Time Dilation &amp; Length Contraction</div>
+        <div class="lesson-sub">การขยายเวลาและการหดของความยาว</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Physics/lessons/0003-lorentz-transformation.html">
+      <span class="lesson-num">P3</span>
+      <div>
+        <div class="lesson-title">Lorentz Transformation</div>
+        <div class="lesson-sub">การแปลงลอเรนซ์</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Physics/lessons/0004-relativistic-momentum-energy.html">
+      <span class="lesson-num">P4</span>
+      <div>
+        <div class="lesson-title">Relativistic Momentum &amp; Energy</div>
+        <div class="lesson-sub">โมเมนตัมและพลังงานเชิงสัมพัทธภาพ</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Physics/lessons/0005-blackbody-radiation.html">
+      <span class="lesson-num">P5</span>
+      <div>
+        <div class="lesson-title">Blackbody Radiation</div>
+        <div class="lesson-sub">การแผ่รังสีของวัตถุดำ</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="Physics/lessons/0006-exam-review.html">
+      <span class="lesson-num">P6</span>
+      <div>
+        <div class="lesson-title">Exam Review — Modern Physics</div>
+        <div class="lesson-sub">ทบทวนการสอบ — ฟิสิกส์สมัยใหม่</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <!-- CIVIC DUTY -->
+  <h2>หน้าที่พลเมือง · Civic Duty &amp; Law</h2>
+  <div class="lesson-list">
+    <a class="lesson-card" href="%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87/lessons/0001-kwamru-phunthan-kotmai.html">
+      <span class="lesson-num">C1</span>
+      <div>
+        <div class="lesson-title">ความรู้พื้นฐานของกฎหมาย</div>
+        <div class="lesson-sub">Fundamentals of Law</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87/lessons/0002-rat-ratthathammanun-kotmai-pokkhrong.html">
+      <span class="lesson-num">C2</span>
+      <div>
+        <div class="lesson-title">รัฐ รัฐธรรมนูญ และกฎหมายปกครอง</div>
+        <div class="lesson-sub">State, Constitution &amp; Administrative Law</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87/lessons/0003-kotmai-aya.html">
+      <span class="lesson-num">C3</span>
+      <div>
+        <div class="lesson-title">กฎหมายอาญา</div>
+        <div class="lesson-sub">Criminal Law</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a class="lesson-card" href="%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87/lessons/0004-kotmai-phaeng-bukhkhon.html">
+      <span class="lesson-num">C4</span>
+      <div>
+        <div class="lesson-title">กฎหมายแพ่งเกี่ยวกับบุคคล</div>
+        <div class="lesson-sub">Civil Law — Persons</div>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    MWIT · Mahidol Wittayanusorn School · AY 2569 · Semester 1
+  </footer>
+
+</div>
+</body>
+</html>
