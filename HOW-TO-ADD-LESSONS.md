@@ -36,6 +36,11 @@ D:/mwit/Teach/
 │   │   │   ├── style.css               ← Shared stylesheet for ALL S-lessons
 │   │   │   ├── quiz.js                 ← Quiz widget (shared)
 │   │   │   └── lang.js                 ← EN/TH toggle (shared)
+│   │   ├── lectures/                   ← Source PDFs (S1–S6)
+│   │   │   ├── 1.1 [S1] Sequences and the Partial Sums of a Sequence.pdf
+│   │   │   ├── 1.2 [S2] Infinite Sequences.pdf
+│   │   │   ├── 1.3 [S3] Infinite Series.pdf
+│   │   │   └── 1.6 [S6] Convergence Test.pdf
 │   │   └── lessons/
 │   │       ├── 0000-finite-sequences-and-partial-sums.html   (S1)
 │   │       ├── 0001-infinite-sequences.html                  (S2)
@@ -53,6 +58,12 @@ D:/mwit/Teach/
 │           └── 0002-function-analysis.html  (D4)
 │
 ├── Physics/
+│   ├── lectures/                       ← Source PDFs (P1–P5)
+│   │   ├── Lec01_Special relativity 69.pdf
+│   │   ├── Lec02_Einstein__™s Postulates and Their Consequences.pdf
+│   │   ├── Lect03_Lorentz Transformation.pdf
+│   │   ├── Lect04_Relativistic Momentum and Energy.pdf
+│   │   └── Lect05 Introduction to quantum mechanics 69.pdf
 │   └── lessons/
 │       ├── style.css                   ← Shared stylesheet for ALL P-lessons
 │       ├── quiz.js
@@ -65,6 +76,11 @@ D:/mwit/Teach/
 │       └── 0006-exam-review.html                    (P6)
 │
 └── หน้าที่พลเมือง/
+    ├── lectures/                       ← Source PDFs (C1–C4)
+    │   ├── ความรู้พื้นฐานของกฎหมาย.pdf
+    │   ├── ความรู้พื้นฐานเกี่ยวกับรัฐ รัฐธรรมนูญ และกฎหมายการปกครอง.pdf
+    │   ├── ความรู้พื้นฐานกฎหมายอาญา.pdf
+    │   └── กฎหมายเกี่ยวกับบุคคลแพ่งและพาณิชย์.pdf
     └── lessons/
         ├── style.css
         ├── quiz.js
@@ -455,6 +471,84 @@ For the **last lesson in a chapter**, also add a chapter-level summary covering 
 
 ---
 
+## Lecture PDF Links
+
+Every lesson has a **📄 View Lecture PDF** button just above the nav links. It opens the source PDF in a new tab.
+
+### Lecture folder location
+
+Lectures live in a `lectures/` folder **one level above** the `lessons/` folder:
+
+```
+SubjectFolder/
+├── lectures/        ← PDFs go here
+│   └── filename.pdf
+└── lessons/
+    └── 0001-title.html
+```
+
+The relative path from a lesson file to its PDF is always `../lectures/filename.pdf`.
+
+### HTML to add in each lesson
+
+Place this **before** `<nav class="nav-links">` (or `<div class="nav-links">` for Civic):
+
+```html
+<a class="lecture-link" href="../lectures/FILENAME.pdf" target="_blank">📄 Lecture PDF — XN</a>
+```
+
+For Thai or spaced filenames, URL-encode the filename part only (keep `../lectures/` as-is):
+
+```html
+<!-- Space → %20, [ → %5B, ] → %5D -->
+<a class="lecture-link" href="../lectures/1.1%20%5BS1%5D%20Sequences%20and%20the%20Partial%20Sums%20of%20a%20Sequence.pdf" target="_blank">📄 Lecture PDF — S1</a>
+```
+
+Use Python to generate the encoded URL:
+```python
+from urllib.parse import quote
+print(quote("1.1 [S1] Sequences and the Partial Sums of a Sequence.pdf"))
+```
+
+### CSS (already in all style.css files)
+
+```css
+.lecture-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.4rem 1rem;
+  margin: 1.5rem 0 0.5rem;
+  transition: background 0.15s, color 0.15s;
+}
+.lecture-link:hover { background: var(--accent); color: #fff; }
+```
+
+This is already present in every `style.css`. If adding a brand new subject, copy this block into the new `style.css`.
+
+### Adding a new lecture PDF
+
+1. Place the PDF in `SubjectFolder/lectures/`
+2. Add the `<a class="lecture-link">` line to the lesson HTML (see above)
+3. Push:
+
+```bash
+git add SubjectFolder/lectures/filename.pdf lessons/NNNN-title.html
+git commit -m "Add lecture PDF for XN"
+git push
+```
+
+> **GitHub file size limit:** Files must be under 100 MB. PDFs 50–100 MB will push but are slow. If a PDF is over 100 MB, compress it first or use Google Drive and link externally instead.
+
+---
+
 ## Floating Buttons (Home & Translate)
 
 Both buttons are `position: fixed` — they stay on screen while scrolling.
@@ -477,6 +571,7 @@ The home button is an `<a>` tag placed right after `<div class="page">` in the H
 - [ ] `<nav class="nav-links">` has correct prev/next filenames
 - [ ] Adjacent lessons updated with new prev/next links
 - [ ] Formula summary added before nav
+- [ ] Lecture PDF placed in `SubjectFolder/lectures/` and linked with `<a class="lecture-link">` before the nav
 - [ ] Lesson card added to `index.html` with correct `href`, label, and title
 - [ ] `subject-count` number updated in `index.html`
 - [ ] `git add`, `git commit`, `git push` done
