@@ -35,6 +35,28 @@ body {
 
 .page { max-width: 740px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
 
+/* Home link */
+.home-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  opacity: 0.85;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.home-link:hover { color: var(--accent); opacity: 1; }
+
 /* Header */
 .lesson-header {
   border-bottom: 3px solid var(--accent);

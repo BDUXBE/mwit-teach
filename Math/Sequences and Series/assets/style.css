@@ -229,6 +229,10 @@ tr:nth-child(even) td { background: #f2f7f4; }
 
 /* Home link */
 .home-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -236,8 +240,12 @@ tr:nth-child(even) td { background: #f2f7f4; }
   font-size: 0.8rem;
   color: var(--muted);
   text-decoration: none;
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  opacity: 0.85;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 .home-link:hover { color: var(--accent); opacity: 1; }
 
