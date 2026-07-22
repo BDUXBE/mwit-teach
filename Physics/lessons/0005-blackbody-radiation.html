@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 5 — Blackbody Radiation &amp; Planck's Quantum Theory</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <script src="quiz.js" defer></script>
+  <script src="lang.js" defer></script>
+</head>
+<body>
+<button class="lang-btn" id="lang-btn">ภาษาไทย</button>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">Sci30105 Modern Physics · MWIT &nbsp;|&nbsp; Lesson 5 of 6</div>
+    <h1 data-i18n="l5.h1">Blackbody Radiation &amp; Planck's Quantum Theory</h1>
+    <p class="objective" data-i18n-html="l5.obj">
+      <strong>By the end of this lesson you will be able to:</strong>
+      apply the Stefan–Boltzmann law and Wien's displacement law to solve blackbody problems,
+      explain the ultraviolet catastrophe, and describe how Planck's quantization resolves it.
+    </p>
+  </header>
+
+  <!-- 1. Why Quantum Mechanics? -->
+  <h2 data-i18n="l5.h2.1">1. The Bridge from Relativity to Quantum</h2>
+  <p>
+    By 1900, two things were certain: (1) atoms exist, (2) classical physics completely
+    failed to explain how atoms radiate light. The crisis began with the <strong>blackbody</strong>.
+  </p>
+  <p>
+    Problems with classical atomic models (Rutherford's planetary model, 1911):
+  </p>
+  <ul>
+    <li>Classical electrodynamics predicts an orbiting electron should <em>radiate energy continuously</em> and spiral into the nucleus in ~10<sup>−10</sup> s. Atoms are stable — so something is wrong.</li>
+    <li>It cannot explain discrete spectral lines (only certain frequencies emitted).</li>
+  </ul>
+
+  <!-- 2. What is a Blackbody? -->
+  <h2 data-i18n="l5.h2.2">2. What is a Blackbody?</h2>
+
+  <div class="key-concept" data-i18n-html="l5.kc.1">
+    <strong>Blackbody:</strong> An idealized object that absorbs <em>all</em> incoming radiation
+    (reflects nothing) and emits thermal radiation whose spectrum depends only on its
+    <em>temperature</em>, not its material.
+  </div>
+
+  <p>
+    Real-world examples: a furnace cavity, the Sun (approximate), a perfect black surface.
+  </p>
+
+  <!-- 3. Stefan-Boltzmann Law -->
+  <h2 data-i18n="l5.h2.3">3. Stefan–Boltzmann Law — Total Power Radiated</h2>
+
+  <div class="formula-box">
+    <span class="label">Stefan–Boltzmann Law</span>
+    P = εσAT⁴<br><br>
+    σ = 5.67 × 10⁻⁸ W·m⁻²·K⁻⁴ &nbsp;&nbsp; (Stefan–Boltzmann constant)<br>
+    ε = emissivity (0 to 1; perfect blackbody has ε = 1)<br>
+    A = surface area (m²)<br>
+    T = absolute temperature (K)
+  </div>
+
+  <p>
+    <strong>Key insight:</strong> Total radiated power scales as $T^4$ — double the temperature,
+    and you get 16× more power.
+  </p>
+
+  <h3>Emissivity of Real Materials</h3>
+  <table>
+    <tr><th>Material</th><th>Emissivity ε</th></tr>
+    <tr><td>Perfect blackbody (ideal)</td><td>1.00</td></tr>
+    <tr><td>Human skin</td><td>0.97–0.98</td></tr>
+    <tr><td>Brick / concrete</td><td>0.90–0.95</td></tr>
+    <tr><td>Glass</td><td>0.90</td></tr>
+    <tr><td>Aluminum (oxidized)</td><td>0.30</td></tr>
+    <tr><td>Polished aluminum</td><td>0.05</td></tr>
+    <tr><td>Polished silver</td><td>0.02</td></tr>
+  </table>
+  <p>
+    Thermal cameras and infrared thermometers rely on accurate ε values.
+    Human skin is nearly a perfect emitter — that's why IR thermometers work well for body temperature.
+  </p>
+
+  <!-- 4. Wien's Displacement Law -->
+  <h2 data-i18n="l5.h2.4">4. Wien's Displacement Law — Peak Wavelength</h2>
+
+  <div class="formula-box">
+    <span class="label">Wien's Displacement Law</span>
+    λ_max · T = 2.898 × 10⁻³ m·K<br><br>
+    λ_max = 2.898 × 10⁻³ / T &nbsp;&nbsp; (in metres, T in Kelvin)
+  </div>
+
+  <div class="key-concept" data-i18n-html="l5.kc.2">
+    <strong>Meaning:</strong> Hotter objects peak at <em>shorter</em> wavelengths (bluer light).
+    Cooler objects peak at longer wavelengths (redder/infrared). This is why hot metal glows
+    red → orange → white → blue-white as temperature increases.
+  </div>
+
+  <h3 data-i18n="l5.h3.sun">Worked Example — Sun's Color</h3>
+  <p>Surface temperature of Sun ≈ 5500 K:</p>
+  <div class="formula-box">
+    λ_max = 2.898 × 10⁻³ / 5500 ≈ 5.27 × 10⁻⁷ m = 527 nm → green light<br>
+    (The Sun emits across the full visible spectrum; we perceive the mix as white/yellow)
+  </div>
+
+  <!-- 5. The Ultraviolet Catastrophe -->
+  <h2 data-i18n="l5.h2.5">5. The Ultraviolet Catastrophe</h2>
+
+  <p>
+    Rayleigh and Jeans derived a classical formula for blackbody radiation using
+    Maxwell's equations + Boltzmann's equipartition theorem:
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Rayleigh–Jeans Law (Classical)</span>
+    u(f, T) = (8πf²/c³) · kT<br><br>
+    <span style="font-family:var(--font-ui);font-size:0.85rem;color:var(--muted)">
+      u = energy density per unit frequency &nbsp;|&nbsp; k = 1.38 × 10⁻²³ J/K (Boltzmann constant)
+    </span>
+  </div>
+
+  <div class="warning" data-i18n-html="l5.warn.1">
+    <strong>The catastrophe:</strong> Rayleigh–Jeans correctly matches experimental data at
+    <em>low frequencies</em>, but as frequency increases, the formula predicts
+    $u(f,T) \to \infty$. A real blackbody would radiate <em>infinite energy</em>
+    — obviously wrong. This failure at high frequencies (ultraviolet and beyond) was called
+    the <strong>ultraviolet catastrophe</strong>.
+  </div>
+
+  <!-- 6. Planck's Solution -->
+  <h2 data-i18n="l5.h2.6">6. Planck's Quantum Hypothesis (1900)</h2>
+
+  <p>
+    Max Planck proposed a radical new assumption: the energy of atomic oscillators is
+    <em>not continuous</em> — it comes in discrete packets called <strong>quanta</strong>.
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Planck's Energy Quantization</span>
+    E = nhf &nbsp;&nbsp; (n = 1, 2, 3, …)<br><br>
+    h = 6.626 × 10⁻³⁴ J·s = 4.136 × 10⁻¹⁵ eV·s &nbsp;&nbsp; (Planck's constant)<br>
+    f = oscillation frequency<br>
+    n = positive integer (quantum number)
+  </div>
+
+  <div class="key-concept" data-i18n-html="l5.kc.3">
+    <strong>Why this fixes the catastrophe:</strong> At high frequencies, the energy gap
+    between levels ($hf$) becomes very large. Thermal energy ($\sim kT$) cannot bridge
+    this gap, so high-frequency modes are effectively "frozen out." The infinite blowup
+    never happens.
+  </div>
+
+  <h3>Where Planck's Formula Comes From — Replacing the Integral with a Sum</h3>
+  <p>
+    Classical physics uses the Boltzmann distribution to find the <em>average energy</em>
+    of an oscillator at temperature T. The classical (continuous) version gives:
+  </p>
+  <div class="formula-box">
+    <span class="label">Classical average energy (continuous — wrong at high f)</span>
+    Ē = ∫₀^∞ E · e^(−E/kT) dE &nbsp;/&nbsp; ∫₀^∞ e^(−E/kT) dE = kT<br><br>
+    Every mode gets the same average energy kT — regardless of frequency. → catastrophe.
+  </div>
+  <p>
+    Planck replaced the continuous integral with a <em>discrete sum</em> over allowed
+    energies E = 0, hf, 2hf, 3hf, …:
+  </p>
+  <div class="formula-box">
+    <span class="label">Planck's discrete average energy (correct)</span>
+    Ē = Σ(n=0→∞) nhf · e^(−nhf/kT) &nbsp;/&nbsp; Σ(n=0→∞) e^(−nhf/kT)<br><br>
+    Result: &nbsp; Ē = hf / (e^(hf/kT) − 1)<br><br>
+    Limits:<br>
+    &nbsp; hf ≪ kT (low f): &nbsp; Ē ≈ kT &nbsp;&nbsp; → recovers classical result ✓<br>
+    &nbsp; hf ≫ kT (high f): &nbsp; Ē → 0 &nbsp;&nbsp; → high-frequency modes "frozen out" ✓
+  </div>
+
+  <h3 data-i18n="l5.h3.planck.formula">Planck's Radiation Formula</h3>
+
+  <div class="formula-box">
+    <span class="label">Planck's Law — Frequency Form</span>
+    u(f, T) = (8πhf³/c³) · 1/(e^(hf/kT) − 1)<br><br>
+    <span style="font-family:var(--font-ui);font-size:0.85rem;color:var(--muted)">
+      Low f limit: e^(hf/kT) ≈ 1 + hf/kT, so denominator → hf/kT,
+      and u(f,T) → (8πf²/c³)·kT = Rayleigh–Jeans ✓
+    </span>
+  </div>
+
+  <div class="formula-box">
+    <span class="label">Planck's Law — Wavelength Form (matches experimental graphs)</span>
+    I(λ, T) = (2πhc²/λ⁵) · 1/(e^(hc/λkT) − 1)<br><br>
+    λ_max from Wien's law: set dI/dλ = 0 → λ_max · T = 2.898 × 10⁻³ m·K ✓
+  </div>
+
+  <!-- Summary -->
+  <h2 data-i18n="l5.h2.7">7. Summary — Classical vs Quantum Picture</h2>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical (Rayleigh–Jeans)</th>
+      <th>Quantum (Planck)</th>
+    </tr>
+    <tr>
+      <td>Energy of oscillator</td>
+      <td>Any continuous value</td>
+      <td>Only $E = nhf$ (discrete)</td>
+    </tr>
+    <tr>
+      <td>Prediction at low $f$</td>
+      <td>Correct</td>
+      <td>Correct</td>
+    </tr>
+    <tr>
+      <td>Prediction at high $f$</td>
+      <td>→ ∞ (catastrophe)</td>
+      <td>→ 0 (correct)</td>
+    </tr>
+    <tr>
+      <td>Total energy radiated</td>
+      <td>Infinite</td>
+      <td>Finite (matches $P = \sigma T^4$)</td>
+    </tr>
+  </table>
+
+  <!-- Quizzes -->
+  <h2 data-i18n="l5.h2.quiz">Check Your Understanding</h2>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Stefan–Boltzmann: P ∝ T⁴. Double T → 2⁴ = 16× more power."
+       data-feedback-wrong="Stefan–Boltzmann law: P = εσAT⁴. Power is proportional to T to the fourth power."
+       data-feedback-correct-th="ถูกต้อง! ผลของ P ∝ T⁴ เมื่อ T เพิ่มเป็น 2 เท่า P เพิ่มเป็น 2⁴ = 16 เท่า"
+       data-feedback-wrong-th="กฎสเตฟาน–โบลท์ซมัน: P = εσAT⁴ กำลังแปรผันตรงกับ T⁴">
+    <div class="quiz-q" data-i18n="l5.q1">Q1. A blackbody's temperature is doubled. By what factor does its total radiated power change?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l5.q1.a">2× (linear with temperature)</button>
+      <button class="opt" data-correct="false" data-i18n="l5.q1.b">4× (squared with temperature)</button>
+      <button class="opt" data-correct="true"  data-i18n="l5.q1.c">16× (to the fourth power of temperature)</button>
+      <button class="opt" data-correct="false" data-i18n="l5.q1.d">8× (cubed with temperature)</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! λ_max = 2.898×10⁻³ / 3000 ≈ 966 nm — near infrared, explaining the red-orange glow."
+       data-feedback-wrong="Apply Wien's law: λ_max = 2.898×10⁻³ / T. At T = 3000 K, what wavelength do you get?"
+       data-feedback-correct-th="ถูกต้อง! λ_max = 2.898×10⁻³ / 3000 ≈ 966 nm — อินฟราเรดใกล้ อธิบายแสงสีแดง–ส้ม"
+       data-feedback-wrong-th="ใช้กฎของวีน: λ_max = 2.898×10⁻³ / T ที่ T = 3000 K ได้ความยาวคลื่นเท่าไร?">
+    <div class="quiz-q" data-i18n="l5.q2">Q2. A metal rod is heated to 3000 K. What is its peak wavelength of radiation?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l5.q2.a">290 nm — deep ultraviolet</button>
+      <button class="opt" data-correct="false" data-i18n="l5.q2.b">527 nm — visible green</button>
+      <button class="opt" data-correct="true"  data-i18n="l5.q2.c">966 nm — near infrared (explains the red-orange glow)</button>
+      <button class="opt" data-correct="false" data-i18n="l5.q2.d">2898 nm — far infrared</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Classical physics (equipartition) assigns equal average energy kT to every mode, even at arbitrarily high frequency — causing the infinite sum."
+       data-feedback-wrong="Why does Rayleigh–Jeans diverge? Think about what classical physics assumes about energy per mode."
+       data-feedback-correct-th="ถูกต้อง! ฟิสิกส์ดั้งเดิมให้พลังงานเฉลี่ย kT แก่ทุกโมด รวมถึงโมดความถี่สูงอนันต์ ทำให้ผลรวมเป็นอนันต์"
+       data-feedback-wrong-th="เหตุใดกฎเรย์ลี–จีนส์จึงแยกส่? คิดดูว่าฟิสิกส์ดั้งเดิมสมมติอะไรเกี่ยวกับพลังงานต่อโมด">
+    <div class="quiz-q" data-i18n="l5.q3">Q3. Why does the Rayleigh–Jeans law predict infinite total energy (the ultraviolet catastrophe)?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l5.q3.a">Because it uses the wrong value of Boltzmann's constant</button>
+      <button class="opt" data-correct="false" data-i18n="l5.q3.b">Because Maxwell's equations predict only one frequency of radiation</button>
+      <button class="opt" data-correct="true"  data-i18n="l5.q3.c">Because it assigns average energy kT to every mode, including infinitely many high-frequency modes</button>
+      <button class="opt" data-correct="false" data-i18n="l5.q3.d">Because it ignores the speed of light in the derivation</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! E = nhf. With h = 6.626×10⁻³⁴ J·s and f = 6×10¹⁴ Hz: E₁ = 6.626×10⁻³⁴ × 6×10¹⁴ ≈ 3.98×10⁻¹⁹ J ≈ 2.48 eV per quantum."
+       data-feedback-wrong="Apply E = nhf. For n = 1 (one quantum), E = hf. Use h = 6.626×10⁻³⁴ J·s."
+       data-feedback-correct-th="ถูกต้อง! E = nhf โดย h = 6.626×10⁻³⁴ J·s และ f = 6×10¹⁴ Hz"
+       data-feedback-wrong-th="ใช้ E = nhf สำหรับ n = 1 (หนึ่งควอนตัม) E = hf">
+    <div class="quiz-q" data-i18n="l5.q4">Q4. Planck's hypothesis states that an oscillator at frequency $f = 6 \times 10^{14}$ Hz can have energies…</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l5.q4.a">Any value from 0 to ∞ continuously</button>
+      <button class="opt" data-correct="false" data-i18n="l5.q4.b">Only exactly $hf$ — one fixed value</button>
+      <button class="opt" data-correct="true"  data-i18n="l5.q4.c">$0,\; hf,\; 2hf,\; 3hf,\; \ldots$ — integer multiples of $hf$</button>
+      <button class="opt" data-correct="false" data-i18n="l5.q4.d">$\frac{1}{2}hf,\; \frac{3}{2}hf,\; \frac{5}{2}hf,\; \ldots$ — half-integer multiples</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <h2 data-i18n="l5.h2.source">Primary Source</h2>
+  <p>
+    <a href="https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation"
+       target="_blank">
+      OpenStax University Physics Vol. 3 — Chapter 6.1: Blackbody Radiation
+    </a>
+    — this chapter covers exactly what Lec05 teaches, with interactive graphs of the Planck spectrum.
+    Also watch the short video linked in the lecture:
+    <a href="https://www.youtube.com/watch?v=gcDC9Gxg0HA" target="_blank">
+      UV Catastrophe explained (YouTube)
+    </a>.
+  </p>
+
+  <div class="key-concept" style="margin-top:2rem;" data-i18n-html="l5.kc.ask">
+    <strong>Questions?</strong> The energy quantization idea ($E = nhf$) feels strange at first.
+    Ask in the chat if you're unsure why it solves the catastrophe — or if you want to
+    work through a Stefan–Boltzmann or Wien's law calculation step by step.
+  </div>
+
+  <nav class="nav-links">
+    <a href="0004-relativistic-momentum-energy.html" data-i18n="nav.prev.l5">← Lesson 4: Relativistic Momentum &amp; Energy</a>
+    <a href="0006-exam-review.html" data-i18n="nav.next.l5">Next: Exam Review →</a>
+  </nav>
+
+  <footer class="lesson-footer">
+    Sci30105 Modern Physics · MWIT · Lesson 5 / 6 ·
+    Based on Lect05 by Aj Rungroj Tuayjaroen
+  </footer>
+</div>
+</body>
+</html>

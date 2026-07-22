@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinite Series — Geometric, Telescoping &amp; Harmonic</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script src="../assets/quiz.js" defer></script>
+  <script src="../assets/lang.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">
+      <span class="lang-en">ค30107 · Sequences &amp; Series · Lesson 2 of 5</span>
+      <span class="lang-th" hidden>ค30107 · ลำดับและอนุกรม · บทที่ 2 จาก 5</span>
+    </div>
+    <h1>
+      <span class="lang-en">Infinite Series — Geometric, Telescoping &amp; Harmonic</span>
+      <span class="lang-th" hidden>อนุกรมอนันต์ — เรขาคณิต เทเลสโคป และฮาร์โมนิก</span>
+    </h1>
+    <p class="objective">
+      <span class="lang-en">
+        <strong>After this lesson:</strong> you can find the sum of a given infinite series (or show it diverges).
+        This is <em>Learning Objective 2</em> — and the single biggest chunk of the quiz.
+      </span>
+      <span class="lang-th" hidden>
+        <strong>หลังจากเรียนบทนี้:</strong> นักเรียนสามารถหาผลรวมของอนุกรมอนันต์ที่กำหนด (หรือแสดงว่ามันแยกออก)
+        นี่คือ <em>วัตถุประสงค์การเรียนรู้ข้อ 2</em> — และเป็นส่วนที่มีคะแนนมากที่สุดในแบบทดสอบ
+      </span>
+    </p>
+  </header>
+
+
+  <!-- ═══ SECTION 1 ═══ -->
+  <div class="lang-en">
+    <h2>1. From Sequence to Series</h2>
+
+    <p>
+      An <strong>infinite series</strong> is the sum of all terms of an infinite sequence:
+    </p>
+
+    <div class="formula-box">
+      <span class="label">Definition</span>
+      Σ a<sub>n</sub>  =  a<sub>1</sub> + a<sub>2</sub> + a<sub>3</sub> + ···
+
+      The <strong>n-th partial sum</strong>:  S<sub>n</sub> = a<sub>1</sub> + a<sub>2</sub> + ··· + a<sub>n</sub>
+
+      The series <strong>converges</strong> if  lim<sub>n→∞</sub> S<sub>n</sub> = S  (a finite number).
+      Then we write:  Σ a<sub>n</sub> = S
+    </div>
+
+    <div class="key-concept">
+      <strong>Key distinction:</strong> a<sub>n</sub> is one <em>term</em>; S<sub>n</sub> is the <em>running total</em>.
+      The series converges when the running total S<sub>n</sub> settles toward a limit — not when
+      individual terms go to zero.
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>1. จากลำดับสู่อนุกรม</h2>
+
+    <p>
+      <strong>อนุกรมอนันต์</strong> คือผลรวมของพจน์ทั้งหมดของลำดับอนันต์:
+    </p>
+
+    <div class="formula-box">
+      <span class="label">นิยาม</span>
+      Σ a<sub>n</sub>  =  a<sub>1</sub> + a<sub>2</sub> + a<sub>3</sub> + ···
+
+      <strong>ผลรวมย่อยลำดับที่ n</strong>:  S<sub>n</sub> = a<sub>1</sub> + a<sub>2</sub> + ··· + a<sub>n</sub>
+
+      อนุกรม<strong>ลู่เข้า</strong>เมื่อ  lim<sub>n→∞</sub> S<sub>n</sub> = S  (จำนวนจำกัด)
+      จากนั้นเขียน:  Σ a<sub>n</sub> = S
+    </div>
+
+    <div class="key-concept">
+      <strong>ความแตกต่างสำคัญ:</strong> a<sub>n</sub> คือ<em>พจน์</em>หนึ่งพจน์ S<sub>n</sub> คือ<em>ผลรวมสะสม</em>
+      อนุกรมลู่เข้าเมื่อผลรวมสะสม S<sub>n</sub> มุ่งสู่ลิมิต — ไม่ใช่เมื่อพจน์แต่ละพจน์เข้าสู่ศูนย์
+    </div>
+  </div>
+
+
+  <!-- ═══ SECTION 2 ═══ -->
+  <div class="lang-en">
+    <h2>2. Geometric Series — The Most Important Series</h2>
+
+    <p>
+      A geometric series has the form <strong>a + ar + ar² + ar³ + ···</strong> where
+      <em>a</em> is the first term and <em>r</em> is the common ratio.
+    </p>
+
+    <div class="formula-box">
+      <span class="label">Geometric Series Sum Formula</span>
+      Σ<sub>n=0</sub><sup>∞</sup> ar<sup>n</sup>  =  a / (1 − r)     provided |r| &lt; 1
+
+      If |r| ≥ 1, the series <strong>diverges</strong>.
+    </div>
+
+    <h3>Where does this formula come from?</h3>
+
+    <div class="formula-box">
+      <span class="label">Derivation (partial sum method)</span>
+      S<sub>n</sub>   =  a + ar + ar² + ··· + ar<sup>n−1</sup>
+      r·S<sub>n</sub> =       ar + ar² + ··· + ar<sup>n−1</sup> + ar<sup>n</sup>
+
+      Subtract:  S<sub>n</sub> − r·S<sub>n</sub> = a − ar<sup>n</sup>
+      S<sub>n</sub>(1 − r)  =  a(1 − r<sup>n</sup>)
+      S<sub>n</sub>          =  a(1 − r<sup>n</sup>) / (1 − r)
+
+      As n → ∞, if |r| &lt; 1 then r<sup>n</sup> → 0, so:
+      S  =  a / (1 − r)
+    </div>
+
+    <h3>Examples</h3>
+
+    <div class="formula-box">
+      <span class="label">Example A</span>
+      1 + 1/2 + 1/4 + 1/8 + ···
+      Here a = 1, r = 1/2.  |r| &lt; 1  ✓
+      Sum = 1 / (1 − 1/2) = 1 / (1/2) = <strong>2</strong>
+    </div>
+
+    <div class="formula-box">
+      <span class="label">Example B — series not starting at n = 0</span>
+      Σ<sub>n=2</sub><sup>∞</sup>  (2/3)<sup>n</sup>
+      = (2/3)² + (2/3)³ + ···
+      = (4/9) / (1 − 2/3)    [first term = (2/3)², ratio = 2/3]
+      = (4/9) / (1/3)
+      = <strong>4/3</strong>
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>2. อนุกรมเรขาคณิต — อนุกรมที่สำคัญที่สุด</h2>
+
+    <p>
+      อนุกรมเรขาคณิตมีรูปแบบ <strong>a + ar + ar² + ar³ + ···</strong>
+      โดย <em>a</em> คือพจน์แรก และ <em>r</em> คืออัตราส่วนร่วม
+    </p>
+
+    <div class="formula-box">
+      <span class="label">สูตรผลรวมอนุกรมเรขาคณิต</span>
+      Σ<sub>n=0</sub><sup>∞</sup> ar<sup>n</sup>  =  a / (1 − r)     โดยมีเงื่อนไขว่า |r| &lt; 1
+
+      ถ้า |r| ≥ 1 อนุกรม<strong>แยกออก</strong>
+    </div>
+
+    <h3>สูตรนี้มาจากไหน?</h3>
+
+    <div class="formula-box">
+      <span class="label">การพิสูจน์ (วิธีผลรวมย่อย)</span>
+      S<sub>n</sub>   =  a + ar + ar² + ··· + ar<sup>n−1</sup>
+      r·S<sub>n</sub> =       ar + ar² + ··· + ar<sup>n−1</sup> + ar<sup>n</sup>
+
+      ลบออก:  S<sub>n</sub> − r·S<sub>n</sub> = a − ar<sup>n</sup>
+      S<sub>n</sub>(1 − r)  =  a(1 − r<sup>n</sup>)
+      S<sub>n</sub>          =  a(1 − r<sup>n</sup>) / (1 − r)
+
+      เมื่อ n → ∞ ถ้า |r| &lt; 1 แล้ว r<sup>n</sup> → 0 ดังนั้น:
+      S  =  a / (1 − r)
+    </div>
+
+    <h3>ตัวอย่าง</h3>
+
+    <div class="formula-box">
+      <span class="label">ตัวอย่าง ก</span>
+      1 + 1/2 + 1/4 + 1/8 + ···
+      Here a = 1, r = 1/2.  |r| &lt; 1  ✓
+      Sum = 1 / (1 − 1/2) = 1 / (1/2) = <strong>2</strong>
+    </div>
+
+    <div class="formula-box">
+      <span class="label">ตัวอย่าง ข — อนุกรมที่ไม่เริ่มที่ n = 0</span>
+      Σ<sub>n=2</sub><sup>∞</sup>  (2/3)<sup>n</sup>
+      = (2/3)² + (2/3)³ + ···
+      = (4/9) / (1 − 2/3)    [พจน์แรก = (2/3)², อัตราส่วน = 2/3]
+      = (4/9) / (1/3)
+      = <strong>4/3</strong>
+    </div>
+  </div>
+
+
+  <!-- ═══ SECTION 3 ═══ -->
+  <div class="lang-en">
+    <h2>3. Telescoping Series</h2>
+
+    <p>
+      A telescoping series collapses because <strong>adjacent terms cancel</strong>.
+      Spot them when a<sub>n</sub> can be written as f(n) − f(n+1).
+    </p>
+
+    <div class="formula-box">
+      <span class="label">Example — Partial Fractions first</span>
+      Σ 1/(n(n+1))
+
+      Step 1: Partial fractions:  1/(n(n+1)) = 1/n − 1/(n+1)
+
+      Step 2: Write out S<sub>n</sub>:
+      S<sub>n</sub> = (1/1 − 1/2) + (1/2 − 1/3) + (1/3 − 1/4) + ··· + (1/n − 1/(n+1))
+             = 1 − 1/(n+1)
+
+      Step 3: lim<sub>n→∞</sub> S<sub>n</sub> = lim (1 − 1/(n+1)) = <strong>1</strong>
+    </div>
+
+    <div class="key-concept">
+      <strong>Strategy for telescoping:</strong> always decompose using partial fractions first,
+      then write out S<sub>n</sub> explicitly and watch what cancels.
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>3. อนุกรมเทเลสโคป</h2>
+
+    <p>
+      อนุกรมเทเลสโคปยุบตัวลงเพราะ<strong>พจน์ที่อยู่ติดกันหักล้างกัน</strong>
+      สังเกตได้เมื่อ a<sub>n</sub> เขียนได้ในรูป f(n) − f(n+1)
+    </p>
+
+    <div class="formula-box">
+      <span class="label">ตัวอย่าง — แยกเศษย่อยก่อน</span>
+      Σ 1/(n(n+1))
+
+      ขั้น 1: แยกเศษย่อย:  1/(n(n+1)) = 1/n − 1/(n+1)
+
+      ขั้น 2: เขียน S<sub>n</sub> ออกมา:
+      S<sub>n</sub> = (1/1 − 1/2) + (1/2 − 1/3) + (1/3 − 1/4) + ··· + (1/n − 1/(n+1))
+             = 1 − 1/(n+1)
+
+      ขั้น 3: lim<sub>n→∞</sub> S<sub>n</sub> = lim (1 − 1/(n+1)) = <strong>1</strong>
+    </div>
+
+    <div class="key-concept">
+      <strong>กลยุทธ์สำหรับอนุกรมเทเลสโคป:</strong> แยกเศษย่อยก่อนเสมอ
+      จากนั้นเขียน S<sub>n</sub> ออกมาอย่างชัดเจนและสังเกตว่าอะไรหักล้างกัน
+    </div>
+  </div>
+
+
+  <!-- ═══ SECTION 4 ═══ -->
+  <div class="lang-en">
+    <h2>4. The Harmonic Series — Famous Divergent Series</h2>
+
+    <div class="formula-box">
+      <span class="label">Harmonic Series</span>
+      1 + 1/2 + 1/3 + 1/4 + 1/5 + ···  =  Σ 1/n  → <strong>diverges</strong>
+    </div>
+
+    <p>
+      This is counterintuitive — the terms 1/n → 0, yet the sum still blows up (just extremely slowly).
+    </p>
+
+    <div class="warning">
+      <strong>Critical trap on exams:</strong> "Terms go to zero" does NOT guarantee convergence.
+      The harmonic series is the classic counterexample. A series can only converge if its
+      terms → 0, but that condition alone is not enough.
+    </div>
+
+    <h3>Why does it diverge? (The Grouping Argument)</h3>
+
+    <div class="formula-box">
+      <span class="label">Grouping proof sketch</span>
+      1 + 1/2 + (1/3 + 1/4) + (1/5 + 1/6 + 1/7 + 1/8) + ···
+            ≥ 1 + 1/2 + (1/4 + 1/4) + (1/8 + 1/8 + 1/8 + 1/8) + ···
+             = 1 + 1/2 + 1/2 + 1/2 + ···  → ∞
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>4. อนุกรมฮาร์โมนิก — อนุกรมแยกออกที่มีชื่อเสียง</h2>
+
+    <div class="formula-box">
+      <span class="label">อนุกรมฮาร์โมนิก</span>
+      1 + 1/2 + 1/3 + 1/4 + 1/5 + ···  =  Σ 1/n  → <strong>แยกออก</strong>
+    </div>
+
+    <p>
+      นี่ขัดกับสัญชาตญาณ — พจน์ 1/n → 0 แต่ผลรวมยังคงระเบิดออกไป (แค่ช้ามาก)
+    </p>
+
+    <div class="warning">
+      <strong>กับดักสำคัญในการสอบ:</strong> "พจน์เข้าสู่ศูนย์" ไม่รับประกันการลู่เข้า
+      อนุกรมฮาร์โมนิกคือตัวอย่างคัดค้านคลาสสิก อนุกรมจะลู่เข้าได้ก็ต่อเมื่อพจน์ → 0
+      แต่เงื่อนไขนั้นเพียงอย่างเดียวไม่เพียงพอ
+    </div>
+
+    <h3>ทำไมจึงแยกออก? (การจัดกลุ่ม)</h3>
+
+    <div class="formula-box">
+      <span class="label">โครงร่างการพิสูจน์โดยการจัดกลุ่ม</span>
+      1 + 1/2 + (1/3 + 1/4) + (1/5 + 1/6 + 1/7 + 1/8) + ···
+            ≥ 1 + 1/2 + (1/4 + 1/4) + (1/8 + 1/8 + 1/8 + 1/8) + ···
+             = 1 + 1/2 + 1/2 + 1/2 + ···  → ∞
+    </div>
+  </div>
+
+
+  <!-- ═══ SECTION 5 ═══ -->
+  <div class="lang-en">
+    <h2>5. The Divergence Test (Quick Check)</h2>
+
+    <div class="formula-box">
+      <span class="label">Divergence Test (nth-term test)</span>
+      If  lim<sub>n→∞</sub> a<sub>n</sub> ≠ 0,  then  Σ a<sub>n</sub>  <strong>diverges</strong>.
+
+      (The converse is FALSE: lim a<sub>n</sub> = 0 does NOT guarantee convergence.)
+    </div>
+
+    <p>
+      Use this as your first check. If the terms don't go to 0, stop — the series diverges.
+      If they do go to 0, you need more work (geometric formula, telescoping, etc.).
+    </p>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>5. การทดสอบการแยกออก (การตรวจสอบเบื้องต้น)</h2>
+
+    <div class="formula-box">
+      <span class="label">การทดสอบการแยกออก (การทดสอบพจน์ที่ n)</span>
+      ถ้า  lim<sub>n→∞</sub> a<sub>n</sub> ≠ 0  แล้ว  Σ a<sub>n</sub>  <strong>แยกออก</strong>
+
+      (ข้อกลับเป็นเท็จ: lim a<sub>n</sub> = 0 ไม่รับประกันการลู่เข้า)
+    </div>
+
+    <p>
+      ใช้สิ่งนี้เป็นการตรวจสอบแรก ถ้าพจน์ไม่เข้าสู่ 0 หยุด — อนุกรมแยกออก
+      ถ้าพจน์เข้าสู่ 0 ต้องทำงานเพิ่มเติม (สูตรเรขาคณิต อนุกรมเทเลสโคป ฯลฯ)
+    </p>
+  </div>
+
+
+  <!-- ═══ QUIZ ═══ -->
+  <h2>
+    <span class="lang-en">Check Your Understanding</span>
+    <span class="lang-th" hidden>ทดสอบความเข้าใจ</span>
+  </h2>
+  <p style="font-family: var(--font-ui); font-size: 0.9rem; color: var(--muted);">
+    <span class="lang-en">These match the fill-in/show-work style of the quiz. Commit to an answer before clicking.</span>
+    <span class="lang-th" hidden>คำถามเหล่านี้มีรูปแบบเหมือนในแบบทดสอบ ตัดสินใจตอบก่อนคลิก</span>
+  </p>
+
+  <!-- Q1 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! a = 3, r = 1/3. |r| < 1 so sum = 3 / (1 − 1/3) = 3 / (2/3) = 9/2."
+       data-feedback-wrong="Use the geometric series formula: S = a/(1−r). Identify a (first term) and r (ratio)."
+       data-feedback-correct-th="ถูกต้อง! a = 3, r = 1/3 |r| < 1 ดังนั้นผลรวม = 3 / (1 − 1/3) = 3 / (2/3) = 9/2"
+       data-feedback-wrong-th="ใช้สูตรอนุกรมเรขาคณิต S = a/(1−r) หา a (พจน์แรก) และ r (อัตราส่วน)">
+    <div class="quiz-q">
+      <span class="lang-en">Q1. &nbsp; 3 + 1 + 1/3 + 1/9 + ··· = ?</span>
+      <span class="lang-th" hidden>ข้อ 1. &nbsp; 3 + 1 + 1/3 + 1/9 + ··· = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 3</span>
+        <span class="lang-th" hidden>ผลรวมเท่ากับ 3</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 4</span>
+        <span class="lang-th" hidden>ผลรวมเท่ากับ 4</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Sum equals 9/2</span>
+        <span class="lang-th" hidden>ผลรวมเท่ากับ 9/2</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Series diverges</span>
+        <span class="lang-th" hidden>อนุกรมแยกออก</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! r = 3/2 > 1, so the series diverges — the terms grow without bound."
+       data-feedback-wrong="Check the ratio r = (second term)/(first term). Then apply the |r| < 1 condition."
+       data-feedback-correct-th="ถูกต้อง! r = 3/2 > 1 อนุกรมแยกออก พจน์เติบโตไม่มีขอบเขต"
+       data-feedback-wrong-th="ตรวจสอบอัตราส่วน r = (พจน์ที่สอง)/(พจน์แรก) จากนั้นใช้เงื่อนไข |r| < 1">
+    <div class="quiz-q">
+      <span class="lang-en">Q2. &nbsp; 1 + 3/2 + 9/4 + 27/8 + ··· converges or diverges?</span>
+      <span class="lang-th" hidden>ข้อ 2. &nbsp; 1 + 3/2 + 9/4 + 27/8 + ··· ลู่เข้าหรือแยกออก?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 2</span>
+        <span class="lang-th" hidden>ลู่เข้าสู่ 2</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 4</span>
+        <span class="lang-th" hidden>ลู่เข้าสู่ 4</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to −2</span>
+        <span class="lang-th" hidden>ลู่เข้าสู่ −2</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Diverges (|r| ≥ 1)</span>
+        <span class="lang-th" hidden>แยกออก (|r| ≥ 1)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! Partial fractions: 1/(n(n+2)) = (1/2)(1/n − 1/(n+2)). The series telescopes to 1/2(1 + 1/2) = 3/4."
+       data-feedback-wrong="Try partial fractions on 1/(n(n+2)) first. Then write out S_n and watch adjacent terms cancel."
+       data-feedback-correct-th="ถูกต้อง! แยกเศษย่อย: 1/(n(n+2)) = (1/2)(1/n − 1/(n+2)) อนุกรมเทเลสโคปได้ผล 1/2(1 + 1/2) = 3/4"
+       data-feedback-wrong-th="ลองแยกเศษย่อย 1/(n(n+2)) ก่อน จากนั้นเขียน S_n และสังเกตพจน์ที่หักล้างกัน">
+    <div class="quiz-q">
+      <span class="lang-en">Q3. &nbsp; Σ<sub>n=1</sub><sup>∞</sup> 1/(n(n+2)) = ?</span>
+      <span class="lang-th" hidden>ข้อ 3. &nbsp; Σ<sub>n=1</sub><sup>∞</sup> 1/(n(n+2)) = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 1/2</span>
+        <span class="lang-th" hidden>ผลรวมเท่ากับ 1/2</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Sum equals 3/4</span>
+        <span class="lang-th" hidden>ผลรวมเท่ากับ 3/4</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 1</span>
+        <span class="lang-th" hidden>ผลรวมเท่ากับ 1</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Series diverges</span>
+        <span class="lang-th" hidden>อนุกรมแยกออก</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! The harmonic series Σ 1/n diverges, even though 1/n → 0. It is the classic example that 'terms → 0' is necessary but not sufficient for convergence."
+       data-feedback-wrong="This is the famous harmonic series. Individual terms go to 0, but does the SUM converge?"
+       data-feedback-correct-th="ถูกต้อง! อนุกรมฮาร์โมนิก Σ 1/n แยกออก แม้ว่า 1/n → 0 นี่คือตัวอย่างคลาสสิกที่ว่า &quot;พจน์ → 0&quot; เป็นเงื่อนไขจำเป็นแต่ไม่เพียงพอ"
+       data-feedback-wrong-th="นี่คืออนุกรมฮาร์โมนิกที่มีชื่อเสียง พจน์แต่ละพจน์เข้าสู่ 0 แต่ผลรวมจะลู่เข้าหรือไม่?">
+    <div class="quiz-q">
+      <span class="lang-en">Q4. &nbsp; Σ<sub>n=1</sub><sup>∞</sup> 1/n = ?</span>
+      <span class="lang-th" hidden>ข้อ 4. &nbsp; Σ<sub>n=1</sub><sup>∞</sup> 1/n = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 1</span>
+        <span class="lang-th" hidden>ลู่เข้าสู่ 1</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to ln 2</span>
+        <span class="lang-th" hidden>ลู่เข้าสู่ ln 2</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to π/6</span>
+        <span class="lang-th" hidden>ลู่เข้าสู่ π/6</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Diverges to +∞</span>
+        <span class="lang-th" hidden>แยกออกสู่ +∞</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+
+  <!-- ═══ PRIMARY SOURCE ═══ -->
+  <div class="lang-en">
+    <h2>Primary Source</h2>
+    <p>
+      <a href="https://openstax.org/books/calculus-volume-2/pages/5-2-infinite-series" target="_blank">
+        OpenStax Calculus Vol 2 — 5.2 Infinite Series
+      </a> · includes worked examples and exercises with solutions.
+    </p>
+    <p>Course notes: <a href="../lectures/1.3 [S3] Infinite Series.pdf">S3 — Infinite Series (PDF)</a></p>
+
+    <div class="key-concept" style="margin-top:2rem;">
+      <strong>Ask your teacher (me) anything</strong> — if Q3 (telescoping) tripped you up,
+      ask for a step-by-step walkthrough. Telescoping is heavily tested.
+    </div>
+  </div>
+
+  <div class="lang-th" hidden>
+    <h2>แหล่งเรียนรู้หลัก</h2>
+    <p>
+      <a href="https://openstax.org/books/calculus-volume-2/pages/5-2-infinite-series" target="_blank">
+        OpenStax Calculus Vol 2 — 5.2 Infinite Series
+      </a> · มีตัวอย่างและแบบฝึกหัดพร้อมเฉลย
+    </p>
+    <p>เอกสารประกอบการสอน: <a href="../lectures/1.3 [S3] Infinite Series.pdf">S3 — อนุกรมอนันต์ (PDF)</a></p>
+
+    <div class="key-concept" style="margin-top:2rem;">
+      <strong>ถามครู (ฉัน) ได้ทุกเรื่อง</strong> — ถ้าข้อ 3 (อนุกรมเทเลสโคป) ทำให้ติดขัด
+      ถามเพื่อขอคำอธิบายทีละขั้น อนุกรมเทเลสโคปออกสอบบ่อยมาก
+    </div>
+  </div>
+
+
+  <nav class="nav-links">
+    <a href="0001-infinite-sequences.html">
+      <span class="lang-en">← Lesson 1: Infinite Sequences</span>
+      <span class="lang-th" hidden>← บทที่ 1: ลำดับอนันต์</span>
+    </a>
+    <a href="0003-applications-geometric-series.html">
+      <span class="lang-en">Next: Applications of Geometric Series →</span>
+      <span class="lang-th" hidden>ถัดไป: การประยุกต์อนุกรมเรขาคณิต →</span>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    ค30107 แคลคูลัสและการประยุกต์ · MWIT · AY 2569 Semester 1 · Quiz: 20–24 July 2026
+  </footer>
+
+</div>
+</body>
+</html>

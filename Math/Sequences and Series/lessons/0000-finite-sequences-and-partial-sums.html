@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finite Sequences, Sigma Notation &amp; Partial Sums</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script src="../assets/quiz.js" defer></script>
+  <script src="../assets/lang.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">
+      <span class="lang-en">ค30107 · Sequences &amp; Series · Lesson 0 of 5 — S1 Review</span>
+      <span class="lang-th">ค30107 · ลำดับและอนุกรม · บทที่ 0 จาก 5 — ทบทวน S1</span>
+    </div>
+    <h1>
+      <span class="lang-en">Finite Sequences, Sigma Notation &amp; Partial Sums</span>
+      <span class="lang-th">ลำดับจำกัด สัญลักษณ์ซิกมา และผลรวมย่อย</span>
+    </h1>
+    <p class="objective">
+      <span class="lang-en"><strong>Goal:</strong> Lock in the finite-sequence formulas before moving to infinite ones.
+        The geometric partial sum formula S<sub>n</sub> = a(1−rⁿ)/(1−r) reappears directly in the
+        geometric <em>series</em> lesson. Know it cold.</span>
+      <span class="lang-th"><strong>จุดมุ่งหมาย:</strong> ทบทวนสูตรลำดับจำกัดให้แม่นก่อนเรียนอนุกรมอนันต์ สูตรผลรวมย่อยเรขาคณิต S<sub>n</sub> = a(1−rⁿ)/(1−r) จะปรากฏโดยตรงในบทอนุกรมเรขาคณิต ต้องจำให้ขึ้นใจ</span>
+    </p>
+  </header>
+
+
+  <!-- ═══ Section 1 ═══ -->
+  <div class="lang-en">
+    <h2>1. Sequences — Quick Definition</h2>
+
+    <p>
+      A <strong>sequence</strong> is a function whose domain is the positive integers.
+      We write the terms as a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, …, a<sub>n</sub>, …
+    </p>
+
+    <div class="formula-box">
+      <span class="label">Two ways to define a sequence</span>
+      Explicit (แบบชัดแจ้ง):    a<sub>n</sub> = 2n − 1   gives   1, 3, 5, 7, 9, …
+
+      Recursive (แบบวนซ้ำ):   F<sub>0</sub> = 1,  F<sub>1</sub> = 1,  F<sub>k</sub> = F<sub>k−2</sub> + F<sub>k−1</sub>   (Fibonacci)
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>1. ลำดับ — นิยามเบื้องต้น</h2>
+
+    <p>
+      <strong>ลำดับ</strong> คือฟังก์ชันที่มีโดเมนเป็นจำนวนเต็มบวก เราเขียนพจน์เป็น a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, …, a<sub>n</sub>, …
+    </p>
+
+    <div class="formula-box">
+      <span class="label">สองวิธีในการนิยามลำดับ</span>
+      Explicit (แบบชัดแจ้ง):    a<sub>n</sub> = 2n − 1   gives   1, 3, 5, 7, 9, …
+
+      Recursive (แบบวนซ้ำ):   F<sub>0</sub> = 1,  F<sub>1</sub> = 1,  F<sub>k</sub> = F<sub>k−2</sub> + F<sub>k−1</sub>   (Fibonacci)
+    </div>
+  </div>
+
+
+  <!-- ═══ Section 2 ═══ -->
+  <div class="lang-en">
+    <h2>2. Sigma Notation (Summation Notation)</h2>
+
+    <div class="formula-box">
+      <span class="label">Definition</span>
+      Σ<sub>k=1</sub><sup>n</sup> a<sub>k</sub>  =  a<sub>1</sub> + a<sub>2</sub> + a<sub>3</sub> + ··· + a<sub>n</sub>
+
+      k = index of summation
+      1 = lower limit,  n = upper limit
+    </div>
+
+    <h3>Key summation formulas (memorize these)</h3>
+
+    <div class="formula-box">
+      <span class="label">Standard formulas</span>
+      Σ<sub>i=1</sub><sup>n</sup> c       =  cn                          (constant sum)
+
+      Σ<sub>i=1</sub><sup>n</sup> i       =  n(n+1)/2                    (sum of first n integers)
+
+      Σ<sub>i=1</sub><sup>n</sup> i²      =  n(n+1)(2n+1)/6
+
+      Σ<sub>i=1</sub><sup>n</sup> i³      =  [n(n+1)/2]²  =  (Σ i)²
+    </div>
+
+    <div class="key-concept">
+      <strong>Why these matter:</strong> they let you collapse long sums into closed-form expressions,
+      which is exactly what you need when computing partial sums of sequences.
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>2. สัญลักษณ์ซิกมา (สัญลักษณ์การบวก)</h2>
+
+    <div class="formula-box">
+      <span class="label">นิยาม</span>
+      Σ<sub>k=1</sub><sup>n</sup> a<sub>k</sub>  =  a<sub>1</sub> + a<sub>2</sub> + a<sub>3</sub> + ··· + a<sub>n</sub>
+
+      k = ดัชนีการบวก
+      1 = ขอบล่าง,  n = ขอบบน
+    </div>
+
+    <h3>สูตรการบวกที่ต้องจำ (ท่องให้ขึ้นใจ)</h3>
+
+    <div class="formula-box">
+      <span class="label">สูตรมาตรฐาน</span>
+      Σ<sub>i=1</sub><sup>n</sup> c       =  cn                          (ผลรวมของค่าคงที่)
+
+      Σ<sub>i=1</sub><sup>n</sup> i       =  n(n+1)/2                    (ผลรวม n จำนวนเต็มแรก)
+
+      Σ<sub>i=1</sub><sup>n</sup> i²      =  n(n+1)(2n+1)/6
+
+      Σ<sub>i=1</sub><sup>n</sup> i³      =  [n(n+1)/2]²  =  (Σ i)²
+    </div>
+
+    <div class="key-concept">
+      <strong>เหตุใดสูตรเหล่านี้จึงสำคัญ:</strong> ช่วยให้เขียนผลรวมที่ยาวให้อยู่ในรูปปิดได้ ซึ่งจำเป็นมากเมื่อต้องคำนวณผลรวมย่อยของลำดับ
+    </div>
+  </div>
+
+
+  <!-- ═══ Section 3 ═══ -->
+  <div class="lang-en">
+    <h2>3. Arithmetic Sequences</h2>
+
+    <div class="formula-box">
+      <span class="label">Arithmetic Sequence</span>
+      a,  a+d,  a+2d,  a+3d,  …
+
+      nth term:   a<sub>n</sub>  =  a + (n−1)d
+
+      a = first term,   d = common difference
+    </div>
+
+    <h3>Partial Sum of an Arithmetic Sequence</h3>
+
+    <div class="formula-box">
+      <span class="label">Two equivalent formulas</span>
+      S<sub>n</sub>  =  n/2 · (2a + (n−1)d)
+
+      S<sub>n</sub>  =  n · (a + a<sub>n</sub>)/2   ← "average of first and last × n"
+    </div>
+
+    <h3>Example</h3>
+    <div class="formula-box">
+      <span class="label">Sum 3 + 7 + 11 + ··· + 159</span>
+      a = 3,  d = 4.  Find n:  a<sub>n</sub> = 3 + (n−1)·4 = 159  →  n = 40
+
+      S<sub>40</sub>  =  40 · (3 + 159)/2  =  40 · 81  =  <strong>3,240</strong>
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>3. ลำดับเลขคณิต</h2>
+
+    <div class="formula-box">
+      <span class="label">ลำดับเลขคณิต</span>
+      a,  a+d,  a+2d,  a+3d,  …
+
+      พจน์ที่ n:   a<sub>n</sub>  =  a + (n−1)d
+
+      a = พจน์แรก,   d = ผลต่างร่วม
+    </div>
+
+    <h3>ผลรวมย่อยของลำดับเลขคณิต</h3>
+
+    <div class="formula-box">
+      <span class="label">สูตรสองแบบที่เทียบเท่ากัน</span>
+      S<sub>n</sub>  =  n/2 · (2a + (n−1)d)
+
+      S<sub>n</sub>  =  n · (a + a<sub>n</sub>)/2   ← "ค่าเฉลี่ยของพจน์แรกและพจน์สุดท้าย × n"
+    </div>
+
+    <h3>ตัวอย่าง</h3>
+    <div class="formula-box">
+      <span class="label">หา 3 + 7 + 11 + ··· + 159</span>
+      a = 3,  d = 4   หา n:  a<sub>n</sub> = 3 + (n−1)·4 = 159  →  n = 40
+
+      S<sub>40</sub>  =  40 · (3 + 159)/2  =  40 · 81  =  <strong>3,240</strong>
+    </div>
+  </div>
+
+
+  <!-- ═══ Section 4 ═══ -->
+  <div class="lang-en">
+    <h2>4. Geometric Sequences</h2>
+
+    <div class="formula-box">
+      <span class="label">Geometric Sequence</span>
+      a,  ar,  ar²,  ar³,  …
+
+      nth term:   a<sub>n</sub>  =  ar<sup>n−1</sup>
+
+      a = first term,   r = common ratio (r ≠ 0)
+    </div>
+
+    <h3>Partial Sum of a Geometric Sequence</h3>
+
+    <div class="formula-box">
+      <span class="label">Finite geometric sum</span>
+      S<sub>n</sub>  =  a(1 − r<sup>n</sup>) / (1 − r)     (r ≠ 1)
+
+      Derivation: write S<sub>n</sub>, multiply by r, subtract →
+      S<sub>n</sub> − r·S<sub>n</sub>  =  a − ar<sup>n</sup>
+      S<sub>n</sub>(1 − r)       =  a(1 − r<sup>n</sup>)
+    </div>
+
+    <div class="warning">
+      <strong>This formula reappears in S3!</strong>  The infinite geometric series sum S = a/(1−r)
+      is exactly this formula with r<sup>n</sup> → 0 as n → ∞ (when |r| &lt; 1).
+      If you know this derivation, you understand <em>why</em> the infinite sum formula works.
+    </div>
+
+    <h3>Example</h3>
+    <div class="formula-box">
+      <span class="label">Sum 1 + 0.7 + 0.49 + 0.343 + 0.2401 (first five terms)</span>
+      a = 1,  r = 0.7,  n = 5
+
+      S<sub>5</sub>  =  1·(1 − 0.7⁵)/(1 − 0.7)
+              =  (1 − 0.16807)/0.3
+              =  0.83193/0.3
+              ≈  <strong>2.773</strong>
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>4. ลำดับเรขาคณิต</h2>
+
+    <div class="formula-box">
+      <span class="label">ลำดับเรขาคณิต</span>
+      a,  ar,  ar²,  ar³,  …
+
+      พจน์ที่ n:   a<sub>n</sub>  =  ar<sup>n−1</sup>
+
+      a = พจน์แรก,   r = อัตราส่วนร่วม (r ≠ 0)
+    </div>
+
+    <h3>ผลรวมย่อยของลำดับเรขาคณิต</h3>
+
+    <div class="formula-box">
+      <span class="label">ผลรวมย่อยเรขาคณิตจำกัด</span>
+      S<sub>n</sub>  =  a(1 − r<sup>n</sup>) / (1 − r)     (r ≠ 1)
+
+      วิธีพิสูจน์: เขียน S<sub>n</sub> คูณด้วย r แล้วลบ →
+      S<sub>n</sub> − r·S<sub>n</sub>  =  a − ar<sup>n</sup>
+      S<sub>n</sub>(1 − r)       =  a(1 − r<sup>n</sup>)
+    </div>
+
+    <div class="warning">
+      <strong>สูตรนี้จะปรากฏอีกครั้งในบท S3!</strong>  ผลรวมอนุกรมเรขาคณิตอนันต์ S = a/(1−r) คือสูตรนี้นั่นเองเมื่อ r<sup>n</sup> → 0 ขณะ n → ∞ (เมื่อ |r| &lt; 1) ถ้าเข้าใจวิธีพิสูจน์นี้ จะเข้าใจว่า <em>ทำไม</em> สูตรผลรวมอนันต์ถึงทำงานได้
+    </div>
+
+    <h3>ตัวอย่าง</h3>
+    <div class="formula-box">
+      <span class="label">หา 1 + 0.7 + 0.49 + 0.343 + 0.2401 (5 พจน์แรก)</span>
+      a = 1,  r = 0.7,  n = 5
+
+      S<sub>5</sub>  =  1·(1 − 0.7⁵)/(1 − 0.7)
+              =  (1 − 0.16807)/0.3
+              =  0.83193/0.3
+              ≈  <strong>2.773</strong>
+    </div>
+  </div>
+
+
+  <!-- ═══ Section 5 ═══ -->
+  <div class="lang-en">
+    <h2>5. Connecting Finite to Infinite</h2>
+
+    <table>
+      <tr><th></th><th>Arithmetic</th><th>Geometric</th></tr>
+      <tr><td>nth term</td><td>a + (n−1)d</td><td>ar<sup>n−1</sup></td></tr>
+      <tr><td>Finite sum S<sub>n</sub></td><td>n(2a + (n−1)d)/2</td><td>a(1−r<sup>n</sup>)/(1−r)</td></tr>
+      <tr><td>Infinite sum</td><td>Always diverges (d ≠ 0) or trivial (d = 0)</td><td>a/(1−r) if |r| &lt; 1; else diverges</td></tr>
+    </table>
+  </div>
+
+  <div class="lang-th">
+    <h2>5. เชื่อมโยงจำกัดสู่อนันต์</h2>
+
+    <table>
+      <tr><th></th><th>เลขคณิต</th><th>เรขาคณิต</th></tr>
+      <tr><td>พจน์ที่ n</td><td>a + (n−1)d</td><td>ar<sup>n−1</sup></td></tr>
+      <tr><td>ผลรวมย่อย S<sub>n</sub></td><td>n(2a + (n−1)d)/2</td><td>a(1−r<sup>n</sup>)/(1−r)</td></tr>
+      <tr><td>ผลรวมอนันต์</td><td>แยกออกเสมอ (d ≠ 0) หรือเป็นกรณีเล็กน้อย (d = 0)</td><td>a/(1−r) ถ้า |r| &lt; 1; มิฉะนั้นแยกออก</td></tr>
+    </table>
+  </div>
+
+
+  <!-- ═══ Check Your Understanding heading ═══ -->
+  <div class="lang-en">
+    <h2>Check Your Understanding</h2>
+  </div>
+  <div class="lang-th">
+    <h2>ทดสอบความเข้าใจ</h2>
+  </div>
+
+  <!-- Q1 — kept outside lang wrappers; lang spans used inside -->
+  <div class="quiz"
+       data-feedback-correct="Correct! a = 2, d = 3. S₁₀ = 10/2 × (2×2 + 9×3) = 5 × (4+27) = 5 × 31 = 155."
+       data-feedback-wrong="Use S_n = n/2 × (2a + (n−1)d) with a = 2, d = 3, n = 10."
+       data-feedback-correct-th="ถูกต้อง! a = 2, d = 3 S₁₀ = 10/2 × (2×2 + 9×3) = 5 × (4+27) = 5 × 31 = 155"
+       data-feedback-wrong-th="ใช้สูตร S_n = n/2 × (2a + (n−1)d) โดย a = 2, d = 3, n = 10">
+    <div class="quiz-q">
+      <span class="lang-en">Q1. &nbsp; 2 + 5 + 8 + 11 + ··· (arithmetic, d = 3). Sum of first 10 terms?</span>
+      <span class="lang-th">ข้อ 1. &nbsp; 2 + 5 + 8 + 11 + ··· (ลำดับเลขคณิต, d = 3) ผลรวม 10 พจน์แรกเท่ากับเท่าไร?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false"><span class="lang-en">Sum equals 120</span><span class="lang-th">ผลรวมเท่ากับ 120</span></button>
+      <button class="opt" data-correct="false"><span class="lang-en">Sum equals 140</span><span class="lang-th">ผลรวมเท่ากับ 140</span></button>
+      <button class="opt" data-correct="true" ><span class="lang-en">Sum equals 155</span><span class="lang-th">ผลรวมเท่ากับ 155</span></button>
+      <button class="opt" data-correct="false"><span class="lang-en">Sum equals 175</span><span class="lang-th">ผลรวมเท่ากับ 175</span></button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! a = 3, r = 2, n = 5. S₅ = 3(1−2⁵)/(1−2) = 3(1−32)/(−1) = 3×31 = 93."
+       data-feedback-wrong="Use S_n = a(1−rⁿ)/(1−r) with a = 3, r = 2, n = 5."
+       data-feedback-correct-th="ถูกต้อง! a = 3, r = 2, n = 5 S₅ = 3(1−2⁵)/(1−2) = 3(1−32)/(−1) = 3×31 = 93"
+       data-feedback-wrong-th="ใช้สูตร S_n = a(1−rⁿ)/(1−r) โดย a = 3, r = 2, n = 5">
+    <div class="quiz-q">
+      <span class="lang-en">Q2. &nbsp; 3 + 6 + 12 + 24 + 48. Find the sum (first 5 terms, geometric).</span>
+      <span class="lang-th">ข้อ 2. &nbsp; 3 + 6 + 12 + 24 + 48 หาผลรวม (5 พจน์แรก, ลำดับเรขาคณิต)</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false"><span class="lang-en">Sum equals 63</span><span class="lang-th">ผลรวมเท่ากับ 63</span></button>
+      <button class="opt" data-correct="false"><span class="lang-en">Sum equals 87</span><span class="lang-th">ผลรวมเท่ากับ 87</span></button>
+      <button class="opt" data-correct="true" ><span class="lang-en">Sum equals 93</span><span class="lang-th">ผลรวมเท่ากับ 93</span></button>
+      <button class="opt" data-correct="false"><span class="lang-en">Sum equals 96</span><span class="lang-th">ผลรวมเท่ากับ 96</span></button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! Σi from 1 to 100 = 100×101/2 = 5050. Then Σ(2i−1) = 2×5050 − 100 = 10100−100 = 10000 = 100²."
+       data-feedback-wrong="Use Σ(2i−1) = 2Σi − Σ1. Apply Σi = n(n+1)/2 and Σ1 = n."
+       data-feedback-correct-th="ถูกต้อง! Σi จาก 1 ถึง 100 = 100×101/2 = 5050 จากนั้น Σ(2i−1) = 2×5050 − 100 = 10100−100 = 10000 = 100²"
+       data-feedback-wrong-th="ใช้ Σ(2i−1) = 2Σi − Σ1 จากนั้นใช้ Σi = n(n+1)/2 และ Σ1 = n">
+    <div class="quiz-q">
+      <span class="lang-en">Q3. &nbsp; Σ<sub>i=1</sub><sup>100</sup> (2i−1)  =  1 + 3 + 5 + ··· + 199 = ?</span>
+      <span class="lang-th">ข้อ 3. &nbsp; Σ<sub>i=1</sub><sup>100</sup> (2i−1)  =  1 + 3 + 5 + ··· + 199 = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">5,050</button>
+      <button class="opt" data-correct="false">9,900</button>
+      <button class="opt" data-correct="true" >10,000</button>
+      <button class="opt" data-correct="false">10,100</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+
+  <!-- ═══ Primary Source ═══ -->
+  <div class="lang-en">
+    <h2>Primary Source</h2>
+    <p>Course notes: <a href="../lectures/1.1 [S1] Sequences and the Partial Sums of a Sequence.pdf">S1 — Sequences and Partial Sums (PDF)</a> — sections 1.1.1 through 1.1.5 and the exercises on p.17–19.</p>
+
+    <div class="key-concept" style="margin-top:2rem;">
+      <strong>Ask your teacher (me) anything.</strong>
+      The S<sub>n</sub> derivation for geometric sequences (the multiply-by-r trick) is the same
+      trick used to prove the infinite geometric series formula. If that connection isn't clear, ask.
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>แหล่งเรียนรู้หลัก</h2>
+    <p>เอกสารประกอบการสอน: <a href="../lectures/1.1 [S1] Sequences and the Partial Sums of a Sequence.pdf">S1 — ลำดับและผลรวมย่อย (PDF)</a> — หัวข้อ 1.1.1 ถึง 1.1.5 และแบบฝึกหัดหน้า 17–19</p>
+
+    <div class="key-concept" style="margin-top:2rem;">
+      <strong>ถามครู (ฉัน) ได้ทุกเรื่อง</strong>
+      การพิสูจน์สูตร S<sub>n</sub> ของลำดับเรขาคณิต (เทคนิคคูณด้วย r) เป็นเทคนิคเดียวกับที่ใช้พิสูจน์สูตรอนุกรมเรขาคณิตอนันต์ ถ้ายังเห็นความเชื่อมโยงนี้ไม่ชัด ถามได้เลย
+    </div>
+  </div>
+
+
+  <nav class="nav-links">
+    <span></span>
+    <a href="0001-infinite-sequences.html">
+      <span class="lang-en">Next: Infinite Sequences →</span>
+      <span class="lang-th">ถัดไป: ลำดับอนันต์ →</span>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    ค30107 แคลคูลัสและการประยุกต์ · MWIT · AY 2569 Semester 1 · Quiz: 20–24 July 2026
+  </footer>
+
+</div>
+</body>
+</html>

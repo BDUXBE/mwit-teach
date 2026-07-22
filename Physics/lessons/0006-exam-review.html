@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 6 — Exam Review: Modern Physics</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <script src="quiz.js" defer></script>
+  <script src="lang.js" defer></script>
+  <style>
+    .formula-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 560px) { .formula-grid { grid-template-columns: 1fr; } }
+    .formula-card {
+      background: var(--formula-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .formula-card .card-title {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .step { counter-increment: step; }
+    .step-list { counter-reset: step; }
+    .step::before {
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.65rem;
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+<button class="lang-btn" id="lang-btn">ภาษาไทย</button>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">Sci30105 Modern Physics · MWIT &nbsp;|&nbsp; Lesson 6 of 6</div>
+    <h1 data-i18n="l6.h1">Exam Review</h1>
+    <p class="objective">
+      All key formulas, common mistakes, and mixed practice problems from
+      Lec01–Lec05. Use this as your final preparation before the exam.
+    </p>
+  </header>
+
+  <!-- All Formulas -->
+  <h2 data-i18n="l6.h2.a">Part A — Formula Sheet</h2>
+  <p class="muted" data-i18n="l6.note" style="font-family:var(--font-ui);font-size:0.9rem;">
+    Memorise these. Verify the constants against your exam sheet.
+  </p>
+
+  <div class="formula-grid">
+    <div class="formula-card">
+      <div class="card-title">Lorentz Factor</div>
+      γ = 1/√(1 − v²/c²)<br>
+      β = v/c<br>
+      γ = 1/√(1 − β²)
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Time Dilation</div>
+      Δt = γ·Δt₀<br>
+      (Δt₀ = proper time, shortest)
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Length Contraction</div>
+      L = L₀/γ<br>
+      (L₀ = proper length, longest)<br>
+      Only along direction of motion
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Lorentz Transform O→O′</div>
+      x′ = γ(x − vt)<br>
+      y′ = y, z′ = z<br>
+      t′ = γ(t − vx/c²)
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Lorentz Transform O′→O</div>
+      x  = γ(x′ + vt′)<br>
+      y  = y′, z = z′<br>
+      t  = γ(t′ + vx′/c²)
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Relativistic Velocity Add.</div>
+      u′ = (u − v)/(1 − uv/c²)<br>
+      u  = (u′ + v)/(1 + u′v/c²)
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Relativistic Momentum</div>
+      p = γmu
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Relativistic Energy</div>
+      E = γmc² (total)<br>
+      E₀ = mc² (rest)<br>
+      K = (γ−1)mc² (kinetic)<br>
+      E² = (pc)² + (mc²)²
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Stefan–Boltzmann Law</div>
+      P = εσAT⁴<br>
+      σ = 5.67×10⁻⁸ W·m⁻²·K⁻⁴
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Wien's Displacement Law</div>
+      λ_max · T = 2.898×10⁻³ m·K
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Planck's Quantization</div>
+      E = nhf (n = 1, 2, 3, ...)<br>
+      h = 6.626×10⁻³⁴ J·s<br>
+        = 4.136×10⁻¹⁵ eV·s
+    </div>
+    <div class="formula-card">
+      <div class="card-title">Speed of Light</div>
+      c = 3.00 × 10⁸ m/s
+    </div>
+  </div>
+
+  <!-- Common Mistakes -->
+  <h2 data-i18n="l6.h2.b">Part B — Common Exam Mistakes</h2>
+
+  <div class="warning" data-i18n-html="l6.warn.1">
+    <strong>Mistake 1:</strong> Using $E = mc^2$ for a moving particle.<br>
+    Fix: For a moving particle, use $E = \gamma mc^2$ or $E^2 = (pc)^2 + (mc^2)^2$.
+    $E = mc^2$ is only for a particle <em>at rest</em>.
+  </div>
+
+  <div class="warning" data-i18n-html="l6.warn.2">
+    <strong>Mistake 2:</strong> Confusing proper time and proper length.<br>
+    Fix: Proper time ($\Delta t_0$) is measured by the clock that is <em>at rest at the event's location</em>.
+    Proper length ($L_0$) is measured in the frame where the object is <em>at rest</em>.
+    Both are the "minimal" distorted values — the clock reads least, the ruler reads most.
+  </div>
+
+  <div class="warning" data-i18n-html="l6.warn.3">
+    <strong>Mistake 3:</strong> Galilean velocity addition instead of relativistic.<br>
+    Fix: Any time speeds are a significant fraction of $c$, always use
+    $u' = (u-v)/(1 - uv/c^2)$.
+  </div>
+
+  <div class="warning" data-i18n-html="l6.warn.4">
+    <strong>Mistake 4:</strong> Wrong sign in Lorentz transformation.<br>
+    Fix: O→O′ uses minus ($x - vt$, $t - vx/c^2$); O′→O uses plus.
+    Choose based on <em>which frame's coordinates you know</em>.
+  </div>
+
+  <div class="warning" data-i18n-html="l6.warn.5">
+    <strong>Mistake 5:</strong> Forgetting to convert units (nm↔m, MeV↔J, μs↔s).<br>
+    Fix: Wien gives λ in metres (must convert if question asks nm).
+    Energy in eV: 1 eV = 1.6×10⁻¹⁹ J.
+  </div>
+
+  <!-- Mixed Quiz -->
+  <h2 data-i18n="l6.h2.c">Part C — Mixed Practice Quiz</h2>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! γ = 1/√(1−0.9²) = 1/√0.19 ≈ 2.294. Time dilation: Δt = γ·Δt₀ = 2.294 × 5 ≈ 11.5 years."
+       data-feedback-wrong="Calculate γ at v = 0.9c first, then apply Δt = γ·Δt₀. Note: 5 years is proper time (ship's clock).">
+    <div class="quiz-q" data-i18n="l6.m1">M1. A ship travels at $v = 0.9c$. Crew ages 5 years (proper time). How long did Earth observers wait?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l6.m1.a">5.0 years — no time dilation at 0.9c</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m1.b">4.5 years — Earth time is shorter</button>
+      <button class="opt" data-correct="true"  data-i18n="l6.m1.c">≈ 11.5 years — Earth time is longer (γ ≈ 2.294)</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m1.d">≈ 22.9 years — γ applied twice by mistake</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! E = γmc². Rest energy of proton: m_p c² = 938.3 MeV. At γ = 5: E = 5 × 938.3 = 4691.5 MeV. K = E − mc² = 4 × 938.3 = 3753 MeV."
+       data-feedback-wrong="Total energy E = γmc². Rest energy of proton ≈ 938.3 MeV. K = E − mc² = (γ−1)mc².">
+    <div class="quiz-q" data-i18n="l6.m2">M2. A proton ($m_pc^2 = 938.3$ MeV) moves with $\gamma = 5$. What is its kinetic energy?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l6.m2.a">938.3 MeV — same as rest energy</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m2.b">4691.5 MeV — total energy, not kinetic</button>
+      <button class="opt" data-correct="true"  data-i18n="l6.m2.c">3753 MeV — K = (γ−1)mc² = 4 × 938.3 MeV</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m2.d">187.7 MeV — rest energy divided by γ</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! λ_max = 2.898×10⁻³ / T. So T = 2.898×10⁻³ / (10×10⁻⁶) = 2.898×10⁻³ / 10⁻⁵ = 289.8 K ≈ 290 K — close to room temperature (17°C)."
+       data-feedback-wrong="Rearrange Wien's law: T = 2.898×10⁻³ / λ_max. Be careful with units: 10 μm = 10×10⁻⁶ m.">
+    <div class="quiz-q" data-i18n="l6.m3">M3. A human body emits most radiation at $\lambda_{max} = 10\;\mu\text{m}$ (10 micrometres). What surface temperature does this imply?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l6.m3.a">37 K (way too cold — that's near absolute zero)</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m3.b">5500 K (that's the Sun's surface temperature)</button>
+      <button class="opt" data-correct="true"  data-i18n="l6.m3.c">≈ 290 K (close to room temperature / body surface temp)</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m3.d">3700 K (used 37°C directly without converting to Kelvin)</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! For photons, m = 0, so E² = (pc)² → E = pc → p = E/c. This is the energy–momentum relation for massless particles."
+       data-feedback-wrong="Use E² = (pc)² + (mc²)² with m = 0 for a photon. What does p equal in terms of E?">
+    <div class="quiz-q" data-i18n="l6.m4">M4. A photon has energy $E = 3.0$ eV. What is its momentum?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l6.m4.a">$p = E/c^2$ (mass-energy confusion)</button>
+      <button class="opt" data-correct="true"  data-i18n="l6.m4.b">$p = E/c$ (since $E = pc$ for photons)</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m4.c">$p = Ec$ (wrong — energy times c)</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m4.d">Photons have no momentum since they have no mass</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Quantization means energy is NOT continuous — each quantum has minimum energy E = hf. Classical physics assumed continuous energy, which caused the UV catastrophe."
+       data-feedback-wrong="Planck's key assumption was about the discreteness of energy. What does E = nhf imply about the smallest allowed energy?">
+    <div class="quiz-q" data-i18n="l6.m5">M5. What is the single most important feature of Planck's hypothesis that classical physics lacked?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l6.m5.a">A new value of Boltzmann's constant $k$</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m5.b">The use of Maxwell's equations to count wave modes</button>
+      <button class="opt" data-correct="true"  data-i18n="l6.m5.c">Energy comes in discrete packets — oscillators cannot have arbitrarily small energy</button>
+      <button class="opt" data-correct="false" data-i18n="l6.m5.d">The recognition that temperature depends on wavelength</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Study order -->
+  <h2 data-i18n="l6.h2.d">Part D — Recommended Study Order</h2>
+  <div class="step-list">
+    <div class="step"><span>Read <a href="0001-origin-of-special-relativity.html">Lesson 1</a> first — it gives the "why" behind all of special relativity. Without it, the formulas are just symbols.</span></div>
+    <div class="step"><span>Do all quizzes in <a href="0002-time-dilation-length-contraction.html">Lesson 2</a> (time dilation/length contraction) without looking at formulas — this is the highest-frequency exam topic.</span></div>
+    <div class="step"><span>Practise <a href="0003-lorentz-transformation.html">Lesson 3</a> (Lorentz Transform) by covering the equations and reproducing the O→O′ and O′→O tables from memory.</span></div>
+    <div class="step"><span>Work <a href="0004-relativistic-momentum-energy.html">Lesson 4</a> problems. Focus on correctly identifying whether you need $p$, $K$, $E$, or $E_0$.</span></div>
+    <div class="step"><span>For <a href="0005-blackbody-radiation.html">Lesson 5</a>, practise plugging numbers into Stefan–Boltzmann and Wien's law. Both appear in calculation-heavy exam questions.</span></div>
+    <div class="step"><span>Return to this review lesson and do Part C (mixed quiz) without notes. Any wrong answer = reread that lesson before the exam.</span></div>
+  </div>
+
+  <div class="key-concept" style="margin-top:2rem;" data-i18n-html="l6.kc.ask">
+    <strong>Need help?</strong> Ask your teacher (Claude) to walk through any worked example
+    from the lecture, explain a formula derivation, or make up practice problems on any topic.
+    Just say which lesson and what type of problem.
+  </div>
+
+  <nav class="nav-links">
+    <a href="0005-blackbody-radiation.html" data-i18n="nav.prev.l6">← Lesson 5: Blackbody Radiation</a>
+    <span></span>
+  </nav>
+
+  <footer class="lesson-footer">
+    Sci30105 Modern Physics · MWIT · Lesson 6 / 6 (Exam Review) ·
+    Covers Lec01–Lec05 by Aj Rungroj Tuayjaroen
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 2 — Time Dilation &amp; Length Contraction</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <script src="quiz.js" defer></script>
+  <script src="lang.js" defer></script>
+</head>
+<body>
+<button class="lang-btn" id="lang-btn">ภาษาไทย</button>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">Sci30105 Modern Physics · MWIT &nbsp;|&nbsp; Lesson 2 of 6</div>
+    <h1 data-i18n="l2.h1">Time Dilation &amp; Length Contraction</h1>
+    <p class="objective" data-i18n-html="l2.obj">
+      <strong>By the end of this lesson you will be able to:</strong>
+      define proper time and proper length, apply the time dilation and length contraction
+      formulas, and use the Lorentz factor $\gamma$ correctly in calculations.
+    </p>
+  </header>
+
+  <!-- The Lorentz Factor -->
+  <h2 data-i18n="l2.h2.1">1. The Lorentz Factor γ (gamma)</h2>
+
+  <p>
+    Both time dilation and length contraction depend on the same factor $\gamma$
+    (pronounced "gamma"), which appears everywhere in special relativity:
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Lorentz Factor</span>
+    γ = 1 / √(1 − v²/c²) &nbsp;&nbsp; where β = v/c<br><br>
+    γ = 1 / √(1 − β²)
+  </div>
+
+  <p>Key properties of γ:</p>
+  <table>
+    <tr><th>Speed $v$</th><th>β = v/c</th><th>γ (approx.)</th></tr>
+    <tr><td>0</td><td>0</td><td>1.000 (no relativistic effects)</td></tr>
+    <tr><td>0.1c (10%)</td><td>0.1</td><td>1.005</td></tr>
+    <tr><td>0.5c (50%)</td><td>0.5</td><td>1.155</td></tr>
+    <tr><td>0.9c (90%)</td><td>0.9</td><td>2.294</td></tr>
+    <tr><td>0.99c (99%)</td><td>0.99</td><td>7.089</td></tr>
+    <tr><td>0.999c</td><td>0.999</td><td>22.37</td></tr>
+    <tr><td>c</td><td>1</td><td>∞ (impossible for mass)</td></tr>
+  </table>
+
+  <div class="key-concept" data-i18n-html="l2.kc.1">
+    <strong>Always:</strong> $\gamma \geq 1$. It equals 1 at rest and approaches infinity as $v \to c$.
+    This factor encodes all relativistic effects.
+  </div>
+
+  <!-- Time Dilation -->
+  <h2 data-i18n="l2.h2.2">2. Time Dilation — Moving Clocks Run Slow</h2>
+
+  <h3>Where the Formula Comes From — The Light Clock</h3>
+  <p>
+    Imagine a clock made of two mirrors with a light pulse bouncing between them.
+    In the rest frame the pulse travels straight up and down, covering distance $d$ each way.
+    One tick = time for one round trip: $\Delta t_0 = 2d/c$.
+  </p>
+  <p>
+    Now watch the same clock from a frame where it moves horizontally at speed $v$.
+    The pulse still travels at $c$ (Postulate 2), but now traces a diagonal path.
+    In the time $\Delta t/2$ for one half-trip, the clock moves $v \Delta t/2$ sideways.
+    By Pythagoras:
+  </p>
+  <div class="formula-box">
+    <span class="label">Light-Clock Derivation</span>
+    Diagonal path length = √( d² + (vΔt/2)² ) = c · Δt/2<br><br>
+    Squaring: &nbsp; d² + v²Δt²/4 = c²Δt²/4<br>
+    But d = cΔt₀/2, so: &nbsp; c²Δt₀²/4 + v²Δt²/4 = c²Δt²/4<br><br>
+    Rearranging: &nbsp; Δt² (c² − v²) = c² Δt₀²<br>
+    ∴ &nbsp; <strong>Δt = Δt₀ / √(1 − v²/c²) = γ Δt₀</strong>
+  </div>
+  <div class="key-concept">
+    <strong>Key insight:</strong> The derivation uses only Pythagoras and the constancy of $c$.
+    No extra assumptions — time dilation is a direct, unavoidable consequence of Postulate 2.
+  </div>
+
+  <h3 data-i18n="l2.h3.proper.t">Proper Time $\Delta t_0$</h3>
+  <p>
+    <strong>Proper time</strong> ($\Delta t_0$) is the time interval measured by a clock
+    that is <em>at rest relative to the event</em> — i.e., the clock is present at both
+    the start and end of the event. It is the <em>shortest</em> possible time any observer
+    can measure for that event.
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Time Dilation — Δt in frame where the clock moves</span>
+    Δt = γ · Δt₀<br><br>
+    Since γ ≥ 1, Δt ≥ Δt₀ → the moving clock appears to tick <strong>slower</strong>
+  </div>
+
+  <div class="key-concept" data-i18n-html="l2.kc.2">
+    <strong>Memory trick:</strong> "Moving clocks run slow."<br>
+    The observer who sees the clock moving always measures a <em>longer</em> time than the clock itself.
+  </div>
+
+  <h3 data-i18n="l2.h3.muon">Example — Muon Survival</h3>
+  <p>
+    Muons are unstable particles created by cosmic rays in the upper atmosphere (~15 km up).
+    They decay radioactively with a proper lifetime $\tau = 2.2\;\mu\text{s}$, meaning the
+    number surviving after time $t$ (in the muon's own rest frame) follows:
+  </p>
+  <div class="formula-box">
+    <span class="label">Radioactive Decay Law</span>
+    N(t) = N₀ · e^(−t/τ) &nbsp;&nbsp;&nbsp; τ = 2.2 μs (mean lifetime of muons at rest)
+  </div>
+  <p>
+    Muons travel at $v = 0.9978c$ (lecture value). Their proper lifetime is $\tau = 2.2\;\mu\text{s}$.
+  </p>
+  <p>
+    Classical prediction — distance before most muons decay:
+    $d \approx v \cdot \tau = (0.9978c)(2.2\times10^{-6}) \approx 0.66$ km → should not reach Earth.
+  </p>
+  <p>
+    Relativistic prediction — $\gamma = 1/\sqrt{1-0.9978^2} \approx 15$:
+  </p>
+  <div class="formula-box">
+    Δt = γ · τ = 15 × 2.2 μs ≈ 33 μs &nbsp;&nbsp; (dilated lifetime in Earth frame)<br>
+    d = v · Δt ≈ (0.9978c)(33 μs) ≈ 9.9 km — muons DO reach Earth ✓<br><br>
+    Observed survival rate matches N(t) = N₀ e^(−t_Earth / γτ) — experiment confirmed.
+  </div>
+
+  <!-- Length Contraction -->
+  <h2 data-i18n="l2.h2.3">3. Length Contraction — Moving Objects Are Shorter</h2>
+
+  <h3 data-i18n="l2.h3.proper.l">Proper Length $L_0$</h3>
+  <p>
+    <strong>Proper length</strong> ($L_0$) is the length of an object measured in the
+    frame where it is <em>at rest</em>. It is the <em>longest</em> length any observer measures.
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Length Contraction — L in frame where the object moves</span>
+    L = L₀ / γ &nbsp;&nbsp;&nbsp;(equivalently: L = L₀ · √(1 − v²/c²))<br><br>
+    Since γ ≥ 1, L ≤ L₀ → moving objects appear <strong>shorter</strong>
+  </div>
+
+  <div class="warning" data-i18n-html="l2.warn.1">
+    <strong>Important:</strong> Length contraction only occurs along the <em>direction of motion</em>.
+    Dimensions perpendicular to motion are unchanged: $y' = y$, $z' = z$.
+  </div>
+
+  <h3 data-i18n="l2.h3.muon2">Example — Muon from the muon's frame</h3>
+  <p>
+    From the muon's own frame, the muon is at rest but the atmosphere contracts.
+    The proper length of the atmosphere path is $L_0 = 15$ km.
+    At $\gamma = 7.09$:
+  </p>
+  <div class="formula-box">
+    L = L₀/γ = 15 km / 7.09 ≈ 2.1 km — easily traversed in 2.2 μs ✓
+  </div>
+  <p>Both perspectives (time dilation in ground frame, length contraction in muon frame) give the same physical result.</p>
+
+  <!-- Simultaneity -->
+  <h2 data-i18n="l2.h2.4">4. Relativity of Simultaneity</h2>
+  <p>
+    Two events that are simultaneous in one frame are <em>generally not</em> simultaneous
+    in another frame moving relative to the first. This is a direct consequence of
+    Postulate 2 (constant $c$).
+  </p>
+  <div class="key-concept" data-i18n-html="l2.kc.3">
+    <strong>Rule of thumb:</strong> Events separated in space can only be simultaneous
+    for <em>one</em> particular frame. Other frames disagree on which came first.
+    This only matters at speeds comparable to $c$.
+  </div>
+
+  <!-- Problem-Solving Strategy -->
+  <h2 data-i18n="l2.h2.5">5. Exam Problem-Solving Strategy</h2>
+  <ol>
+    <li><strong>Identify</strong> which frame is the "proper" frame (clock is at rest, or object is at rest).</li>
+    <li><strong>Calculate γ</strong> from the given speed $v$.</li>
+    <li>
+      <strong>Apply the right formula:</strong><br>
+      Time dilation: $\Delta t = \gamma \Delta t_0$ (proper time is always <em>shorter</em>)<br>
+      Length contraction: $L = L_0/\gamma$ (proper length is always <em>longer</em>)
+    </li>
+    <li><strong>Sanity check:</strong> Is your answer physically reasonable? ($\Delta t > \Delta t_0$? $L < L_0$?)</li>
+  </ol>
+
+  <!-- Quizzes -->
+  <h2 data-i18n="l2.h2.quiz">Check Your Understanding</h2>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Proper time is measured by the clock that is present at both events — here, the astronaut's on-board clock."
+       data-feedback-wrong="Proper time belongs to the observer who is at the location of both events. Who is actually inside the spaceship for the whole journey?"
+       data-feedback-correct-th="ถูกต้อง! เวลาเฉพาะตัววัดด้วยนาฬิกาที่อยู่กับเหตุการณ์ทั้งสอง — คือนาฬิกาบนยานของนักบินอวกาศ"
+       data-feedback-wrong-th="เวลาเฉพาะตัวเป็นของผู้สังเกตที่อยู่ในตำแหน่งของทั้งสองเหตุการณ์ ใครอยู่ในยานตลอดการเดินทาง?">
+    <div class="quiz-q" data-i18n="l2.q1">Q1. A spaceship travels from Earth to a distant star. Which observer measures the <em>proper time</em> for the trip?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l2.q1.a">An astronomer on Earth using telescopes</button>
+      <button class="opt" data-correct="true"  data-i18n="l2.q1.b">The astronaut inside the spaceship throughout the journey</button>
+      <button class="opt" data-correct="false" data-i18n="l2.q1.c">An observer at the midpoint between Earth and the star</button>
+      <button class="opt" data-correct="false" data-i18n="l2.q1.d">Any observer, since all proper times are equal</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! γ at 0.8c = 1/√(1−0.64) = 1/√0.36 = 1/0.6 = 5/3 ≈ 1.667. So Δt = 1.667 × 10 = 16.67 years."
+       data-feedback-wrong="Calculate γ first: γ = 1/√(1 − 0.8²) = 1/0.6. Then Δt = γ × Δt₀."
+       data-feedback-correct-th="ถูกต้อง! γ ที่ 0.8c = 5/3 ≈ 1.667 ดังนั้น Δt = 1.667 × 10 = 16.67 ปี"
+       data-feedback-wrong-th="คำนวณ γ ก่อน: γ = 1/√(1 − 0.8²) = 1/0.6 จากนั้น Δt = γ × Δt₀">
+    <div class="quiz-q" data-i18n="l2.q2">Q2. A spaceship moves at $v = 0.8c$. The on-board clock shows 10 years have passed. How long did Earth observers measure?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l2.q2.a">6 years (Earth time is shorter)</button>
+      <button class="opt" data-correct="false" data-i18n="l2.q2.b">10 years (same — relativity doesn't apply here)</button>
+      <button class="opt" data-correct="true"  data-i18n="l2.q2.c">16.67 years (Earth time is longer)</button>
+      <button class="opt" data-correct="false" data-i18n="l2.q2.d">8 years (reduced by β = 0.8)</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! L = L₀/γ = 1000/1.667 ≈ 600 m. Length contracts along the direction of motion."
+       data-feedback-wrong="Apply L = L₀/γ. γ at 0.8c is 5/3, so L = 1000 ÷ (5/3) = 1000 × 0.6 = 600 m."
+       data-feedback-correct-th="ถูกต้อง! L = L₀/γ = 1000/1.667 ≈ 600 ม. ความยาวหดสั้นตามแนวการเคลื่อนที่"
+       data-feedback-wrong-th="ใช้ L = L₀/γ γ ที่ 0.8c คือ 5/3 ดังนั้น L = 1000 ÷ (5/3) = 600 ม.">
+    <div class="quiz-q" data-i18n="l2.q3">Q3. A rocket of proper length 1000 m flies past you at $v = 0.8c$. What length do you measure?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l2.q3.a">1000 m — length is always proper length</button>
+      <button class="opt" data-correct="false" data-i18n="l2.q3.b">800 m — multiply by β = 0.8</button>
+      <button class="opt" data-correct="true"  data-i18n="l2.q3.c">600 m — divided by γ = 5/3</button>
+      <button class="opt" data-correct="false" data-i18n="l2.q3.d">1250 m — length expands for the stationary observer</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Contraction only occurs along the direction of motion — perpendicular dimensions (height, width) are unchanged."
+       data-feedback-wrong="Recall the transformation equations: y′ = y and z′ = z. Contraction is directional."
+       data-feedback-correct-th="ถูกต้อง! การหดสั้นเกิดเฉพาะตามแนวการเคลื่อนที่ — มิติตั้งฉากไม่เปลี่ยน"
+       data-feedback-wrong-th="จำ y′ = y และ z′ = z การหดสั้นมีทิศทาง">
+    <div class="quiz-q" data-i18n="l2.q4">Q4. A cube moves at $v = 0.95c$ horizontally. Which dimensions are contracted?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l2.q4.a">All three dimensions contract equally</button>
+      <button class="opt" data-correct="true"  data-i18n="l2.q4.b">Only the horizontal dimension (direction of motion) contracts</button>
+      <button class="opt" data-correct="false" data-i18n="l2.q4.c">Height and width contract, but depth stays the same</button>
+      <button class="opt" data-correct="false" data-i18n="l2.q4.d">No dimension contracts — only time dilates</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Primary source -->
+  <h2 data-i18n="l2.h2.source">Primary Source</h2>
+  <p>
+    <a href="https://openstax.org/books/university-physics-volume-3/pages/5-3-time-dilation"
+       target="_blank">OpenStax University Physics Vol. 3 — Chapter 5.3: Time Dilation</a>
+    and
+    <a href="https://openstax.org/books/university-physics-volume-3/pages/5-4-length-contraction"
+       target="_blank">5.4: Length Contraction</a>.
+    These sections have worked examples that match your exam style exactly.
+  </p>
+
+  <div class="key-concept" style="margin-top:2rem;" data-i18n-html="l2.kc.ask">
+    <strong>Questions?</strong> Confused about which observer has the proper time?
+    Ask in the chat — it's the most common source of mistakes on this topic.
+  </div>
+
+  <nav class="nav-links">
+    <a href="0001-origin-of-special-relativity.html" data-i18n="nav.prev.l2">← Lesson 1: Origin of Special Relativity</a>
+    <a href="0003-lorentz-transformation.html" data-i18n="nav.next.l2">Next: Lorentz Transformation →</a>
+  </nav>
+
+  <footer class="lesson-footer">
+    Sci30105 Modern Physics · MWIT · Lesson 2 / 6 ·
+    Based on Lec02 by Aj Rungroj Tuayjaroen
+  </footer>
+</div>
+</body>
+</html>

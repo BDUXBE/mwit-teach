@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 3 — Lorentz Transformation</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <script src="quiz.js" defer></script>
+  <script src="lang.js" defer></script>
+
+  <style>
+    .frame-diagram {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .frame-box {
+      flex: 1;
+      min-width: 200px;
+      background: var(--formula-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+    .frame-box .title {
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .arrow-mid {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      color: var(--muted);
+      padding: 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+<button class="lang-btn" id="lang-btn">ภาษาไทย</button>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">Sci30105 Modern Physics · MWIT &nbsp;|&nbsp; Lesson 3 of 6</div>
+    <h1 data-i18n="l3.h1">The Lorentz Transformation</h1>
+    <p class="objective" data-i18n-html="l3.obj">
+      <strong>By the end of this lesson you will be able to:</strong>
+      write the Lorentz transformation equations from memory, convert event coordinates
+      between frames, apply the velocity addition formula, and explain how time dilation
+      and length contraction emerge from the transformation.
+    </p>
+  </header>
+
+  <!-- Setup -->
+  <h2 data-i18n="l3.h2.1">1. The Setup</h2>
+  <p>
+    Frame $O$ (rest frame) and frame $O'$ (moving frame) have their origins coinciding
+    at $t = t' = 0$. Frame $O'$ moves at constant speed $v$ in the positive $x$-direction
+    relative to $O$.
+  </p>
+  <p>
+    An <em>event</em> (something that happens at one place and time) has coordinates
+    $(x, y, z, t)$ in $O$ and $(x', y', z', t')$ in $O'$.
+    The Lorentz transformation converts between them.
+  </p>
+
+  <!-- Core Equations -->
+  <h2 data-i18n="l3.h2.2">2. The Lorentz Transformation Equations</h2>
+
+  <div class="frame-diagram">
+    <div class="frame-box">
+      <div class="title">From O → O′ (observer in O measures event)</div>
+      x′ = γ(x − vt)<br>
+      y′ = y<br>
+      z′ = z<br>
+      t′ = γ(t − vx/c²)
+    </div>
+    <div class="arrow-mid">⇄</div>
+    <div class="frame-box">
+      <div class="title">From O′ → O (observer in O′ measures event)</div>
+      x  = γ(x′ + vt′)<br>
+      y  = y′<br>
+      z  = z′<br>
+      t  = γ(t′ + vx′/c²)
+    </div>
+  </div>
+
+  <div class="key-concept" data-i18n-html="l3.kc.1">
+    <strong>Pattern:</strong> Going O→O′ uses <em>minus</em> signs ($x - vt$, $t - vx/c^2$).
+    Going O′→O uses <em>plus</em> signs ($x' + vt'$, $t' + vx'/c^2$).
+    Only $x$ and $t$ mix — $y$ and $z$ are unchanged.
+  </div>
+
+  <div class="warning" data-i18n-html="l3.warn.1">
+    <strong>The $t'$ equation is the crucial one to memorize:</strong>
+    $t' = \gamma(t - vx/c^2)$. The $vx/c^2$ term is what makes simultaneity relative —
+    it shows that time in $O'$ depends on both $t$ AND the spatial position $x$ in $O$.
+  </div>
+
+  <!-- Gamma reminder -->
+  <div class="formula-box">
+    <span class="label">Reminder — Lorentz Factor</span>
+    γ = 1/√(1 − v²/c²) &nbsp;&nbsp; always ≥ 1
+  </div>
+
+  <!-- Connection to Galilean -->
+  <h2 data-i18n="l3.h2.3">3. Connection to Galilean Transformation</h2>
+  <p>
+    When $v \ll c$, the term $vx/c^2 \approx 0$ and $\gamma \approx 1$, so:
+  </p>
+  <div class="formula-box">
+    x′ ≈ x − vt &nbsp;&nbsp; (Galilean)<br>
+    t′ ≈ t &nbsp;&nbsp; (Galilean — time becomes absolute again)
+  </div>
+  <p>
+    This shows the Lorentz transformation contains Galilean relativity as a low-speed limit.
+  </p>
+
+  <!-- Velocity Addition -->
+  <h2 data-i18n="l3.h2.4">4. Relativistic Velocity Addition</h2>
+  <p>
+    If an object moves at velocity $u_x$ in frame $O$, what velocity $u_x'$ does it have in frame $O'$?
+    Differentiating the Lorentz transformation gives:
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Relativistic Velocity Addition (x-direction)</span>
+    u′ₓ = (uₓ − v) / (1 − uₓv/c²) &nbsp;&nbsp;&nbsp; [O → O′]<br><br>
+    uₓ  = (u′ₓ + v) / (1 + u′ₓv/c²) &nbsp;&nbsp;&nbsp; [O′ → O]
+  </div>
+
+  <div class="key-concept" data-i18n-html="l3.kc.2">
+    <strong>Test with light:</strong> Set $u_x = c$ in the O→O′ formula:<br>
+    $u_x' = (c - v)/(1 - cv/c^2) = (c-v)/((c-v)/c) = c$ ✓
+    The speed of light is $c$ in every frame — Postulate 2 confirmed.
+  </div>
+
+  <h3>Transverse (y, z) Velocity Components</h3>
+  <p>
+    The x-direction formula above is the most tested, but the full transformation also
+    applies to transverse velocities:
+  </p>
+  <div class="formula-box">
+    <span class="label">Transverse Velocity Transformation (O → O′)</span>
+    u′_y = u_y / [γ(1 − uₓv/c²)]<br>
+    u′_z = u_z / [γ(1 − uₓv/c²)]<br><br>
+    Special case — object moves purely in y direction (uₓ = 0):<br>
+    u′_y = u_y / γ &nbsp;&nbsp; ← transverse speed also reduces (by factor γ)
+  </div>
+  <div class="key-concept">
+    <strong>Why transverse speed changes too:</strong> Even though y′ = y (no length contraction
+    perpendicular to motion), the <em>time</em> interval transforms. Since speed = distance/time,
+    and time dilates, the transverse speed must shrink by γ.
+  </div>
+
+  <h3 data-i18n="l3.h3.example">Worked Example — from Lec03</h3>
+  <p>
+    Spaceship A moves at $0.75c$ relative to Earth.
+    Spaceship B moves at $0.85c$ relative to Earth (same direction).
+    What is the speed of B as seen from A?
+  </p>
+  <div class="formula-box">
+    v = 0.75c (speed of A = our moving frame O′)<br>
+    uₓ = 0.85c (speed of B in Earth frame O)<br><br>
+    u′ₓ = (0.85c − 0.75c) / (1 − (0.85)(0.75))<br>
+         = 0.10c / (1 − 0.6375)<br>
+         = 0.10c / 0.3625<br>
+         ≈ 0.276c
+  </div>
+  <p>
+    Classic (Galilean) answer would be $0.85c - 0.75c = 0.10c$.
+    The relativistic answer is $0.276c$ — <em>larger</em> than the Galilean result but still less than $c$.
+  </p>
+
+  <!-- Inclined rod -->
+  <h2>5. Length Contraction of an Inclined Rod</h2>
+  <p>
+    Length contraction only applies to the <em>component along the direction of motion</em>.
+    If a rod is tilted at angle θ₀ (proper angle) in the rest frame O, and frame O′
+    moves along x at speed v, then in O′:
+  </p>
+  <div class="formula-box">
+    <span class="label">Inclined Rod — Component Contraction</span>
+    Rest frame O: &nbsp; Lₓ = L₀ cos θ₀ &nbsp; (x-component) &nbsp;&nbsp; L_y = L₀ sin θ₀ &nbsp; (y-component)<br><br>
+    Moving frame O′:<br>
+    L′ₓ = Lₓ/γ = L₀ cos θ₀ / γ &nbsp;&nbsp; (x contracts)<br>
+    L′_y = L_y = L₀ sin θ₀ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (y unchanged)<br><br>
+    Observed length: &nbsp; L′ = √(L′ₓ² + L′_y²)<br>
+    Observed angle: &nbsp;&nbsp; tan θ′ = L′_y / L′ₓ = γ tan θ₀ &nbsp;&nbsp; (angle increases)
+  </div>
+  <div class="key-concept">
+    <strong>Result:</strong> In the moving frame the rod appears both shorter AND more steeply tilted.
+    Only the x-component shrinks — the y-component is unchanged.
+  </div>
+
+  <!-- Time dilation from Lorentz -->
+  <h2 data-i18n="l3.h2.5">6. Recovering Time Dilation from Lorentz</h2>
+  <p>
+    Suppose a clock sits at rest in $O'$ ($x' = 0$ always). Two ticks happen at
+    $t_1'$ and $t_2'$ — proper time interval $\Delta t_0 = t_2' - t_1'$.
+    Using the inverse transform $t = \gamma(t' + vx'/c^2)$ with $x' = 0$:
+  </p>
+  <div class="formula-box">
+    Δt = γ · Δt₀ &nbsp;&nbsp; ← time dilation falls directly out of Lorentz ✓
+  </div>
+
+  <!-- Problem-solving -->
+  <h2 data-i18n="l3.h2.6">7. Step-by-Step Method for Lorentz Problems</h2>
+  <ol>
+    <li><strong>Label the frames:</strong> which is $O$ and which is $O'$? What is $v$?</li>
+    <li><strong>Identify the event's known coordinates.</strong></li>
+    <li><strong>Choose the right direction</strong> (O→O′ uses minus; O′→O uses plus).</li>
+    <li><strong>Compute γ.</strong></li>
+    <li><strong>Plug in and calculate.</strong></li>
+  </ol>
+
+  <!-- Quizzes -->
+  <h2 data-i18n="l3.h2.quiz">Check Your Understanding</h2>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! The t′ equation includes vx/c², so two events at different x positions will have different t′ even if t is the same — simultaneity is broken."
+       data-feedback-wrong="Look at the t′ equation. If two events have the same t but different x, what does t′ give for each?"
+       data-feedback-correct-th="ถูกต้อง! สมการ t′ มีพจน์ vx/c² ดังนั้นเหตุการณ์ที่ x ต่างกันจะมี t′ ต่างกัน แม้ t จะเท่ากัน"
+       data-feedback-wrong-th="ดูสมการ t′ ถ้าเหตุการณ์สองเหตุการณ์มี t เท่ากันแต่ x ต่างกัน t′ ของแต่ละอันเป็นเท่าไร?">
+    <div class="quiz-q" data-i18n="l3.q1">Q1. Two events happen at the same time $t$ in frame $O$, but at different positions $x_1$ and $x_2$. What does the Lorentz transformation tell us about their times in $O'$?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l3.q1.a">They are still simultaneous in O′ because t is the same</button>
+      <button class="opt" data-correct="true"  data-i18n="l3.q1.b">They occur at different times in O′ because t′ depends on x</button>
+      <button class="opt" data-correct="false" data-i18n="l3.q1.c">They are simultaneous only if v &lt; 0.5c</button>
+      <button class="opt" data-correct="false" data-i18n="l3.q1.d">The transformation does not apply to simultaneous events</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! x′ = γ(x − vt). At t = 0 and x = 5 m, with γ = 2 and v = (√3/2)c: x′ = 2(5 − 0) = 10 m."
+       data-feedback-wrong="Use x′ = γ(x − vt). At t = 0 the term vt = 0, so x′ = γ · x."
+       data-feedback-correct-th="ถูกต้อง! x′ = γ(x − vt) ที่ t = 0 และ x = 5 ม. โดย γ = 2: x′ = 2(5 − 0) = 10 ม."
+       data-feedback-wrong-th="ใช้ x′ = γ(x − vt) ที่ t = 0 พจน์ vt = 0 ดังนั้น x′ = γ · x">
+    <div class="quiz-q" data-i18n="l3.q2">Q2. At $t = 0$ an event occurs at $x = 5$ m in frame $O$. Frame $O'$ moves at a speed giving $\gamma = 2$. What is $x'$?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l3.q2.a">2.5 m (divided by γ)</button>
+      <button class="opt" data-correct="false" data-i18n="l3.q2.b">5 m (unchanged because t = 0)</button>
+      <button class="opt" data-correct="true"  data-i18n="l3.q2.c">10 m (multiplied by γ, since vt = 0)</button>
+      <button class="opt" data-correct="false" data-i18n="l3.q2.d">0 m (both origins coincide at t = 0)</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! u′ = (0.60c − 0.80c)/(1 − 0.60×0.80) = (−0.20c)/(1 − 0.48) = −0.20c/0.52 ≈ −0.385c. Negative means the probe moves backward in O′."
+       data-feedback-wrong="Apply u′ = (u − v)/(1 − uv/c²) with u = 0.60c and v = 0.80c. Watch the sign!"
+       data-feedback-correct-th="ถูกต้อง! u′ = (0.60c − 0.80c)/(1 − 0.48) = −0.20c/0.52 ≈ −0.385c ค่าลบหมายความว่ายานสำรวจเคลื่อนที่ถอยหลังใน O′"
+       data-feedback-wrong-th="ใช้ u′ = (u − v)/(1 − uv/c²) โดย u = 0.60c และ v = 0.80c ระวังเครื่องหมาย!">
+    <div class="quiz-q" data-i18n="l3.q3">Q3. A probe moves at $0.60c$ in frame $O$. Frame $O'$ moves at $0.80c$ in the same direction. What is the probe's speed in $O'$?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l3.q3.a">−0.20c (Galilean subtraction)</button>
+      <button class="opt" data-correct="true"  data-i18n="l3.q3.b">≈ −0.385c (relativistic velocity addition)</button>
+      <button class="opt" data-correct="false" data-i18n="l3.q3.c">+0.385c (same magnitude, wrong sign)</button>
+      <button class="opt" data-correct="false" data-i18n="l3.q3.d">0.97c (adding instead of subtracting)</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! At low speeds, vx/c² → 0 and γ → 1, recovering x′ = x − vt and t′ = t — the Galilean transformation."
+       data-feedback-wrong="Think about what happens to γ and the vx/c² term when v is tiny compared to c."
+       data-feedback-correct-th="ถูกต้อง! ที่ความเร็วต่ำ vx/c² → 0 และ γ → 1 ได้ผล x′ = x − vt และ t′ = t — การแปลงของกาลิเลโอ"
+       data-feedback-wrong-th="คิดดูว่า γ และพจน์ vx/c² เป็นอย่างไรเมื่อ v เล็กมากเทียบกับ c">
+    <div class="quiz-q" data-i18n="l3.q4">Q4. In what limit do the Lorentz equations reduce to the Galilean transformation?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l3.q4.a">When v → c (near light speed)</button>
+      <button class="opt" data-correct="true"  data-i18n="l3.q4.b">When v ≪ c (everyday speeds much less than light)</button>
+      <button class="opt" data-correct="false" data-i18n="l3.q4.c">When γ → ∞ (extreme relativistic regime)</button>
+      <button class="opt" data-correct="false" data-i18n="l3.q4.d">When x = 0 (events at the origin only)</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <h2 data-i18n="l3.h2.source">Primary Source</h2>
+  <p>
+    <a href="https://openstax.org/books/university-physics-volume-3/pages/5-6-the-lorentz-transformation"
+       target="_blank">
+      OpenStax University Physics Vol. 3 — Chapter 5.6: The Lorentz Transformation
+    </a>
+    — includes the derivation and several worked examples matching the style of Lec03.
+  </p>
+
+  <div class="key-concept" style="margin-top:2rem;" data-i18n-html="l3.kc.ask">
+    <strong>Questions?</strong> The most confusing part is usually the sign conventions
+    (when to use + vs −). Ask in the chat and I'll walk through it step by step.
+  </div>
+
+  <nav class="nav-links">
+    <a href="0002-time-dilation-length-contraction.html" data-i18n="nav.prev.l3">← Lesson 2: Time Dilation &amp; Length Contraction</a>
+    <a href="0004-relativistic-momentum-energy.html" data-i18n="nav.next.l3">Next: Relativistic Momentum &amp; Energy →</a>
+  </nav>
+
+  <footer class="lesson-footer">
+    Sci30105 Modern Physics · MWIT · Lesson 3 / 6 ·
+    Based on Lect03 by Aj Rungroj Tuayjaroen
+  </footer>
+</div>
+</body>
+</html>

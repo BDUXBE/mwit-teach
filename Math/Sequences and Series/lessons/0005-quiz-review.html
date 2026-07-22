@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Review — Sequences &amp; Series</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script src="../assets/quiz.js" defer></script>
+  <script src="../assets/lang.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">
+      <span class="lang-en">ค30107 · Sequences &amp; Series · Lesson 5 of 5</span>
+      <span class="lang-th hidden">ค30107 · ลำดับและอนุกรม · บทที่ 5 จาก 5</span>
+    </div>
+    <h1>
+      <span class="lang-en">Quiz Review — Sequences &amp; Series</span>
+      <span class="lang-th hidden">ทบทวนแบบทดสอบ — ลำดับและอนุกรม</span>
+    </h1>
+    <p class="objective">
+      <span class="lang-en"><strong>Goal:</strong> mixed retrieval practice covering all Sequences &amp; Series topics
+      in one sitting — the same way the quiz will test them. No hints, no structure clues.</span>
+      <span class="lang-th hidden"><strong>จุดมุ่งหมาย:</strong> ฝึกดึงความรู้แบบผสมครอบคลุมหัวข้อลำดับและอนุกรมทั้งหมดในการนั่งเรียนครั้งเดียว — เหมือนแบบทดสอบจริงทุกประการ ไม่มีคำใบ้หรือเบาะแสโครงสร้าง</span>
+    </p>
+  </header>
+
+  <div class="lang-en">
+    <div class="key-concept">
+      <strong>How to use this lesson:</strong> commit to your answer before clicking.
+      If you get one wrong, go back to the relevant lesson, re-read the key concept,
+      then return and try similar problems from your course notes.
+    </div>
+  </div>
+  <div class="lang-th hidden">
+    <div class="key-concept">
+      <strong>วิธีใช้บทเรียนนี้:</strong> ตัดสินใจตอบก่อนคลิก ถ้าตอบผิด ให้กลับไปยังบทที่เกี่ยวข้อง อ่านแนวคิดหลักใหม่อีกครั้ง แล้วกลับมาลองทำโจทย์คล้ายๆ จากเอกสารประกอบการสอน
+    </div>
+  </div>
+
+
+  <div class="lang-en">
+    <h2>Part A — Sequences (Objective 1)</h2>
+  </div>
+  <div class="lang-th hidden">
+    <h2>ส่วน ก — ลำดับ (วัตถุประสงค์ข้อ 1)</h2>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Divide top and bottom by n: (2 + 3/n)/(1 + 5/n) → 2/1 = 2."
+       data-feedback-wrong="Divide numerator and denominator by n (the highest power). Which terms survive?"
+       data-feedback-correct-th="ถูกต้อง! หาร n ทั้งเศษและส่วน: (2 + 3/n)/(1 + 5/n) → 2/1 = 2"
+       data-feedback-wrong-th="หารทั้งเศษและส่วนด้วย n (กำลังสูงสุด) แล้วดูว่าพจน์ใดรอด">
+    <div class="quiz-q">
+      <span class="lang-en">A1. &nbsp; lim<sub>n→∞</sub> (2n + 3) / (n + 5) = ?</span>
+      <span class="lang-th hidden">ก1. &nbsp; lim<sub>n→∞</sub> (2n + 3) / (n + 5) = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 0</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ 0</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 1</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ 1</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges to 2</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ 2</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges to +∞</span>
+        <span class="lang-th hidden">แยกออกสู่ +∞</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! lim cos(n)/n: since |cos(n)| ≤ 1, squeeze: −1/n ≤ cos(n)/n ≤ 1/n. Both bounds → 0."
+       data-feedback-wrong="cos(n) is bounded. Can you trap cos(n)/n between two sequences whose limits you know?"
+       data-feedback-correct-th="ถูกต้อง! lim cos(n)/n: เนื่องจาก |cos(n)| ≤ 1 บีบ: −1/n ≤ cos(n)/n ≤ 1/n ขอบเขตทั้งสอง → 0"
+       data-feedback-wrong-th="cos(n) มีขอบเขต คุณบีบ cos(n)/n ระหว่างสองลำดับที่รู้ลิมิตได้ไหม?">
+    <div class="quiz-q">
+      <span class="lang-en">A2. &nbsp; lim<sub>n→∞</sub> cos(n) / n = ?</span>
+      <span class="lang-th hidden">ก2. &nbsp; lim<sub>n→∞</sub> cos(n) / n = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Does not exist (cos oscillates)</span>
+        <span class="lang-th hidden">ไม่มีอยู่ (cos แกว่ง)</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges to 0 (Squeezing Theorem)</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ 0 (ทฤษฎีบทการบีบ)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 1 (standard trig limit)</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ 1 (ลิมิตตรีโกณมาตรฐาน)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges to +∞ (unbounded numerator)</span>
+        <span class="lang-th hidden">แยกออกสู่ +∞ (ตัวเศษไม่มีขอบเขต)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! (−0.7)^n: |r| = 0.7 < 1, so r^n → 0. The sequence converges to 0."
+       data-feedback-wrong="What is |r| for r = −0.7? Apply the geometric sequence rule: converges iff |r| < 1."
+       data-feedback-correct-th="ถูกต้อง! (−0.7)^n: |r| = 0.7 < 1 ดังนั้น r^n → 0 ลำดับลู่เข้าสู่ 0"
+       data-feedback-wrong-th="|r| สำหรับ r = −0.7 คือเท่าไร? ใช้กฎลำดับเรขาคณิต: ลู่เข้าก็ต่อเมื่อ |r| < 1">
+    <div class="quiz-q">
+      <span class="lang-en">A3. &nbsp; a<sub>n</sub> = (−0.7)<sup>n</sup> converges or diverges?</span>
+      <span class="lang-th hidden">ก3. &nbsp; a<sub>n</sub> = (−0.7)<sup>n</sup> ลู่เข้าหรือแยกออก?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (negative ratio)</span>
+        <span class="lang-th hidden">แยกออก (อัตราส่วนลบ)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to −0.7</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ −0.7</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges to 0</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ 0</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (oscillates)</span>
+        <span class="lang-th hidden">แยกออก (แกว่ง)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+
+  <div class="lang-en">
+    <h2>Part B — Infinite Series (Objective 2)</h2>
+  </div>
+  <div class="lang-th hidden">
+    <h2>ส่วน ข — อนุกรมอนันต์ (วัตถุประสงค์ข้อ 2)</h2>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Geometric: a = 5, r = 2/5. |r| < 1. Sum = 5/(1 − 2/5) = 5/(3/5) = 25/3."
+       data-feedback-wrong="Identify a (first term) and r = (2/5). Check |r| < 1, then apply S = a/(1−r)."
+       data-feedback-correct-th="ถูกต้อง! เรขาคณิต: a = 5, r = 2/5 |r| < 1 ผลรวม = 5/(1 − 2/5) = 5/(3/5) = 25/3"
+       data-feedback-wrong-th="หา a (พจน์แรก) และ r = (2/5) ตรวจ |r| < 1 จากนั้นใช้ S = a/(1−r)">
+    <div class="quiz-q">
+      <span class="lang-en">B1. &nbsp; 5 + 2 + 4/5 + 8/25 + ··· = ?</span>
+      <span class="lang-th hidden">ข1. &nbsp; 5 + 2 + 4/5 + 8/25 + ··· = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 10</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 10</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 8</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 8</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Sum equals 25/3</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 25/3</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Series diverges</span>
+        <span class="lang-th hidden">อนุกรมแยกออก</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Partial fractions: 1/((n+1)(n+2)) = 1/(n+1) − 1/(n+2). S_n = 1/2 − 1/(n+2) → 1/2."
+       data-feedback-wrong="Decompose using partial fractions, write S_n and cancel terms carefully."
+       data-feedback-correct-th="ถูกต้อง! แยกเศษย่อย: 1/((n+1)(n+2)) = 1/(n+1) − 1/(n+2) S_n = 1/2 − 1/(n+2) → 1/2"
+       data-feedback-wrong-th="แยกเศษย่อย เขียน S_n แล้วยกเลิกพจน์ที่หักล้างกันอย่างระมัดระวัง">
+    <div class="quiz-q">
+      <span class="lang-en">B2. &nbsp; Σ<sub>n=1</sub><sup>∞</sup> 1/((n+1)(n+2)) = ?</span>
+      <span class="lang-th hidden">ข2. &nbsp; Σ<sub>n=1</sub><sup>∞</sup> 1/((n+1)(n+2)) = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Sum equals 1/2</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 1/2</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 1</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 1</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 3/4</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 3/4</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Series diverges</span>
+        <span class="lang-th hidden">อนุกรมแยกออก</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! lim n/(n+1) = 1 ≠ 0. Divergence Test: diverges immediately."
+       data-feedback-wrong="First apply the Divergence Test: what does n/(n+1) approach as n → ∞?"
+       data-feedback-correct-th="ถูกต้อง! lim n/(n+1) = 1 ≠ 0 การทดสอบการแยกออก: แยกออกทันที"
+       data-feedback-wrong-th="ใช้การทดสอบการแยกออกก่อน n/(n+1) เข้าใกล้อะไรเมื่อ n → ∞?">
+    <div class="quiz-q">
+      <span class="lang-en">B3. &nbsp; Σ n/(n+1) — converges or diverges?</span>
+      <span class="lang-th hidden">ข3. &nbsp; Σ n/(n+1) — ลู่เข้าหรือแยกออก?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 1</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ 1</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 0</span>
+        <span class="lang-th hidden">ลู่เข้าสู่ 0</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Diverges (Divergence Test)</span>
+        <span class="lang-th hidden">แยกออก (การทดสอบการแยกออก)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (harmonic series)</span>
+        <span class="lang-th hidden">แยกออก (อนุกรมฮาร์โมนิก)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! p = 4 > 1, so this p-series converges."
+       data-feedback-wrong="Write it as Σ 1/n^4. What is p? Apply the p-series rule: converges iff p > 1."
+       data-feedback-correct-th="ถูกต้อง! p = 4 > 1 ดังนั้น p-อนุกรมนี้ลู่เข้า"
+       data-feedback-wrong-th="เขียนเป็น Σ 1/n^4 p เท่ากับเท่าไร? ใช้กฎ p-อนุกรม: ลู่เข้าก็ต่อเมื่อ p > 1">
+    <div class="quiz-q">
+      <span class="lang-en">B4. &nbsp; Σ 1/n⁴ — converges or diverges?</span>
+      <span class="lang-th hidden">ข4. &nbsp; Σ 1/n⁴ — ลู่เข้าหรือแยกออก?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (terms are small)</span>
+        <span class="lang-th hidden">แยกออก (พจน์มีค่าน้อย)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges (terms go to 0)</span>
+        <span class="lang-th hidden">ลู่เข้า (พจน์เข้าสู่ 0)</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges (p-series, p = 4)</span>
+        <span class="lang-th hidden">ลู่เข้า (p-อนุกรม, p = 4)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (p-series, p = 4)</span>
+        <span class="lang-th hidden">แยกออก (p-อนุกรม, p = 4)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+
+  <div class="lang-en">
+    <h2>Part C — Application (PISA Style)</h2>
+  </div>
+  <div class="lang-th hidden">
+    <h2>ส่วน ค — การประยุกต์ (รูปแบบ PISA)</h2>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! a = 100, r = 0.9 (each bounce = 90% of previous). Total distance = down + up bounces. First drop = 100. Then each bounce: up 100(0.9) + down 100(0.9), up 100(0.9²) + down 100(0.9²), … Total = 100 + 2×[100(0.9)/(1−0.9)] = 100 + 2×900 = 1900 m."
+       data-feedback-wrong="Model the bouncing as a geometric series. The first drop is 100 m. Each subsequent bounce goes up AND comes back down."
+       data-feedback-correct-th="ถูกต้อง! a = 100, r = 0.9 (แต่ละครั้งที่เด้ง = 90% ของครั้งก่อน) ระยะทางรวม = ตก + เด้งขึ้น การตกครั้งแรก = 100 เมตร จากนั้นแต่ละครั้งที่เด้ง: ขึ้น 100(0.9) + ลง 100(0.9), ขึ้น 100(0.9²) + ลง 100(0.9²), … รวม = 100 + 2×[100(0.9)/(1−0.9)] = 100 + 2×900 = 1,900 เมตร"
+       data-feedback-wrong-th="สร้างแบบจำลองการเด้งเป็นอนุกรมเรขาคณิต การตกครั้งแรก = 100 เมตร แต่ละครั้งที่เด้งขึ้น และลงกลับ">
+    <div class="quiz-q">
+      <span class="lang-en">C1. &nbsp; A ball is dropped from 100 m. Each bounce reaches 90% of the previous height. Total distance travelled?</span>
+      <span class="lang-th hidden">ค1. &nbsp; ลูกบอลถูกปล่อยจากความสูง 100 เมตร แต่ละครั้งที่เด้งขึ้น ลูกบอลถึงความสูง 90% ของครั้งก่อน ระยะทางรวมที่เคลื่อนที่คือเท่าไร?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">1,000 m</span>
+        <span class="lang-th hidden">1,000 เมตร</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">1,800 m</span>
+        <span class="lang-th hidden">1,800 เมตร</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">1,900 m</span>
+        <span class="lang-th hidden">1,900 เมตร</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">2,000 m</span>
+        <span class="lang-th hidden">2,000 เมตร</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+
+  <div class="lang-en">
+    <h2>Score Yourself</h2>
+  </div>
+  <div class="lang-th hidden">
+    <h2>ประเมินคะแนนของตัวเอง</h2>
+  </div>
+
+  <table>
+    <tr>
+      <th><span class="lang-en">Part</span><span class="lang-th hidden">ส่วน</span></th>
+      <th><span class="lang-en">Topic</span><span class="lang-th hidden">หัวข้อ</span></th>
+      <th><span class="lang-en">Quiz Weight</span><span class="lang-th hidden">น้ำหนักคะแนน</span></th>
+    </tr>
+    <tr>
+      <td><span class="lang-en">A (3 Qs)</span><span class="lang-th hidden">ก (3 ข้อ)</span></td>
+      <td><span class="lang-en">Infinite Sequences — Limits</span><span class="lang-th hidden">ลำดับอนันต์ — ลิมิต</span></td>
+      <td><span class="lang-en">~10 pts</span><span class="lang-th hidden">~10 คะแนน</span></td>
+    </tr>
+    <tr>
+      <td><span class="lang-en">B (4 Qs)</span><span class="lang-th hidden">ข (4 ข้อ)</span></td>
+      <td><span class="lang-en">Infinite Series — Sum &amp; Classification</span><span class="lang-th hidden">อนุกรมอนันต์ — ผลรวมและการจำแนก</span></td>
+      <td><span class="lang-en">~10 pts</span><span class="lang-th hidden">~10 คะแนน</span></td>
+    </tr>
+    <tr>
+      <td><span class="lang-en">C (1 Q)</span><span class="lang-th hidden">ค (1 ข้อ)</span></td>
+      <td><span class="lang-en">PISA Application</span><span class="lang-th hidden">การประยุกต์ PISA</span></td>
+      <td><span class="lang-en">~5 pts</span><span class="lang-th hidden">~5 คะแนน</span></td>
+    </tr>
+  </table>
+
+  <div class="lang-en">
+    <div class="warning" style="margin-top:1.5rem;">
+      <strong>If you missed any B questions:</strong> go back to
+      <a href="0002-infinite-series.html">Lesson 2</a> or
+      <a href="0004-convergence-tests.html">Lesson 4</a> and re-read the relevant section.
+      Then solve 2–3 more problems from the S3 or S6 PDF before the quiz.
+    </div>
+  </div>
+  <div class="lang-th hidden">
+    <div class="warning" style="margin-top:1.5rem;">
+      <strong>ถ้าตอบผิดข้อใดในส่วน ข:</strong> กลับไปยัง
+      <a href="0002-infinite-series.html">บทที่ 2</a> หรือ
+      <a href="0004-convergence-tests.html">บทที่ 4</a> แล้วอ่านหัวข้อที่เกี่ยวข้องใหม่อีกครั้ง
+      จากนั้นทำโจทย์เพิ่มเติม 2–3 ข้อจาก PDF S3 หรือ S6 ก่อนสอบ
+    </div>
+  </div>
+
+  <div class="lang-en">
+    <div class="key-concept" style="margin-top:2rem;">
+      <strong>Ask your teacher (me) anything.</strong>
+      Tell me your score (e.g. "missed B2 and C1") and I will give you targeted
+      follow-up problems at exactly the right difficulty before your quiz.
+    </div>
+  </div>
+  <div class="lang-th hidden">
+    <div class="key-concept" style="margin-top:2rem;">
+      <strong>ถามครู (ฉัน) ได้ทุกเรื่อง</strong>
+      บอกคะแนนของคุณ (เช่น "ตอบผิด ข2 และ ค1") แล้วฉันจะให้โจทย์ติดตามเพิ่มเติมในระดับความยากที่เหมาะสมก่อนสอบ
+    </div>
+  </div>
+
+  <nav class="nav-links">
+    <a href="0004-convergence-tests.html">
+      <span class="lang-en">← Lesson 4: Convergence Tests</span>
+      <span class="lang-th hidden">← บทที่ 4: การทดสอบการลู่เข้า</span>
+    </a>
+    <span></span>
+  </nav>
+
+  <footer class="lesson-footer">
+    ค30107 แคลคูลัสและการประยุกต์ · MWIT · AY 2569 Semester 1 · Quiz: 20–24 July 2026
+  </footer>
+
+</div>
+</body>
+</html>

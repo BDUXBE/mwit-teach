@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convergence Tests</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script src="../assets/quiz.js" defer></script>
+  <script src="../assets/lang.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">
+      <span class="lang-en">ค30107 · Sequences &amp; Series · Lesson 4 of 5</span>
+      <span class="lang-th hidden">ค30107 · ลำดับและอนุกรม · บทที่ 4 จาก 5</span>
+    </div>
+    <h1>
+      <span class="lang-en">Convergence Tests</span>
+      <span class="lang-th hidden">การทดสอบการลู่เข้า</span>
+    </h1>
+    <p class="objective">
+      <span class="lang-en">
+        <strong>After this lesson:</strong> given any series from the course, you can choose the right
+        test and correctly classify it as convergent or divergent.
+      </span>
+      <span class="lang-th hidden">
+        <strong>หลังจากเรียนบทนี้:</strong> เมื่อกำหนดอนุกรมใดๆ จากบทเรียนนี้ นักเรียนสามารถเลือกการทดสอบที่เหมาะสมและจำแนกได้อย่างถูกต้องว่าลู่เข้าหรือแยกออก
+      </span>
+    </p>
+  </header>
+
+
+  <!-- Section 1 -->
+  <div class="lang-en">
+    <h2>1. The Decision Flowchart</h2>
+
+    <p>
+      Always work top-to-bottom. Stop as soon as a test gives a definitive answer.
+    </p>
+
+    <div class="formula-box">
+      <span class="label">Which test to use — in order</span>
+      Step 1: Divergence Test
+              If lim a_n ≠ 0  →  DIVERGES. Done.
+              If lim a_n = 0  →  inconclusive, keep going.
+
+      Step 2: Is it geometric?  (a·r^n form)
+              If |r| &lt; 1  →  CONVERGES,  sum = a/(1−r).
+              If |r| ≥ 1  →  DIVERGES.
+
+      Step 3: Does it telescope?  (partial fractions give f(n) − f(n+1))
+              Write out S_n, find the pattern, take the limit.
+
+      Step 4: Does it look like Σ 1/n^p?
+              p &gt; 1  →  CONVERGES  (p-series)
+              p ≤ 1  →  DIVERGES   (includes harmonic: p = 1)
+    </div>
+
+    <div class="key-concept">
+      <strong>For ค30107:</strong> these four steps cover virtually every series you will see
+      on the quiz. Master them in order.
+    </div>
+  </div>
+
+  <div class="lang-th hidden">
+    <h2>1. แผนผังการตัดสินใจ</h2>
+
+    <p>
+      ทำงานจากบนลงล่างเสมอ หยุดทันทีที่การทดสอบให้คำตอบที่ชัดเจน
+    </p>
+
+    <div class="formula-box">
+      <span class="label">จะใช้การทดสอบใด — เรียงตามลำดับ</span>
+      ขั้น 1: การทดสอบการแยกออก
+              ถ้า lim a_n ≠ 0  →  แยกออก จบ
+              ถ้า lim a_n = 0  →  สรุปไม่ได้ ดำเนินต่อ
+
+      ขั้น 2: เป็นเรขาคณิตหรือไม่? (รูป a·r^n)
+              ถ้า |r| &lt; 1  →  ลู่เข้า ผลรวม = a/(1−r)
+              ถ้า |r| ≥ 1  →  แยกออก
+
+      ขั้น 3: เป็นเทเลสโคปหรือไม่? (แยกเศษย่อยได้ f(n) − f(n+1))
+              เขียน S_n ออกมา หารูปแบบ แล้วหาลิมิต
+
+      ขั้น 4: มีรูปแบบ Σ 1/n^p หรือไม่?
+              p &gt; 1  →  ลู่เข้า (p-series)
+              p ≤ 1  →  แยกออก (รวมถึงฮาร์โมนิก: p = 1)
+    </div>
+
+    <div class="key-concept">
+      <strong>สำหรับ ค30107:</strong> สี่ขั้นตอนนี้ครอบคลุมอนุกรมแทบทุกชนิดที่จะเจอในแบบทดสอบ เรียนรู้ให้แม่นตามลำดับ
+    </div>
+  </div>
+
+
+  <!-- Section 2 -->
+  <div class="lang-en">
+    <h2>2. Divergence Test (nth-Term Test)</h2>
+
+    <div class="formula-box">
+      <span class="label">Rule</span>
+      If  lim<sub>n→∞</sub> a<sub>n</sub> ≠ 0  →  Σ a<sub>n</sub> diverges.
+
+      WARNING: If lim a_n = 0, this test is INCONCLUSIVE.
+               (Example: 1/n → 0 but Σ 1/n still diverges.)
+    </div>
+
+    <h3>Examples</h3>
+
+    <div class="formula-box">
+      <span class="label">Example — Diverges immediately</span>
+      Σ n/(2n+1)
+      lim a_n = lim n/(2n+1) = 1/2 ≠ 0
+      → Diverges. (No further work needed.)
+    </div>
+  </div>
+
+  <div class="lang-th hidden">
+    <h2>2. การทดสอบการแยกออก (การทดสอบพจน์ที่ n)</h2>
+
+    <div class="formula-box">
+      <span class="label">กฎ</span>
+      If  lim<sub>n→∞</sub> a<sub>n</sub> ≠ 0  →  Σ a<sub>n</sub> diverges.
+
+      คำเตือน: ถ้า lim a_n = 0 การทดสอบนี้ให้ผลไม่ชี้ขาด
+               (ตัวอย่าง: 1/n → 0 แต่ Σ 1/n ยังแยกออก)
+    </div>
+
+    <h3>ตัวอย่าง</h3>
+
+    <div class="formula-box">
+      <span class="label">ตัวอย่าง — แยกออกทันที</span>
+      Σ n/(2n+1)
+      lim a_n = lim n/(2n+1) = 1/2 ≠ 0
+      → แยกออก (ไม่ต้องทำงานเพิ่มเติม)
+    </div>
+  </div>
+
+
+  <!-- Section 3 -->
+  <div class="lang-en">
+    <h2>3. Geometric Series Test</h2>
+
+    <div class="formula-box">
+      <span class="label">Rule</span>
+      Σ a·r<sup>n</sup>  converges iff |r| &lt; 1,  sum = a/(1−r).
+      Otherwise diverges.
+    </div>
+
+    <div class="formula-box">
+      <span class="label">Identifying the ratio r</span>
+      r = a<sub>n+1</sub> / a<sub>n</sub>  (check it is constant — same for every n)
+    </div>
+  </div>
+
+  <div class="lang-th hidden">
+    <h2>3. การทดสอบอนุกรมเรขาคณิต</h2>
+
+    <div class="formula-box">
+      <span class="label">กฎ</span>
+      Σ a·r<sup>n</sup>  ลู่เข้าก็ต่อเมื่อ |r| &lt; 1  ผลรวม = a/(1−r)
+      มิฉะนั้นแยกออก
+    </div>
+
+    <div class="formula-box">
+      <span class="label">การหาอัตราส่วน r</span>
+      r = a<sub>n+1</sub> / a<sub>n</sub>  (ตรวจสอบว่าคงที่ — เหมือนกันทุก n)
+    </div>
+  </div>
+
+
+  <!-- Section 4 -->
+  <div class="lang-en">
+    <h2>4. Telescoping Series</h2>
+
+    <div class="formula-box">
+      <span class="label">When to suspect telescoping</span>
+      Numerator is constant, denominator is a product of two consecutive linear terms.
+      Examples:  1/(n(n+1)),  1/((n+1)(n+3)),  1/(n²−1)
+
+      Method:
+      1. Partial fractions to write a_n = f(n) − f(n+k)
+      2. Write out S_n explicitly
+      3. Identify what survives after cancellation
+      4. Take lim S_n
+    </div>
+
+    <div class="formula-box">
+      <span class="label">Example — Σ 1/((2n−1)(2n+1))</span>
+      Partial fractions:  1/((2n−1)(2n+1)) = (1/2)[1/(2n−1) − 1/(2n+1)]
+
+      S_n = (1/2)[(1/1 − 1/3) + (1/3 − 1/5) + ··· + (1/(2n−1) − 1/(2n+1))]
+          = (1/2)[1 − 1/(2n+1)]
+
+      lim S_n = (1/2)(1) = <strong>1/2</strong>
+    </div>
+  </div>
+
+  <div class="lang-th hidden">
+    <h2>4. อนุกรมเทเลสโคป</h2>
+
+    <div class="formula-box">
+      <span class="label">เมื่อใดควรสังเกตว่าเป็นเทเลสโคป</span>
+      ตัวเศษเป็นค่าคงที่ ตัวส่วนเป็นผลคูณของพจน์เชิงเส้นสองพจน์ที่ต่อเนื่องกัน
+      Examples:  1/(n(n+1)),  1/((n+1)(n+3)),  1/(n²−1)
+
+      วิธีการ:
+      1. แยกเศษย่อยเพื่อเขียน a_n = f(n) − f(n+k)
+      2. เขียน S_n ออกมาอย่างชัดเจน
+      3. ระบุสิ่งที่เหลืออยู่หลังการหักล้าง
+      4. หา lim S_n
+    </div>
+
+    <div class="formula-box">
+      <span class="label">ตัวอย่าง — Σ 1/((2n−1)(2n+1))</span>
+      แยกเศษย่อย:  1/((2n−1)(2n+1)) = (1/2)[1/(2n−1) − 1/(2n+1)]
+
+      S_n = (1/2)[(1/1 − 1/3) + (1/3 − 1/5) + ··· + (1/(2n−1) − 1/(2n+1))]
+          = (1/2)[1 − 1/(2n+1)]
+
+      lim S_n = (1/2)(1) = <strong>1/2</strong>
+    </div>
+  </div>
+
+
+  <!-- Section 5 -->
+  <div class="lang-en">
+    <h2>5. p-Series</h2>
+
+    <div class="formula-box">
+      <span class="label">p-Series Rule</span>
+      Σ<sub>n=1</sub><sup>∞</sup> 1/n<sup>p</sup>
+        converges   if p &gt; 1
+        diverges    if p ≤ 1
+
+      Common cases:
+        p = 1:    Σ 1/n    (harmonic)  →  DIVERGES
+        p = 2:    Σ 1/n²              →  CONVERGES  (= π²/6)
+        p = 1/2:  Σ 1/√n             →  DIVERGES
+    </div>
+  </div>
+
+  <div class="lang-th hidden">
+    <h2>5. p-อนุกรม</h2>
+
+    <div class="formula-box">
+      <span class="label">กฎ p-อนุกรม</span>
+      Σ<sub>n=1</sub><sup>∞</sup> 1/n<sup>p</sup>
+        ลู่เข้า   ถ้า p &gt; 1
+        แยกออก   ถ้า p ≤ 1
+
+      กรณีที่พบบ่อย:
+        p = 1:    Σ 1/n    (ฮาร์โมนิก)  →  แยกออก
+        p = 2:    Σ 1/n²              →  ลู่เข้า  (= π²/6)
+        p = 1/2:  Σ 1/√n             →  แยกออก
+    </div>
+  </div>
+
+
+  <!-- Section 6 -->
+  <div class="lang-en">
+    <h2>6. Side-by-Side Comparison</h2>
+
+    <table>
+      <tr>
+        <th>Series</th>
+        <th>Test Used</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td>Σ n/(2n+1)</td>
+        <td>Divergence Test (lim = 1/2)</td>
+        <td>Diverges</td>
+      </tr>
+      <tr>
+        <td>Σ (2/3)<sup>n</sup></td>
+        <td>Geometric (r = 2/3)</td>
+        <td>Converges = 2</td>
+      </tr>
+      <tr>
+        <td>Σ 1/(n(n+1))</td>
+        <td>Telescoping</td>
+        <td>Converges = 1</td>
+      </tr>
+      <tr>
+        <td>Σ 1/n</td>
+        <td>p-series (p = 1)</td>
+        <td>Diverges</td>
+      </tr>
+      <tr>
+        <td>Σ 1/n³</td>
+        <td>p-series (p = 3)</td>
+        <td>Converges</td>
+      </tr>
+      <tr>
+        <td>Σ 1/√n</td>
+        <td>p-series (p = 1/2)</td>
+        <td>Diverges</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="lang-th hidden">
+    <h2>6. ตารางเปรียบเทียบ</h2>
+
+    <table>
+      <tr>
+        <th>อนุกรม</th>
+        <th>การทดสอบที่ใช้</th>
+        <th>ผลลัพธ์</th>
+      </tr>
+      <tr>
+        <td>Σ n/(2n+1)</td>
+        <td>การทดสอบการแยกออก (lim = 1/2)</td>
+        <td>แยกออก</td>
+      </tr>
+      <tr>
+        <td>Σ (2/3)<sup>n</sup></td>
+        <td>เรขาคณิต (r = 2/3)</td>
+        <td>ลู่เข้า = 2</td>
+      </tr>
+      <tr>
+        <td>Σ 1/(n(n+1))</td>
+        <td>เทเลสโคป</td>
+        <td>ลู่เข้า = 1</td>
+      </tr>
+      <tr>
+        <td>Σ 1/n</td>
+        <td>p-อนุกรม (p = 1)</td>
+        <td>แยกออก</td>
+      </tr>
+      <tr>
+        <td>Σ 1/n³</td>
+        <td>p-อนุกรม (p = 3)</td>
+        <td>ลู่เข้า</td>
+      </tr>
+      <tr>
+        <td>Σ 1/√n</td>
+        <td>p-อนุกรม (p = 1/2)</td>
+        <td>แยกออก</td>
+      </tr>
+    </table>
+  </div>
+
+
+  <!-- Quiz Section -->
+  <h2>
+    <span class="lang-en">Check Your Understanding</span>
+    <span class="lang-th hidden">ทดสอบความเข้าใจ</span>
+  </h2>
+
+  <!-- Q1 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! lim n²/(n²+1) = 1 ≠ 0, so the Divergence Test immediately shows it diverges."
+       data-feedback-wrong="Apply the Divergence Test first: what does a_n approach as n → ∞?"
+       data-feedback-correct-th="ถูกต้อง! lim n²/(n²+1) = 1 ≠ 0 การทดสอบการแยกออกแสดงให้เห็นทันทีว่าแยกออก"
+       data-feedback-wrong-th="ใช้การทดสอบการแยกออกก่อน a_n เข้าใกล้อะไรเมื่อ n → ∞?">
+    <div class="quiz-q">
+      <span class="lang-en">Q1. &nbsp; Σ n²/(n²+1) — converges or diverges?</span>
+      <span class="lang-th hidden">ข้อ 1. &nbsp; Σ n²/(n²+1) — ลู่เข้าหรือแยกออก?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges (terms shrink)</span>
+        <span class="lang-th hidden">ลู่เข้า (พจน์ลดลง)</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Diverges (Divergence Test)</span>
+        <span class="lang-th hidden">แยกออก (การทดสอบการแยกออก)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges (geometric series)</span>
+        <span class="lang-th hidden">ลู่เข้า (อนุกรมเรขาคณิต)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (harmonic comparison)</span>
+        <span class="lang-th hidden">แยกออก (เปรียบเทียบกับฮาร์โมนิก)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! p = 3/2 > 1, so this p-series converges."
+       data-feedback-wrong="Rewrite as Σ 1/n^(3/2). What is p? Then apply the p-series rule."
+       data-feedback-correct-th="ถูกต้อง! p = 3/2 > 1 ดังนั้น p-อนุกรมนี้ลู่เข้า"
+       data-feedback-wrong-th="เขียนใหม่เป็น Σ 1/n^(3/2) p เท่ากับเท่าไร? จากนั้นใช้กฎ p-อนุกรม">
+    <div class="quiz-q">
+      <span class="lang-en">Q2. &nbsp; Σ 1/n√n = Σ 1/n<sup>3/2</sup> — converges or diverges?</span>
+      <span class="lang-th hidden">ข้อ 2. &nbsp; Σ 1/n√n = Σ 1/n<sup>3/2</sup> — ลู่เข้าหรือแยกออก?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges (p = 3/2 &gt; 1)</span>
+        <span class="lang-th hidden">ลู่เข้า (p = 3/2 &gt; 1)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (p = 3/2 &lt; 2)</span>
+        <span class="lang-th hidden">แยกออก (p = 3/2 &lt; 2)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges (geometric series)</span>
+        <span class="lang-th hidden">ลู่เข้า (อนุกรมเรขาคณิต)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (p = 1/2 &lt; 1)</span>
+        <span class="lang-th hidden">แยกออก (p = 1/2 &lt; 1)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! Partial fractions: 2/(n(n+2)) = 1/n − 1/(n+2). S_n telescopes to 1 + 1/2 − 1/(n+1) − 1/(n+2). Limit = 3/2."
+       data-feedback-wrong="Try partial fractions on 2/(n(n+2)) to write it as A/n + B/(n+2). Then write out S_n."
+       data-feedback-correct-th="ถูกต้อง! แยกเศษย่อย: 2/(n(n+2)) = 1/n − 1/(n+2) S_n เทเลสโคปได้ 1 + 1/2 − 1/(n+1) − 1/(n+2) ลิมิต = 3/2"
+       data-feedback-wrong-th="ลองแยกเศษย่อย 2/(n(n+2)) ให้อยู่ในรูป A/n + B/(n+2) จากนั้นเขียน S_n">
+    <div class="quiz-q">
+      <span class="lang-en">Q3. &nbsp; Σ<sub>n=1</sub><sup>∞</sup> 2/(n(n+2)) = ?</span>
+      <span class="lang-th hidden">ข้อ 3. &nbsp; Σ<sub>n=1</sub><sup>∞</sup> 2/(n(n+2)) = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 1</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 1</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Sum equals 1/2</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 1/2</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Sum equals 3/2</span>
+        <span class="lang-th hidden">ผลรวมเท่ากับ 3/2</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Series diverges</span>
+        <span class="lang-th hidden">อนุกรมแยกออก</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+
+  <!-- Primary Source -->
+  <div class="lang-en">
+    <h2>Primary Source</h2>
+    <p>
+      Course notes: <a href="../lectures/1.6 [S6] Convergence Test.pdf">S6 — Convergence Tests (PDF)</a>
+    </p>
+    <p>
+      <a href="https://openstax.org/books/calculus-volume-2/pages/5-3-the-divergence-and-integral-tests" target="_blank">
+        OpenStax Calculus Vol 2 — 5.3 Divergence and Integral Tests
+      </a>
+    </p>
+
+    <div class="key-concept" style="margin-top:2rem;">
+      <strong>Ask your teacher (me) anything.</strong>
+      If you are unsure which test to apply to a specific series, paste it here.
+      Knowing <em>which test to reach for</em> is itself a skill worth practicing.
+    </div>
+  </div>
+
+  <div class="lang-th hidden">
+    <h2>แหล่งเรียนรู้หลัก</h2>
+    <p>
+      เอกสารประกอบการสอน: <a href="../lectures/1.6 [S6] Convergence Test.pdf">S6 — การทดสอบการลู่เข้า (PDF)</a>
+    </p>
+    <p>
+      <a href="https://openstax.org/books/calculus-volume-2/pages/5-3-the-divergence-and-integral-tests" target="_blank">
+        OpenStax Calculus Vol 2 — 5.3 Divergence and Integral Tests
+      </a>
+    </p>
+
+    <div class="key-concept" style="margin-top:2rem;">
+      <strong>ถามครู (ฉัน) ได้ทุกเรื่อง</strong> ถ้าไม่แน่ใจว่าควรใช้การทดสอบใดกับอนุกรมที่กำหนด วางอนุกรมนั้นที่นี่ได้เลย การรู้ว่า <em>จะใช้การทดสอบใด</em> เป็นทักษะที่ควรฝึกในตัวมันเอง
+    </div>
+  </div>
+
+
+  <nav class="nav-links">
+    <a href="0003-applications-geometric-series.html">
+      <span class="lang-en">← Lesson 3: Applications</span>
+      <span class="lang-th hidden">← บทที่ 3: การประยุกต์</span>
+    </a>
+    <a href="0005-quiz-review.html">
+      <span class="lang-en">Next: Quiz Review →</span>
+      <span class="lang-th hidden">ถัดไป: ทบทวนแบบทดสอบ →</span>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    ค30107 แคลคูลัสและการประยุกต์ · MWIT · AY 2569 Semester 1 · Quiz: 20–24 July 2026
+  </footer>
+
+</div>
+</body>
+</html>

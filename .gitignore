@@ -1,0 +1,11 @@
+# Source lecture PDFs (large files, not needed for live pages)
+**/lectures/
+
+# Claude Code system files
+.claude/
+.agents/
+skills-lock.json
+CLAUDE.md
+
+# Reference / scratch
+reference/

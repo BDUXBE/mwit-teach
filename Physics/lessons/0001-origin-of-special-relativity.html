@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 1 — Origin of Special Relativity</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- MathJax for equations -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+  <script src="quiz.js" defer></script>
+  <script src="lang.js" defer></script>
+</head>
+<body>
+<button class="lang-btn" id="lang-btn">ภาษาไทย</button>
+<div class="page">
+
+  <!-- Header -->
+  <header class="lesson-header">
+    <div class="course-tag">Sci30105 Modern Physics · MWIT &nbsp;|&nbsp; Lesson 1 of 6</div>
+    <h1 data-i18n="l1.h1">Origin of Special Relativity</h1>
+    <p class="objective" data-i18n-html="l1.obj">
+      <strong>By the end of this lesson you will be able to:</strong>
+      distinguish inertial from non-inertial frames, state the Galilean transformation,
+      explain why it breaks down for light, and recite Einstein's two postulates.
+    </p>
+  </header>
+
+  <!-- 1. What is Relativity? -->
+  <h2 data-i18n="l1.h2.1">1. What is Relativity?</h2>
+
+  <p>
+    <em>Relativity</em> is the idea that measured values of physical quantities —
+    position, distance, time, velocity — can <strong>differ</strong> depending on
+    the <strong>motion</strong> of the observer who measures them.
+  </p>
+
+  <div class="key-concept" data-i18n-html="l1.kc.1">
+    <strong>Key question to keep in mind:</strong>
+    Which things are <em>absolute</em> (same for everyone) and which are
+    <em>relative</em> (depend on who is looking)?
+  </div>
+
+  <!-- 2. Frames of Reference -->
+  <h2 data-i18n="l1.h2.2">2. Frames of Reference</h2>
+
+  <table>
+    <tr>
+      <th>Type</th>
+      <th>Definition</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td><strong>Inertial frame</strong></td>
+      <td>Moves at constant velocity (no acceleration)</td>
+      <td>Train at steady speed, spaceship coasting</td>
+    </tr>
+    <tr>
+      <td><strong>Non-inertial frame</strong></td>
+      <td>Accelerating or rotating</td>
+      <td>Car braking, spinning carousel</td>
+    </tr>
+  </table>
+
+  <p>
+    Newton's laws (and Galilean relativity) only work correctly inside
+    <strong>inertial frames</strong>. This is the starting assumption of special relativity too.
+  </p>
+
+  <!-- 3. Galilean Relativity -->
+  <h2 data-i18n="l1.h2.3">3. Galilean Relativity</h2>
+
+  <p>
+    Galileo (and Newton) claimed: "All inertial observers see the <em>same laws of physics</em>,
+    even though they measure different velocities." Time, however, was assumed to be
+    <strong>absolute</strong> — everyone's clock ticks at the same rate.
+  </p>
+
+  <h3 data-i18n="l1.h3.galilean.eq">Galilean Transformation Equations</h3>
+  <p>
+    Imagine two frames: the <em>rest frame</em> $O$ (you, standing still) and a
+    <em>moving frame</em> $O'$ (a truck moving at speed $v$ along the $x$-axis).
+    At $t = 0$ both origins coincide.
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Galilean Transformation — from O to O′</span>
+    x′ = x − vt<br>
+    y′ = y<br>
+    z′ = z<br>
+    t′ = t &nbsp;&nbsp;&nbsp;← time is absolute in Galilean relativity
+  </div>
+
+  <div class="formula-box">
+    <span class="label">Galilean Velocity Addition</span>
+    u′ = u − v<br>
+    <span style="font-family:var(--font-ui);font-size:0.85rem;color:var(--muted)">
+      (u = object speed in O, u′ = object speed in O′)
+    </span>
+  </div>
+
+  <p>
+    <strong>Example:</strong> You throw a ball at 10 m/s inside a train moving at 30 m/s.
+    A person on the platform sees the ball at $10 + 30 = 40$ m/s. Makes sense — this
+    is everyday experience.
+  </p>
+
+  <!-- 4. The Problem: Maxwell vs Galilean -->
+  <h2 data-i18n="l1.h2.4">4. The Crisis — Light Breaks Galilean Relativity</h2>
+
+  <p>
+    In the 1860s Maxwell derived that light (an electromagnetic wave) travels at:
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Maxwell's Four Equations</span>
+    ∇·<strong>E</strong> = ρ/ε₀ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Gauss — charges create electric fields)<br>
+    ∇·<strong>B</strong> = 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (no magnetic monopoles)<br>
+    ∇×<strong>E</strong> = −∂<strong>B</strong>/∂t &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Faraday — changing B creates E)<br>
+    ∇×<strong>B</strong> = μ₀<strong>J</strong> + μ₀ε₀ ∂<strong>E</strong>/∂t &nbsp; (Ampère–Maxwell — changing E creates B)<br><br>
+    Combining the two curl equations gives a wave equation with speed:<br>
+    c = 1/√(ε₀μ₀) = 2.998 × 10⁸ m/s
+  </div>
+
+  <p>
+    The problem: Maxwell's equations give <em>one specific number</em> for the speed of
+    light with <em>no mention of a reference frame</em>. Apply Galilean velocity addition:
+  </p>
+
+  <div class="formula-box">
+    <span class="label">Galilean prediction for light speed seen by moving observer</span>
+    c′ = c + v &nbsp;&nbsp; (or c − v)
+  </div>
+
+  <div class="warning" data-i18n-html="l1.warn.1">
+    <strong>Contradiction:</strong> Galilean relativity says a moving observer should
+    measure light at $c + v$ or $c - v$. But Maxwell says <em>every</em> observer should
+    get exactly $c$. Both cannot be right.
+  </div>
+
+  <h3 data-i18n="l1.h3.explanations">Four possible explanations debated in the 1880s–1900s</h3>
+  <ol>
+    <li>The principle of relativity itself is wrong.</li>
+    <li>Maxwell's equations are wrong.</li>
+    <li>The Galilean transformation is incomplete.</li>
+    <li>Light travels through a mysterious medium called the <strong>Ether</strong>, so $c$ is only constant relative to it.</li>
+  </ol>
+
+  <h3 data-i18n="l1.h3.mm">The Michelson–Morley Experiment (1887)</h3>
+  <p>
+    Michelson and Morley tried to detect the Earth's motion through the Ether by
+    comparing light travel times in perpendicular directions. Result:
+    <strong>no difference detected</strong> — no Ether wind.
+    This demolished option 4.
+  </p>
+
+  <div class="formula-box">
+    <span class="label">How the Apparatus Worked</span>
+    A half-silvered mirror splits a beam into two perpendicular arms:<br><br>
+    Arm 1 (parallel to Earth's motion): light travels at c+v outward, c−v returning.<br>
+    Round-trip time: t₁ = 2Lc / (c²−v²) = (2L/c) · 1/(1−v²/c²)<br><br>
+    Arm 2 (perpendicular): effective speed each way = √(c²−v²).<br>
+    Round-trip time: t₂ = 2L/√(c²−v²) = (2L/c) · 1/√(1−v²/c²)<br><br>
+    Classical prediction: t₁ ≠ t₂ → fringe shift visible in the interferometer.<br>
+    <strong>Observed: zero fringe shift</strong> → t₁ = t₂ → no Ether wind detected.
+  </div>
+
+  <p>
+    Experiments showed Maxwell's equations were never wrong. That ruled out option 2.<br>
+    Einstein chose to keep <em>both</em> the principle of relativity <em>and</em>
+    Maxwell's constant $c$ — which forced him to discard the Galilean transformation
+    (option 3) and revise our understanding of time.
+  </p>
+
+  <!-- 5. Einstein's Two Postulates -->
+  <h2 data-i18n="l1.h2.5">5. Einstein's Two Postulates (1905)</h2>
+
+  <div class="key-concept" data-i18n-html="l1.kc.post1">
+    <strong>Postulate 1 — The Principle of Relativity:</strong><br>
+    The laws of physics have the same form in <em>all</em> inertial frames of reference.
+  </div>
+
+  <div class="key-concept" data-i18n-html="l1.kc.post2">
+    <strong>Postulate 2 — Constancy of the Speed of Light:</strong><br>
+    The speed of light in a vacuum is $c = 3.00 \times 10^8$ m/s in all inertial frames,
+    regardless of the velocity of the source or the observer.
+  </div>
+
+  <p>
+    These two postulates together force a radical conclusion: <strong>time is not absolute</strong>.
+    Two observers moving relative to each other will measure <em>different</em> time intervals
+    and <em>different</em> lengths for the same events. This leads directly to
+    <a href="0002-time-dilation-length-contraction.html">time dilation and length contraction</a> (Lesson 2).
+  </p>
+
+  <!-- Summary Table -->
+  <h2 data-i18n="l1.h2.summary">Summary — Galilean vs Einsteinian Relativity</h2>
+
+  <table>
+    <tr>
+      <th>Property</th>
+      <th>Galilean (Classical)</th>
+      <th>Einsteinian (Special)</th>
+    </tr>
+    <tr>
+      <td>Time</td>
+      <td>Absolute (same for all)</td>
+      <td>Relative (depends on observer)</td>
+    </tr>
+    <tr>
+      <td>Space</td>
+      <td>Absolute</td>
+      <td>Relative</td>
+    </tr>
+    <tr>
+      <td>Speed of light</td>
+      <td>Relative (c + v or c − v)</td>
+      <td>Absolute (always c)</td>
+    </tr>
+    <tr>
+      <td>Valid when…</td>
+      <td>$v \ll c$ (everyday speeds)</td>
+      <td>All speeds up to $c$</td>
+    </tr>
+  </table>
+
+  <!-- Quizzes -->
+  <h2 data-i18n="l1.h2.quiz">Check Your Understanding</h2>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! An inertial frame moves at constant velocity — no acceleration."
+       data-feedback-wrong="Remember: the key criterion is constant velocity, not zero velocity."
+       data-feedback-correct-th="ถูกต้อง! กรอบอ้างอิงเฉื่อยเคลื่อนที่ด้วยความเร็วคงที่ — ไม่มีความเร่ง"
+       data-feedback-wrong-th="จำไว้ว่า: เกณฑ์สำคัญคือความเร็วคงที่ ไม่ใช่ความเร็วเป็นศูนย์">
+    <div class="quiz-q" data-i18n="l1.q1">Q1. Which frame is inertial?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l1.q1.a">A car braking to a stop at a red light</button>
+      <button class="opt" data-correct="true"  data-i18n="l1.q1.b">A spacecraft coasting at 0.5c with engines off</button>
+      <button class="opt" data-correct="false" data-i18n="l1.q1.c">A spinning space station creating artificial gravity</button>
+      <button class="opt" data-correct="false" data-i18n="l1.q1.d">A roller-coaster going around a vertical loop</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Galilean velocity addition gives c + v — contradicting Maxwell."
+       data-feedback-wrong="Think about what Galilean velocity addition predicts when you apply it to light."
+       data-feedback-correct-th="ถูกต้อง! การรวมความเร็วของกาลิเลโอให้ c + v — ซึ่งขัดกับสมการของแมกซ์เวลล์"
+       data-feedback-wrong-th="คิดดูว่าการรวมความเร็วของกาลิเลโอทำนายอะไรเมื่อใช้กับแสง">
+    <div class="quiz-q" data-i18n="l1.q2">Q2. What contradiction does Galilean relativity create for light?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l1.q2.a">Light would slow down to zero inside dense matter</button>
+      <button class="opt" data-correct="true"  data-i18n="l1.q2.b">A moving observer would measure light at c + v, not the constant c Maxwell predicts</button>
+      <button class="opt" data-correct="false" data-i18n="l1.q2.c">Light would travel faster than c in a vacuum for some observers</button>
+      <button class="opt" data-correct="false" data-i18n="l1.q2.d">Maxwell's equations would predict different frequencies for all observers</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! Both the principle of relativity AND constant c are kept — the Galilean transformation is what must be replaced."
+       data-feedback-wrong="Einstein kept both postulates and let go of something else. What did he replace?"
+       data-feedback-correct-th="ถูกต้อง! ทั้งหลักสัมพัทธภาพและค่าคงที่ c ถูกรักษาไว้ — การแปลงของกาลิเลโอคือสิ่งที่ต้องแทนที่"
+       data-feedback-wrong-th="ไอน์สไตน์รักษาสัจพจน์ทั้งสองไว้และปล่อยอย่างอื่นไป เขาแทนที่อะไร?">
+    <div class="quiz-q" data-i18n="l1.q3">Q3. To resolve the contradiction, Einstein chose to…</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l1.q3.a">Abandon Maxwell's equations and rewrite electromagnetism</button>
+      <button class="opt" data-correct="false" data-i18n="l1.q3.b">Accept that the principle of relativity only applies to mechanics, not light</button>
+      <button class="opt" data-correct="true"  data-i18n="l1.q3.c">Keep both the principle of relativity and constant c, replacing the Galilean transformation</button>
+      <button class="opt" data-correct="false" data-i18n="l1.q3.d">Reintroduce the Ether as a special preferred frame for light</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="quiz"
+       data-feedback-correct="Correct! The Michelson–Morley experiment found no Ether wind, ruling out the Ether hypothesis."
+       data-feedback-wrong="The experiment compared light travel times in perpendicular directions — what did it find?"
+       data-feedback-correct-th="ถูกต้อง! การทดลองของมิเชลสัน–มอร์ลีย์ไม่พบลมอีเธอร์ ทำให้ตัดสมมติฐานอีเธอร์ออก"
+       data-feedback-wrong-th="การทดลองเปรียบเทียบเวลาเดินทางของแสงในสองทิศตั้งฉาก — พบอะไร?">
+    <div class="quiz-q" data-i18n="l1.q4">Q4. What did the Michelson–Morley experiment demonstrate?</div>
+    <div class="options">
+      <button class="opt" data-correct="false" data-i18n="l1.q4.a">That light travels faster in one direction due to Earth's motion</button>
+      <button class="opt" data-correct="false" data-i18n="l1.q4.b">That the Ether exists and moves with the Earth</button>
+      <button class="opt" data-correct="true"  data-i18n="l1.q4.c">That there is no detectable Ether — light speed is the same in all directions</button>
+      <button class="opt" data-correct="false" data-i18n="l1.q4.d">That Maxwell's equations must be modified at high velocities</button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Recommended reading -->
+  <h2 data-i18n="l1.h2.source">Primary Source</h2>
+  <p>
+    The best free resource matching this lecture exactly:
+    <a href="https://openstax.org/books/university-physics-volume-3/pages/5-1-invariance-of-physical-laws"
+       target="_blank">
+      OpenStax University Physics Vol. 3 — Chapter 5.1: Invariance of Physical Laws
+    </a>
+    (free, peer-reviewed textbook used by universities worldwide).
+    Read sections 5.1 and 5.2.
+  </p>
+
+  <!-- Ask a question reminder -->
+  <div class="key-concept" style="margin-top:2rem;" data-i18n-html="l1.kc.ask">
+    <strong>Questions?</strong> Ask your teacher (Claude) anything that's unclear — type your question
+    in the chat below this lesson. Did a quiz answer surprise you? Ask why. That's where real understanding comes from.
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-links">
+    <span></span>
+    <a href="0002-time-dilation-length-contraction.html" data-i18n="nav.next.l1">Next: Time Dilation &amp; Length Contraction →</a>
+  </nav>
+
+  <footer class="lesson-footer">
+    Sci30105 Modern Physics · MWIT · Lesson 1 / 6 ·
+    Based on Lec01 by Aj Rungroj Tuayjaroen
+  </footer>
+
+</div>
+</body>
+</html>

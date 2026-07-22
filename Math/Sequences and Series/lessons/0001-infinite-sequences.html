@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinite Sequences — Limits & Convergence</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script src="../assets/quiz.js" defer></script>
+  <script src="../assets/lang.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="lesson-header">
+    <div class="course-tag">
+      <span class="lang-en">ค30107 · Sequences &amp; Series · Lesson 1 of 5</span>
+      <span class="lang-th">ค30107 · ลำดับและอนุกรม · บทที่ 1 จาก 5</span>
+    </div>
+    <h1>
+      <span class="lang-en">Infinite Sequences — Limits &amp; Convergence</span>
+      <span class="lang-th">ลำดับอนันต์ — ลิมิตและการลู่เข้า</span>
+    </h1>
+    <p class="objective">
+      <span class="lang-en">
+        <strong>After this lesson:</strong> you can determine whether a given sequence converges or diverges,
+        and find the limit when it does.
+        This maps to <em>Learning Objective 1</em> — worth 10 points on the quiz.
+      </span>
+      <span class="lang-th">
+        <strong>หลังจากเรียนบทนี้:</strong> นักเรียนสามารถตัดสินได้ว่าลำดับที่กำหนดมีลิมิต (ลู่เข้า) หรือไม่มีลิมิต (แยกออก) และหาค่าลิมิตเมื่อมีอยู่ ตรงกับ <em>วัตถุประสงค์การเรียนรู้ข้อ 1</em> — คะแนน 10 คะแนนในแบบทดสอบ
+      </span>
+    </p>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════════════ Section 1 -->
+  <div class="lang-en">
+    <h2>1. What is an Infinite Sequence?</h2>
+
+    <p>
+      A <strong>finite sequence</strong> stops: 2, 4, 6, 8, 10. An <strong>infinite sequence</strong>
+      goes on forever, indexed by every positive integer:
+    </p>
+
+    <div class="formula-box">
+      <span class="label">Definition</span>
+      { a<sub>n</sub> } = a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, … , a<sub>n</sub>, …
+    </div>
+
+    <p>
+      Think of it as a function <em>f</em>(<em>n</em>) defined on the positive integers.
+      For example, a<sub>n</sub> = 1/n gives the sequence 1, 1/2, 1/3, 1/4, …
+    </p>
+
+    <div class="key-concept">
+      <strong>Key question for every sequence:</strong> Does a<sub>n</sub> settle toward a fixed value
+      as <em>n</em> grows without bound — or does it wander, oscillate, or blow up?
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>1. ลำดับอนันต์คืออะไร?</h2>
+
+    <p>
+      <strong>ลำดับจำกัด</strong> มีจุดสิ้นสุด: 2, 4, 6, 8, 10 แต่ <strong>ลำดับอนันต์</strong>
+      ดำเนินไปตลอด โดยมีดัชนีเป็นจำนวนเต็มบวกทุกตัว:
+    </p>
+
+    <div class="formula-box">
+      <span class="label">นิยาม</span>
+      { a<sub>n</sub> } = a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, … , a<sub>n</sub>, …
+    </div>
+
+    <p>
+      คิดว่ามันคือฟังก์ชัน <em>f</em>(<em>n</em>) ที่นิยามบนจำนวนเต็มบวก
+      ตัวอย่างเช่น a<sub>n</sub> = 1/n ให้ลำดับ 1, 1/2, 1/3, 1/4, …
+    </p>
+
+    <div class="key-concept">
+      <strong>คำถามหลักสำหรับทุกลำดับ:</strong> a<sub>n</sub> เข้าใกล้ค่าคงที่เมื่อ <em>n</em> โตไปไม่สิ้นสุด
+      หรือมันเดินเตร่ แกว่งกวัด หรือระเบิดออกไปแทน?
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ Section 2 -->
+  <div class="lang-en">
+    <h2>2. The Limit of a Sequence</h2>
+
+    <p>
+      The limit of a sequence is the value that a<sub>n</sub> approaches as <em>n</em> → ∞.
+    </p>
+
+    <div class="formula-box">
+      <span class="label">Notation</span>
+      lim<sub>n→∞</sub> a<sub>n</sub> = L
+    </div>
+
+    <p>
+      This means: for any tiny margin ε &gt; 0 you choose, there is an index <em>N</em> beyond which
+      every term satisfies |a<sub>n</sub> − L| &lt; ε. In plain English:
+      <em>the terms get arbitrarily close to L and stay there</em>.
+    </p>
+
+    <h3>Convergent vs. Divergent</h3>
+
+    <table>
+      <tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
+      <tr>
+        <td><strong>Converges</strong></td>
+        <td>lim a<sub>n</sub> = L exists and is finite</td>
+        <td>a<sub>n</sub> = 1/n → 0</td>
+      </tr>
+      <tr>
+        <td><strong>Diverges to ±∞</strong></td>
+        <td>Terms grow without bound</td>
+        <td>a<sub>n</sub> = n² → +∞</td>
+      </tr>
+      <tr>
+        <td><strong>Diverges (oscillates)</strong></td>
+        <td>Terms keep changing, no single limit</td>
+        <td>a<sub>n</sub> = (−1)<sup>n</sup> → no limit</td>
+      </tr>
+    </table>
+
+    <div class="warning">
+      <strong>Common mistake:</strong> (−1)<sup>n</sup> does <em>not</em> converge to 0.
+      It alternates between +1 and −1 forever — the limit does not exist.
+      You must be able to spot oscillating sequences immediately.
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>2. ลิมิตของลำดับ</h2>
+
+    <p>
+      ลิมิตของลำดับคือค่าที่ a<sub>n</sub> เข้าใกล้เมื่อ <em>n</em> → ∞
+    </p>
+
+    <div class="formula-box">
+      <span class="label">สัญลักษณ์</span>
+      lim<sub>n→∞</sub> a<sub>n</sub> = L
+    </div>
+
+    <p>
+      หมายความว่า: สำหรับค่าประมาณ ε &gt; 0 ใดๆ ที่เลือก จะมีดัชนี <em>N</em> ที่ทุกพจน์หลังจากนั้นสอดคล้อง
+      |a<sub>n</sub> − L| &lt; ε กล่าวง่ายๆ คือ:
+      <em>พจน์ต่างๆ เข้าใกล้ L มากขึ้นเรื่อยๆ และอยู่ใกล้ L ต่อไป</em>
+    </p>
+
+    <h3>ลำดับลู่เข้า กับ ลำดับแยกออก</h3>
+
+    <table>
+      <tr><th>คำศัพท์</th><th>ความหมาย</th><th>ตัวอย่าง</th></tr>
+      <tr>
+        <td><strong>ลู่เข้า</strong></td>
+        <td>lim a<sub>n</sub> = L มีอยู่และเป็นจำนวนจำกัด</td>
+        <td>a<sub>n</sub> = 1/n → 0</td>
+      </tr>
+      <tr>
+        <td><strong>แยกออกสู่ ±∞</strong></td>
+        <td>พจน์โตไปไม่มีขอบเขต</td>
+        <td>a<sub>n</sub> = n² → +∞</td>
+      </tr>
+      <tr>
+        <td><strong>แยกออก (แกว่งกวัด)</strong></td>
+        <td>พจน์เปลี่ยนแปลงตลอด ไม่มีลิมิตเดียว</td>
+        <td>a<sub>n</sub> = (−1)<sup>n</sup> → no limit</td>
+      </tr>
+    </table>
+
+    <div class="warning">
+      <strong>ข้อผิดพลาดที่พบบ่อย:</strong> (−1)<sup>n</sup> <em>ไม่</em>ลู่เข้าสู่ 0
+      มันสลับระหว่าง +1 และ −1 ตลอดไป — ลิมิตไม่มีอยู่
+      ต้องสังเกตลำดับแกว่งกวัดได้ทันที
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ Section 3 -->
+  <div class="lang-en">
+    <h2>3. Key Theorems (Thm 1.2.4 · 1.2.8 · 1.2.12 · 1.2.16)</h2>
+
+    <div class="formula-box">
+      <span class="label">Thm 1.2.4 — Continuous limit carries over to sequences</span>
+      If  lim<sub>x→∞</sub> f(x) = L  and  a<sub>n</sub> = f(n) for integer n,
+      then  lim<sub>n→∞</sub> a<sub>n</sub> = L.
+
+      Why it matters: lets you apply L'Hôpital's Rule to sequences.
+      If lim f(x)/g(x) needs L'Hôpital, the sequence version gets the same answer.
+    </div>
+
+    <div class="formula-box">
+      <span class="label">Thm 1.2.8 — Limit Laws (memorise these six)</span>
+      If  lim a<sub>n</sub> = A  and  lim b<sub>n</sub> = B:
+
+      Scalar:       lim (c · a<sub>n</sub>)   =  c · A
+      Sum:          lim (a<sub>n</sub> ± b<sub>n</sub>) =  A ± B
+      Product:      lim (a<sub>n</sub> · b<sub>n</sub>) =  A · B
+      Quotient:     lim (a<sub>n</sub> / b<sub>n</sub>) =  A / B    (B ≠ 0)
+      Power:        lim (a<sub>n</sub>)<sup>p</sup>    =  A<sup>p</sup>    (A > 0)
+      Constant:     lim c                =  c
+    </div>
+
+    <div class="formula-box">
+      <span class="label">Thm 1.2.12 — Even/Odd subsequence criterion</span>
+      { a<sub>n</sub> } converges to L
+      ⟺  both  lim a<sub>2n</sub> = L  AND  lim a<sub>2n−1</sub> = L.
+
+      Use this to prove (−1)<sup>n</sup> diverges:
+      even terms → +1, odd terms → −1, limits differ → no overall limit.
+    </div>
+
+    <div class="formula-box">
+      <span class="label">Thm 1.2.16 — Absolute-value squeeze</span>
+      If  lim<sub>n→∞</sub> |a<sub>n</sub>| = 0,  then  lim<sub>n→∞</sub> a<sub>n</sub> = 0.
+
+      Example:  a<sub>n</sub> = (−1)<sup>n</sup> / 2<sup>n</sup>
+      |a<sub>n</sub>| = 1/2<sup>n</sup> → 0,  so  a<sub>n</sub> → 0.  ✓
+      (The alternating sign doesn't matter once |a<sub>n</sub>| → 0.)
+    </div>
+
+    <div class="key-concept">
+      <strong>Exam shortcut:</strong> For any sequence with a factor (−1)<sup>n</sup> or (−1)<sup>n+1</sup>,
+      ignore the sign and evaluate |a<sub>n</sub>|. If |a<sub>n</sub>| → 0, the sequence converges to 0.
+      If |a<sub>n</sub>| → anything else, you need Thm 1.2.12 (even/odd check).
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>3. ทฤษฎีบทสำคัญ (ทฤษฎีบท 1.2.4 · 1.2.8 · 1.2.12 · 1.2.16)</h2>
+
+    <div class="formula-box">
+      <span class="label">ทฤษฎีบท 1.2.4 — ลิมิตต่อเนื่องถ่ายทอดสู่ลำดับ</span>
+      If  lim<sub>x→∞</sub> f(x) = L  and  a<sub>n</sub> = f(n) for integer n,
+      then  lim<sub>n→∞</sub> a<sub>n</sub> = L.
+
+      เหตุใดจึงสำคัญ: ช่วยให้ใช้กฎของโลปีตาลกับลำดับได้
+      ถ้า lim f(x)/g(x) ต้องใช้โลปีตาล ลำดับก็ได้ผลเฉลยเดียวกัน
+    </div>
+
+    <div class="formula-box">
+      <span class="label">ทฤษฎีบท 1.2.8 — กฎของลิมิต (จำหกข้อนี้)</span>
+      If  lim a<sub>n</sub> = A  and  lim b<sub>n</sub> = B:
+
+      คูณสเกลาร์:   lim (c · a<sub>n</sub>)   =  c · A
+      บวก/ลบ:       lim (a<sub>n</sub> ± b<sub>n</sub>) =  A ± B
+      คูณ:          lim (a<sub>n</sub> · b<sub>n</sub>) =  A · B
+      หาร:          lim (a<sub>n</sub> / b<sub>n</sub>) =  A / B    (B ≠ 0)
+      ยกกำลัง:      lim (a<sub>n</sub>)<sup>p</sup>    =  A<sup>p</sup>    (A > 0)
+      ค่าคงที่:     lim c                =  c
+    </div>
+
+    <div class="formula-box">
+      <span class="label">ทฤษฎีบท 1.2.12 — เกณฑ์ลำดับย่อยคู่/คี่</span>
+      { a<sub>n</sub> } converges to L
+      ⟺  both  lim a<sub>2n</sub> = L  AND  lim a<sub>2n−1</sub> = L.
+
+      ใช้พิสูจน์ว่า (−1)<sup>n</sup> แยกออก:
+      พจน์คู่ → +1 พจน์คี่ → −1 ลิมิตต่างกัน → ไม่มีลิมิตรวม
+    </div>
+
+    <div class="formula-box">
+      <span class="label">ทฤษฎีบท 1.2.16 — การบีบด้วยค่าสัมบูรณ์</span>
+      If  lim<sub>n→∞</sub> |a<sub>n</sub>| = 0,  then  lim<sub>n→∞</sub> a<sub>n</sub> = 0.
+
+      Example:  a<sub>n</sub> = (−1)<sup>n</sup> / 2<sup>n</sup>
+      |a<sub>n</sub>| = 1/2<sup>n</sup> → 0,  so  a<sub>n</sub> → 0.  ✓
+      (เครื่องหมายสลับไม่สำคัญเมื่อ |a<sub>n</sub>| → 0)
+    </div>
+
+    <div class="key-concept">
+      <strong>ทางลัดในการสอบ:</strong> สำหรับลำดับที่มีตัวประกอบ (−1)<sup>n</sup> หรือ (−1)<sup>n+1</sup>
+      ให้ละเครื่องหมายแล้วประเมิน |a<sub>n</sub>| ถ้า |a<sub>n</sub>| → 0 ลำดับลู่เข้าสู่ 0
+      ถ้า |a<sub>n</sub>| → ค่าอื่น ต้องใช้ทฤษฎีบท 1.2.12 (ตรวจสอบพจน์คู่/คี่)
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ Section 4 -->
+  <div class="lang-en">
+    <h2>4. Finding Limits in Practice</h2>
+
+    <p>
+      Treat a<sub>n</sub> as a continuous function <em>f</em>(<em>x</em>) and apply standard limit rules
+      (Thm 1.2.8 above). The most important technique for rational sequences:
+      <strong>divide numerator and denominator by the highest power of <em>n</em></strong>.
+    </p>
+
+    <h3>Example A — Rational sequences (Limit Laws applied)</h3>
+
+    <div class="formula-box">
+      <span class="label">Find the limit</span>
+      a<sub>n</sub> = (3n² + 2) / (n² + 5)
+
+      Divide top and bottom by n²:
+      = (3 + 2/n²) / (1 + 5/n²)
+
+      As n → ∞, the terms 2/n² and 5/n² → 0, so:
+      lim a<sub>n</sub> = 3/1 = <strong>3</strong>
+    </div>
+
+    <h3>Example B — Exponential decay</h3>
+
+    <div class="formula-box">
+      <span class="label">Key rule: geometric sequences</span>
+      lim<sub>n→∞</sub> r<sup>n</sup> = 0   if |r| &lt; 1
+      lim<sub>n→∞</sub> r<sup>n</sup> = 1   if r = 1
+      lim<sub>n→∞</sub> r<sup>n</sup> = ∞   if r &gt; 1
+      lim<sub>n→∞</sub> r<sup>n</sup> = does not exist   if r ≤ −1
+    </div>
+
+    <p>
+      So a<sub>n</sub> = (0.5)<sup>n</sup> → 0, and a<sub>n</sub> = (−0.5)<sup>n</sup> also → 0
+      (since |−0.5| &lt; 1).
+    </p>
+
+    <h3>Example C — Factorial and exponential growth</h3>
+
+    <div class="formula-box">
+      <span class="label">Useful fact</span>
+      n! grows faster than any exponential c<sup>n</sup>.
+      Therefore:  lim<sub>n→∞</sub> c<sup>n</sup>/n! = 0   for any constant c
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>4. การหาลิมิตในทางปฏิบัติ</h2>
+
+    <p>
+      ให้มองว่า a<sub>n</sub> เป็นฟังก์ชันต่อเนื่อง <em>f</em>(<em>x</em>) แล้วใช้กฎลิมิตมาตรฐาน
+      (ทฤษฎีบท 1.2.8) เทคนิคที่สำคัญที่สุดสำหรับลำดับเศษส่วน:
+      <strong>หารทั้งเศษและส่วนด้วยกำลังสูงสุดของ <em>n</em></strong>
+    </p>
+
+    <h3>ตัวอย่าง ก — ลำดับเศษส่วน (ใช้กฎของลิมิต)</h3>
+
+    <div class="formula-box">
+      <span class="label">หาลิมิต</span>
+      a<sub>n</sub> = (3n² + 2) / (n² + 5)
+
+      หารเศษและส่วนด้วย n²:
+      = (3 + 2/n²) / (1 + 5/n²)
+
+      เมื่อ n → ∞ พจน์ 2/n² และ 5/n² → 0 ดังนั้น:
+      lim a<sub>n</sub> = 3/1 = <strong>3</strong>
+    </div>
+
+    <h3>ตัวอย่าง ข — การลดแบบเอกซ์โพเนนเชียล</h3>
+
+    <div class="formula-box">
+      <span class="label">กฎสำคัญ: ลำดับเรขาคณิต</span>
+      lim<sub>n→∞</sub> r<sup>n</sup> = 0   if |r| &lt; 1
+      lim<sub>n→∞</sub> r<sup>n</sup> = 1   if r = 1
+      lim<sub>n→∞</sub> r<sup>n</sup> = ∞   if r &gt; 1
+      lim<sub>n→∞</sub> r<sup>n</sup> = ไม่มีอยู่   if r ≤ −1
+    </div>
+
+    <p>
+      ดังนั้น a<sub>n</sub> = (0.5)<sup>n</sup> → 0 และ a<sub>n</sub> = (−0.5)<sup>n</sup> ก็ → 0 เช่นกัน
+      (เนื่องจาก |−0.5| &lt; 1)
+    </p>
+
+    <h3>ตัวอย่าง ค — แฟกทอเรียลและการเติบโตแบบเอกซ์โพเนนเชียล</h3>
+
+    <div class="formula-box">
+      <span class="label">ข้อเท็จจริงที่มีประโยชน์</span>
+      n! เติบโตเร็วกว่าเอกซ์โพเนนเชียล c<sup>n</sup> ใดๆ
+      ดังนั้น:  lim<sub>n→∞</sub> c<sup>n</sup>/n! = 0   สำหรับค่าคงที่ c ใดๆ
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ Section 5 -->
+  <div class="lang-en">
+    <h2>5. The Squeezing Theorem</h2>
+
+    <p>
+      Sometimes a<sub>n</sub> can't be evaluated directly. If you can trap it between two sequences
+      that both converge to the same limit, it must converge there too.
+    </p>
+
+    <div class="formula-box">
+      <span class="label">Squeezing Theorem for Sequences</span>
+      If  b<sub>n</sub> ≤ a<sub>n</sub> ≤ c<sub>n</sub>  for all n ≥ N
+      and  lim<sub>n→∞</sub> b<sub>n</sub> = lim<sub>n→∞</sub> c<sub>n</sub> = L
+      then  lim<sub>n→∞</sub> a<sub>n</sub> = L
+    </div>
+
+    <h3>Example D — sin(n)/n</h3>
+
+    <div class="formula-box">
+      <span class="label">Find: lim sin(n) / n</span>
+      We know:  −1 ≤ sin(n) ≤ 1  for all n
+      Dividing by n:  −1/n ≤ sin(n)/n ≤ 1/n
+      Since lim (−1/n) = 0 and lim (1/n) = 0,
+      by the Squeezing Theorem:  lim sin(n)/n = <strong>0</strong>
+    </div>
+
+    <h3>Example E — n!/nⁿ (Exam 1.2.15)</h3>
+
+    <div class="formula-box">
+      <span class="label">Prove: lim<sub>n→∞</sub> n!/nⁿ = 0</span>
+      Write out:
+      n!/nⁿ = (1/n)(2/n)(3/n)···(n/n)
+
+      Each factor ≤ 1, and the first factor = 1/n.
+      So:    0  ≤  n!/nⁿ  ≤  1/n
+
+      Since lim (1/n) = 0 and lim 0 = 0,
+      by the Squeezing Theorem:  lim n!/nⁿ = <strong>0</strong>
+    </div>
+
+    <div class="key-concept">
+      <strong>Why this matters:</strong> the n!/nⁿ example shows the Squeezing Theorem is not limited
+      to trig — it works whenever you can find simple upper and lower bounds.
+    </div>
+  </div>
+
+  <div class="lang-th">
+    <h2>5. ทฤษฎีบทการบีบ (Squeezing Theorem)</h2>
+
+    <p>
+      บางครั้งหา a<sub>n</sub> โดยตรงไม่ได้ แต่ถ้าสามารถบีบมันไว้ระหว่างสองลำดับที่ลู่เข้าสู่ลิมิตเดียวกัน
+      มันก็ต้องลู่เข้าสู่ลิมิตนั้นด้วย
+    </p>
+
+    <div class="formula-box">
+      <span class="label">ทฤษฎีบทการบีบสำหรับลำดับ</span>
+      If  b<sub>n</sub> ≤ a<sub>n</sub> ≤ c<sub>n</sub>  for all n ≥ N
+      and  lim<sub>n→∞</sub> b<sub>n</sub> = lim<sub>n→∞</sub> c<sub>n</sub> = L
+      then  lim<sub>n→∞</sub> a<sub>n</sub> = L
+    </div>
+
+    <h3>ตัวอย่าง ง — sin(n)/n</h3>
+
+    <div class="formula-box">
+      <span class="label">หา: lim sin(n) / n</span>
+      ทราบว่า:  −1 ≤ sin(n) ≤ 1  สำหรับ n ทุกค่า
+      หารด้วย n:  −1/n ≤ sin(n)/n ≤ 1/n
+      เนื่องจาก lim (−1/n) = 0 และ lim (1/n) = 0,
+      โดยทฤษฎีบทการบีบ:  lim sin(n)/n = <strong>0</strong>
+    </div>
+
+    <h3>ตัวอย่าง จ — n!/nⁿ (ข้อสอบ 1.2.15)</h3>
+
+    <div class="formula-box">
+      <span class="label">พิสูจน์: lim<sub>n→∞</sub> n!/nⁿ = 0</span>
+      เขียนออกมา:
+      n!/nⁿ = (1/n)(2/n)(3/n)···(n/n)
+
+      แต่ละตัวประกอบ ≤ 1 และตัวประกอบแรก = 1/n
+      ดังนั้น:    0  ≤  n!/nⁿ  ≤  1/n
+
+      เนื่องจาก lim (1/n) = 0 และ lim 0 = 0,
+      โดยทฤษฎีบทการบีบ:  lim n!/nⁿ = <strong>0</strong>
+    </div>
+
+    <div class="key-concept">
+      <strong>เหตุใดจึงสำคัญ:</strong> ตัวอย่าง n!/nⁿ แสดงว่าทฤษฎีบทการบีบไม่ได้จำกัดอยู่กับฟังก์ชันตรีโกณมิติ
+      — ใช้ได้เสมอเมื่อหาขอบเขตบนและขอบเขตล่างง่ายๆ ได้
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ Section 6 -->
+  <div class="lang-en">
+    <h2>6. Monotone Sequences — a Shortcut for Convergence</h2>
+
+    <div class="key-concept">
+      <strong>Theorem:</strong> A sequence that is both <em>monotone</em> (always increasing or always
+      decreasing) and <em>bounded</em> (never exceeds some fixed value M) must converge.
+      You don't need to find L — the theorem guarantees L exists.
+    </div>
+
+    <p>
+      This is used to <em>prove</em> convergence without finding the exact limit.
+      In the ค30107 quiz, you may be asked to state whether a sequence converges — this theorem
+      is enough if the sequence is clearly monotone and bounded.
+    </p>
+  </div>
+
+  <div class="lang-th">
+    <h2>6. ลำดับโมโนโทน — ทางลัดในการพิสูจน์การลู่เข้า</h2>
+
+    <div class="key-concept">
+      <strong>ทฤษฎีบท:</strong> ลำดับที่ <em>โมโนโทน</em> (เพิ่มขึ้นหรือลดลงตลอด) และ <em>มีขอบเขต</em>
+      (ไม่เกินค่าคงที่ M บางค่า) จะต้องลู่เข้า
+      ไม่จำเป็นต้องหา L — ทฤษฎีบทรับประกันว่า L มีอยู่
+    </div>
+
+    <p>
+      ใช้เพื่อ <em>พิสูจน์</em> การลู่เข้าโดยไม่ต้องหาลิมิตที่แน่นอน
+      ในแบบทดสอบ ค30107 อาจถามว่าลำดับลู่เข้าหรือไม่ — ทฤษฎีบทนี้เพียงพอถ้าลำดับเป็นโมโนโทนและมีขอบเขตชัดเจน
+    </p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ Quiz section heading -->
+  <h2>
+    <span class="lang-en">Check Your Understanding</span>
+    <span class="lang-th">ทดสอบความเข้าใจ</span>
+  </h2>
+  <p style="font-family: var(--font-ui); font-size: 0.9rem; color: var(--muted);">
+    <span class="lang-en">Pick an answer — you get feedback immediately. These are exam-style.</span>
+    <span class="lang-th">เลือกคำตอบ — จะได้รับ feedback ทันที คำถามเหล่านี้มีรูปแบบเหมือนในการสอบ</span>
+  </p>
+
+  <!-- Q1 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! 1/n shrinks toward 0 as n grows — it never reaches 0, but gets arbitrarily close."
+       data-feedback-wrong="Not quite. Think about what happens to the fraction 1/n when n = 1000, 1 000 000, …"
+       data-feedback-correct-th="ถูกต้อง! 1/n ลดลงสู่ 0 เมื่อ n โต — ไม่ถึง 0 จริงๆ แต่เข้าใกล้ได้มากเท่าที่ต้องการ"
+       data-feedback-wrong-th="ยังไม่ถูก ลองคิดว่าเศษส่วน 1/n มีค่าเท่าไรเมื่อ n = 1,000; 1,000,000; …">
+    <div class="quiz-q">
+      <span class="lang-en">Q1. &nbsp; lim<sub>n→∞</sub> 1/n = ?</span>
+      <span class="lang-th">ข้อ 1. &nbsp; lim<sub>n→∞</sub> 1/n = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges to 0</span>
+        <span class="lang-th">ลู่เข้าสู่ 0</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 1</span>
+        <span class="lang-th">ลู่เข้าสู่ 1</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges to +∞</span>
+        <span class="lang-th">แยกออกสู่ +∞</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Does not exist</span>
+        <span class="lang-th">ลิมิตไม่มีอยู่</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! (−1)ⁿ oscillates between +1 and −1 — there is no single value it settles toward."
+       data-feedback-wrong="Careful — a sequence diverges whenever its limit fails to exist. (−1)ⁿ never settles."
+       data-feedback-correct-th="ถูกต้อง! (−1)ⁿ แกว่งระหว่าง +1 และ −1 ไม่มีค่าเดียวที่มันตั้งอยู่"
+       data-feedback-wrong-th="ระวัง — ลำดับแยกออกเมื่อลิมิตไม่มีอยู่ (−1)ⁿ ไม่เคยตั้งอยู่กับที่">
+    <div class="quiz-q">
+      <span class="lang-en">Q2. &nbsp; Which sequence <strong>diverges</strong>?</span>
+      <span class="lang-th">ข้อ 2. &nbsp; ลำดับใด<strong>แยกออก</strong>?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">a<sub>n</sub> = 1/n² &nbsp;(terms shrink to 0)</span>
+        <span class="lang-th">a<sub>n</sub> = 1/n² &nbsp;(พจน์ลดสู่ 0)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">a<sub>n</sub> = n/(n+1) &nbsp;(tends to 1)</span>
+        <span class="lang-th">a<sub>n</sub> = n/(n+1) &nbsp;(มุ่งสู่ 1)</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">a<sub>n</sub> = (−1)<sup>n</sup> &nbsp;(alternates ±1)</span>
+        <span class="lang-th">a<sub>n</sub> = (−1)<sup>n</sup> &nbsp;(สลับ ±1)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">a<sub>n</sub> = (n+1)/n² &nbsp;(tends to 0)</span>
+        <span class="lang-th">a<sub>n</sub> = (n+1)/n² &nbsp;(มุ่งสู่ 0)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! Divide top and bottom by n²: (3 + 2/n²)/(1 + 5/n²) → 3/1 = 3."
+       data-feedback-wrong="Try dividing both the numerator and denominator by n² (the highest power). What survives as n → ∞?"
+       data-feedback-correct-th="ถูกต้อง! หาร n² ทั้งเศษและส่วน: (3 + 2/n²)/(1 + 5/n²) → 3/1 = 3"
+       data-feedback-wrong-th="ลองหารทั้งเศษและส่วนด้วย n² (กำลังสูงสุด) แล้วดูว่าพจน์ใดรอดเมื่อ n → ∞">
+    <div class="quiz-q">
+      <span class="lang-en">Q3. &nbsp; lim<sub>n→∞</sub> (3n² + 2) / (n² + 5) = ?</span>
+      <span class="lang-th">ข้อ 3. &nbsp; lim<sub>n→∞</sub> (3n² + 2) / (n² + 5) = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 0</span>
+        <span class="lang-th">ลู่เข้าสู่ 0</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 2</span>
+        <span class="lang-th">ลู่เข้าสู่ 2</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges to 3</span>
+        <span class="lang-th">ลู่เข้าสู่ 3</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges to +∞</span>
+        <span class="lang-th">แยกออกสู่ +∞</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! Since −1/n ≤ sin(n)/n ≤ 1/n and both bounds → 0, the Squeezing Theorem gives limit = 0."
+       data-feedback-wrong="Hint: sin(n) is always between −1 and 1. Can you squeeze sin(n)/n between two simpler sequences?"
+       data-feedback-correct-th="ถูกต้อง! เนื่องจาก −1/n ≤ sin(n)/n ≤ 1/n และขอบเขตทั้งสอง → 0 โดยทฤษฎีบทการบีบ ลิมิต = 0"
+       data-feedback-wrong-th="คำใบ้: sin(n) อยู่ระหว่าง −1 และ 1 เสมอ คุณบีบ sin(n)/n ระหว่างสองลำดับง่ายๆ ได้ไหม?">
+    <div class="quiz-q">
+      <span class="lang-en">Q4. &nbsp; lim<sub>n→∞</sub> sin(n) / n = ?</span>
+      <span class="lang-th">ข้อ 4. &nbsp; lim<sub>n→∞</sub> sin(n) / n = ?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Does not exist (sin oscillates)</span>
+        <span class="lang-th">ไม่มีอยู่ (sin แกว่ง)</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges to 0 (Squeezing Theorem)</span>
+        <span class="lang-th">ลู่เข้าสู่ 0 (ทฤษฎีบทการบีบ)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to 1 (standard limit)</span>
+        <span class="lang-th">ลู่เข้าสู่ 1 (ลิมิตมาตรฐาน)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges to +∞ (n in denominator)</span>
+        <span class="lang-th">แยกออกสู่ +∞ (n อยู่ในตัวหาร)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="quiz"
+       data-feedback-correct="Correct! |aₙ| = (0.6)ⁿ → 0 since |0.6| < 1. By Thm 1.2.16, aₙ = (−0.6)ⁿ → 0."
+       data-feedback-wrong="Apply Thm 1.2.16: compute |aₙ| first. What is |(−0.6)ⁿ|? Does that → 0?"
+       data-feedback-correct-th="ถูกต้อง! |aₙ| = (0.6)ⁿ → 0 เนื่องจาก |0.6| < 1 โดยทฤษฎีบท 1.2.16 aₙ = (−0.6)ⁿ → 0"
+       data-feedback-wrong-th="ใช้ทฤษฎีบท 1.2.16: หา |aₙ| ก่อน |((−0.6)ⁿ)| เท่ากับเท่าไร? มัน → 0 ไหม?">
+    <div class="quiz-q">
+      <span class="lang-en">Q5. &nbsp; a<sub>n</sub> = (−0.6)<sup>n</sup>. Does this converge?</span>
+      <span class="lang-th">ข้อ 5. &nbsp; a<sub>n</sub> = (−0.6)<sup>n</sup> ลำดับนี้ลู่เข้าหรือไม่?</span>
+    </div>
+    <div class="options">
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (negative ratio)</span>
+        <span class="lang-th">แยกออก (อัตราส่วนลบ)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Converges to −0.6</span>
+        <span class="lang-th">ลู่เข้าสู่ −0.6</span>
+      </button>
+      <button class="opt" data-correct="true">
+        <span class="lang-en">Converges to 0 (Thm 1.2.16)</span>
+        <span class="lang-th">ลู่เข้าสู่ 0 (ทฤษฎีบท 1.2.16)</span>
+      </button>
+      <button class="opt" data-correct="false">
+        <span class="lang-en">Diverges (oscillates, no limit)</span>
+        <span class="lang-th">แยกออก (แกว่ง ไม่มีลิมิต)</span>
+      </button>
+    </div>
+    <div class="feedback"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ Primary Source -->
+  <h2>
+    <span class="lang-en">Primary Source</span>
+    <span class="lang-th">แหล่งเรียนรู้หลัก</span>
+  </h2>
+
+  <p>
+    <span class="lang-en">
+      Read <strong>OpenStax Calculus Volume 2, Section 5.1 — Sequences</strong> for worked examples
+      and more practice problems:
+      <a href="https://openstax.org/books/calculus-volume-2/pages/5-1-sequences" target="_blank">
+        openstax.org → Calculus Vol 2 → 5.1 Sequences
+      </a>
+    </span>
+    <span class="lang-th">
+      อ่าน <strong>OpenStax Calculus Volume 2 หัวข้อ 5.1 — Sequences</strong> สำหรับตัวอย่างและแบบฝึกหัดเพิ่มเติม:
+      <a href="https://openstax.org/books/calculus-volume-2/pages/5-1-sequences" target="_blank">
+        openstax.org → Calculus Vol 2 → 5.1 Sequences
+      </a>
+    </span>
+  </p>
+
+  <p>
+    <span class="lang-en">
+      Also review your course notes: <a href="../lectures/1.2 [S2] Infinite Sequences.pdf">S2 — Infinite Sequences (PDF)</a>
+    </span>
+    <span class="lang-th">
+      ทบทวนเอกสารประกอบการสอน: <a href="../lectures/1.2 [S2] Infinite Sequences.pdf">S2 — ลำดับอนันต์ (PDF)</a>
+    </span>
+  </p>
+
+  <div class="key-concept" style="margin-top:2rem;">
+    <span class="lang-en">
+      <strong>Ask your teacher (me) anything.</strong> If a step in these examples is unclear,
+      or you want more practice problems at exam difficulty, just ask in the chat.
+      The quiz is 11 days away — use every session.
+    </span>
+    <span class="lang-th">
+      <strong>ถามครู (ฉัน) ได้ทุกเรื่อง</strong> ถ้าขั้นตอนใดในตัวอย่างไม่ชัดเจน
+      หรืออยากได้แบบฝึกหัดเพิ่มในระดับความยากเหมือนสอบ ถามในแชทได้เลย
+    </span>
+  </div>
+
+  <nav class="nav-links">
+    <a href="0000-finite-sequences-and-partial-sums.html">
+      <span class="lang-en">← Lesson 0: Finite Sequences &amp; Partial Sums</span>
+      <span class="lang-th">← บทที่ 0: ลำดับจำกัดและผลรวมย่อย</span>
+    </a>
+    <a href="0002-infinite-series.html">
+      <span class="lang-en">Next: Infinite Series →</span>
+      <span class="lang-th">ถัดไป: อนุกรมอนันต์ →</span>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    ค30107 แคลคูลัสและการประยุกต์ · MWIT · AY 2569 Semester 1 ·
+    Quiz: 20–24 July 2026
+  </footer>
+
+</div>
+</body>
+</html>
