@@ -1,5 +1,4 @@
-# Source lecture PDFs (large files, not needed for live pages)
-**/lectures/
+# Claude Code system files
 
 # Claude Code system files
 .claude/
