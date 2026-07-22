@@ -228,3 +228,45 @@ tr:nth-child(even) td { background: #f7f4ef; }
   .page { padding: 1.5rem 1rem 3rem; }
   .lesson-header h1 { font-size: 1.5rem; }
 }
+
+/* Home link */
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+.home-link:hover { color: var(--accent); opacity: 1; }
+
+/* Formula summary box */
+.formula-summary {
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+  margin: 2.5rem 0 0.5rem;
+  background: var(--surface);
+}
+.formula-summary .fs-title {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+.formula-summary .fs-row {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.85;
+}
+.formula-summary .fs-sep {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0.6rem 0;
+}
