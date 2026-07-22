@@ -229,27 +229,29 @@ tr:nth-child(even) td { background: #f7f4ef; }
   .lesson-header h1 { font-size: 1.5rem; }
 }
 
-/* Home link */
+/* Home link — fixed top-left, matches translate button style */
 .home-link {
   position: fixed;
   top: 1rem;
   left: 1rem;
-  z-index: 999;
+  z-index: 9999;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   font-family: var(--font-ui);
-  font-size: 0.8rem;
-  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
   text-decoration: none;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.3rem 0.75rem;
-  opacity: 0.85;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.42rem 1.1rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: background 0.15s;
 }
-.home-link:hover { color: var(--accent); opacity: 1; }
+.home-link:hover { background: #0e3d1e; }
 
 /* Formula summary box */
 .formula-summary {
